@@ -1,0 +1,3 @@
+level1Size: 20 #Number of fields at 1 level
+level2Size: 15 #Number of fields at 2 level
+level3Size: 10 #Number of fields at 3 level
