@@ -1,3 +1,5 @@
-level1Size: 20 #Number of fields at 1 level
-level2Size: 15 #Number of fields at 2 level
-level3Size: 10 #Number of fields at 3 level
+level1Size: 10 #Number of fields at 1 level
+level2Size: 7 #Number of fields at 2 level
+level3Size: 5 #Number of fields at 3 level
+diceMin: 1
+diceMax: 3

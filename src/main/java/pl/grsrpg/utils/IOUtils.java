@@ -1,6 +1,8 @@
 package pl.grsrpg.utils;
 
-import pl.grsrpg.GRSRPG;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import pl.grsrpg.Game;
 import pl.grsrpg.logger.RPGLogger;
 
 import java.io.File;
@@ -8,10 +10,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Utils {
+public class IOUtils {
+    private static final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+
+    public static ObjectMapper getMapper() {
+        return mapper;
+    }
+
+    private static final String DATA_PATH = System.getProperty("user.dir") + "/";
+
+    public static String getDataPath() {
+        return DATA_PATH;
+    }
 
     public static boolean saveResource(String input, File output){
-        ClassLoader classLoader = GRSRPG.class.getClassLoader();
+        ClassLoader classLoader = Game.class.getClassLoader();
 
         InputStream stream = classLoader.getResourceAsStream(input);
         if(stream == null){
@@ -41,6 +54,17 @@ public class Utils {
             return false;
         }
         return true;
+    }
+
+    public static File openFile(String path, String resource){
+        File file = new File(getDataPath() +path);
+        if(!file.exists()){
+            if(!IOUtils.saveResource(resource, file)){
+                RPGLogger.printError("There was a problem with opening"+resource+"file! Exiting...");
+                System.exit(1);
+            }
+        }
+        return file;
     }
 
 }
