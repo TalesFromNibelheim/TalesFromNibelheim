@@ -2,8 +2,8 @@ package pl.grsrpg;
 
 import lombok.Getter;
 import pl.grsrpg.config.Config;
-import pl.grsrpg.gameboard.Board;
-import pl.grsrpg.gameboard.GameBoard;
+import pl.grsrpg.board.Board;
+import pl.grsrpg.board.GameBoard;
 import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;

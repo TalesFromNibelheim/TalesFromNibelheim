@@ -1,9 +1,9 @@
-package pl.grsrpg.gameboard;
+package pl.grsrpg.board;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import pl.grsrpg.Game;
-import pl.grsrpg.gamefield.Field;
-import pl.grsrpg.gamefield.GameField;
+import pl.grsrpg.field.Field;
+import pl.grsrpg.field.GameField;
 import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;

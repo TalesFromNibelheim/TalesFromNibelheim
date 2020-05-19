@@ -1,4 +1,4 @@
-package pl.grsrpg.gamefield;
+package pl.grsrpg.field;
 
 public interface Field {
 
