@@ -1,11 +1,13 @@
 package pl.grsrpg.utils;
 
+import pl.grsrpg.Game;
+
 import java.util.Random;
 
 public class DiceRoll {
     private static final Random random = new Random();
 
-    public int rollDice(){
-        return random.nextInt(6)+1;
+    public static int rollDice() {
+        return random.nextInt(Game.getConfig().getDiceMax() + 1) + Game.getConfig().getDiceMin();
     }
 }
