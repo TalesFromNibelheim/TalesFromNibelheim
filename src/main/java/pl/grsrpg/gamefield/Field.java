@@ -5,6 +5,6 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class GameField {
+public class Field {
     private int id;
 }

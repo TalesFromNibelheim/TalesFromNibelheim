@@ -3,7 +3,7 @@ package pl.grsrpg.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import pl.grsrpg.Game;
-import pl.grsrpg.logger.RPGLogger;
+import pl.grsrpg.logger.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,7 +28,7 @@ public class IOUtils {
 
         InputStream stream = classLoader.getResourceAsStream(input);
         if(stream == null){
-            RPGLogger.printError(input+" file not found! Exiting...");
+            Logger.printError(input+" file not found! Exiting...");
             System.exit(1);
             return false;
         }
@@ -60,7 +60,7 @@ public class IOUtils {
         File file = new File(getDataPath() +path);
         if(!file.exists()){
             if(!IOUtils.saveResource(resource, file)){
-                RPGLogger.printError("There was a problem with opening"+resource+"file! Exiting...");
+                Logger.printError("There was a problem with opening"+resource+"file! Exiting...");
                 System.exit(1);
             }
         }

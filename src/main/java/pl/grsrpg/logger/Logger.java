@@ -4,7 +4,7 @@ import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
 import com.diogonunes.jcdp.color.api.Ansi.Attribute;
 
-public class RPGLogger {
+public class Logger {
     private static final ColoredPrinter print = new ColoredPrinter.Builder(1, false)
             .foreground(Ansi.FColor.WHITE).build();
 
