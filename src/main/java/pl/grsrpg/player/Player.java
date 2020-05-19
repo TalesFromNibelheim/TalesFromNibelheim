@@ -1,6 +1,8 @@
 package pl.grsrpg.player;
 
-public abstract class Player {
+import pl.grsrpg.entity.EntityFightable;
+
+public abstract class Player implements EntityPlayable, EntityFightable {
     private final String name;
     private float health;
     private float damage;

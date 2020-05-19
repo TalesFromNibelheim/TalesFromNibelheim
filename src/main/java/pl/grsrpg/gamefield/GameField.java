@@ -5,5 +5,6 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class BossField extends Field {
+public class GameField implements Field{
+    private int id;
 }

@@ -1,10 +1,5 @@
 package pl.grsrpg.gamefield;
 
-import lombok.Getter;
-import lombok.ToString;
+public interface Field {
 
-@Getter
-@ToString
-public class Field {
-    private int id;
 }

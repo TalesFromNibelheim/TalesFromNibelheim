@@ -4,7 +4,7 @@ import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
 import com.diogonunes.jcdp.color.api.Ansi.Attribute;
 
-public class Logger {
+public class GameLogger {
     private static final ColoredPrinter print = new ColoredPrinter.Builder(1, false)
             .foreground(Ansi.FColor.WHITE).build();
 
@@ -19,6 +19,7 @@ public class Logger {
         print.errorPrint("] ");
         print.errorPrint(content);
     }
+
     public static void printWarning(String content){
         print.setForegroundColor(Ansi.FColor.WHITE);
         print.errorPrint("[");

@@ -1,4 +1,9 @@
 package pl.grsrpg.card;
 
-public abstract class Card {
+import pl.grsrpg.player.EntityPlayable;
+
+public interface Card {
+
+    boolean execute(EntityPlayable player);
+
 }

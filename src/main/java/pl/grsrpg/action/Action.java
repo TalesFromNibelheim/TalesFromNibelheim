@@ -1,4 +1,9 @@
 package pl.grsrpg.action;
 
-public abstract class Action {
+import pl.grsrpg.player.EntityPlayable;
+
+public interface Action {
+
+    boolean execute(EntityPlayable player);
+
 }

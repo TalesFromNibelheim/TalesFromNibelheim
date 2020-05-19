@@ -3,6 +3,7 @@ package pl.grsrpg;
 import lombok.Getter;
 import pl.grsrpg.config.Config;
 import pl.grsrpg.gameboard.Board;
+import pl.grsrpg.gameboard.GameBoard;
 import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;
@@ -18,7 +19,7 @@ public class Game {
     private final Board board;
 
     public Game() {
-        this.board = new Board();
+        this.board = new GameBoard();
     }
 
     public static void main(String[] args){
