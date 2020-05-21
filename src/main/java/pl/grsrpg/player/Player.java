@@ -1,9 +1,10 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.card.Card;
+import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
 
-public interface Player {
+public interface Player extends Entity {
     void recalculateAttributes();
 
     void move(Field field);
