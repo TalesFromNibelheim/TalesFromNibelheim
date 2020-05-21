@@ -2,6 +2,7 @@ package pl.grsrpg.player;
 
 import pl.grsrpg.card.Card;
 import pl.grsrpg.entity.Enemy;
+import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
 
 import java.util.LinkedList;
@@ -74,5 +75,10 @@ public abstract class GamePlayer extends Enemy implements Player {
     @Override
     public Field getCurrentField() {
         return currentField;
+    }
+
+    @Override
+    public void fight(Entity entity) {
+
     }
 }

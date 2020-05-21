@@ -51,8 +51,4 @@ public class GameBoard implements Board {
             e.printStackTrace();
         }
     }
-
-    private void fight(Player player, Entity enemy) {
-
-    }
 }

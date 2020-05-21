@@ -22,4 +22,6 @@ public interface Player extends Entity {
     boolean removeGold(int amount);
 
     Field getCurrentField();
+
+    void fight(Entity entity);
 }
