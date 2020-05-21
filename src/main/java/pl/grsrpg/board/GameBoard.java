@@ -2,8 +2,10 @@ package pl.grsrpg.board;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import pl.grsrpg.Game;
+import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
 import pl.grsrpg.field.GameField;
+import pl.grsrpg.player.Player;
 import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;
@@ -15,6 +17,7 @@ public class GameBoard implements Board {
     private List<Field> level1GameFields;
     private List<Field> level2GameFields;
     private List<Field> level3GameFields;
+    private Player player;
 
     public GameBoard(){
         loadLevel(level1GameFields, "levels/level-1-field-common.yml", "level-1-field-common.yml", Game.getConfig().getLevel1Size());
@@ -47,5 +50,9 @@ public class GameBoard implements Board {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void fight(Player player, Entity enemy) {
+
     }
 }

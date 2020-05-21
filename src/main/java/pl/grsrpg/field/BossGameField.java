@@ -5,5 +5,6 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class BossGameField extends GameField {
+public class BossGameField extends GameField implements BossField {
+    private boolean defeated;
 }

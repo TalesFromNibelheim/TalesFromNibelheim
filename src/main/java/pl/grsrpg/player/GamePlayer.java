@@ -56,4 +56,23 @@ public abstract class GamePlayer extends Enemy implements Player {
     public String getInfo() {
         return null;
     }
+
+    @Override
+    public int getGold() {
+        return gold;
+    }
+
+    @Override
+    public boolean removeGold(int amount) {
+        if(this.gold >= amount){
+            this.gold -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Field getCurrentField() {
+        return currentField;
+    }
 }

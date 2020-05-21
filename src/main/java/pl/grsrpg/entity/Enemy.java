@@ -1,5 +1,8 @@
 package pl.grsrpg.entity;
 
+import lombok.Getter;
+
+@Getter
 public class Enemy implements Entity {
     protected final String name;
     protected float health;
@@ -21,35 +24,5 @@ public class Enemy implements Entity {
     @Override
     public boolean attack(Entity enemy) {
         return false;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public float getHealth() {
-        return health;
-    }
-
-    @Override
-    public float getMaxHealth() {
-        return maxHealth;
-    }
-
-    @Override
-    public float getStrength() {
-        return strength;
-    }
-
-    @Override
-    public float getAgility() {
-        return agility;
-    }
-
-    @Override
-    public float getMagicPoints() {
-        return magicPoints;
     }
 }

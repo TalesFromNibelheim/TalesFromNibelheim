@@ -15,4 +15,10 @@ public interface Player {
     Card removeCard(String name);
 
     int getInventorySize();
+
+    int getGold();
+
+    boolean removeGold(int amount);
+
+    Field getCurrentField();
 }
