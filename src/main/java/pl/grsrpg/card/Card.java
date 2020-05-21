@@ -1,9 +1,9 @@
 package pl.grsrpg.card;
 
-import pl.grsrpg.player.EntityPlayable;
+import pl.grsrpg.player.Player;
 
 public interface Card {
 
-    boolean execute(EntityPlayable player);
+    boolean execute(Player player);
 
 }

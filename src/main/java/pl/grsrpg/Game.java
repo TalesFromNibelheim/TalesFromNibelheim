@@ -24,7 +24,7 @@ public class Game {
 
     public static void main(String[] args){
         loadConfig();
-        Game game = new Game();
+        //Game game = new Game();
     }
 
     private static void loadConfig(){
