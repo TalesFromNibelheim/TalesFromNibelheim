@@ -24,4 +24,12 @@ public interface Player extends Entity {
     Field getCurrentField();
 
     void fight(Entity entity);
+
+    float getAdditionalMaxHealth();
+
+    float getAdditionalStrength();
+
+    float getAdditionalAgility();
+
+    float getAdditionalMagicPoints();
 }

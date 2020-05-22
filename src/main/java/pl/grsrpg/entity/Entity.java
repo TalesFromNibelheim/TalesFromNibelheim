@@ -5,13 +5,13 @@ public interface Entity {
 
     float getHealth();
 
-    float getMaxHealth();
+    float getBaseMaxHealth();
 
-    float getStrength();
+    float getBaseStrength();
 
-    float getAgility();
+    float getBaseAgility();
 
-    float getMagicPoints();
+    float getBaseMagicPoints();
 
     boolean attack(Entity enemy);
 }
