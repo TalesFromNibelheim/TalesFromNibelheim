@@ -1,17 +1,27 @@
 package pl.grsrpg.player;
 
-import pl.grsrpg.entity.EntityFightable;
+import pl.grsrpg.card.Card;
+import pl.grsrpg.entity.Entity;
+import pl.grsrpg.field.Field;
 
-public abstract class Player implements EntityPlayable, EntityFightable {
-    private final String name;
-    private float health;
-    private float damage;
-    private float resistance;
+public interface Player extends Entity {
+    void recalculateAttributes();
 
-    public Player(String name, float health, float damage, float resistance) {
-        this.name = name;
-        this.health = health;
-        this.damage = damage;
-        this.resistance = resistance;
-    }
+    void move(Field field);
+
+    String getInfo();
+
+    boolean addCard(Card card);
+
+    Card removeCard(String name);
+
+    int getInventorySize();
+
+    int getGold();
+
+    boolean removeGold(int amount);
+
+    Field getCurrentField();
+
+    void fight(Entity entity);
 }

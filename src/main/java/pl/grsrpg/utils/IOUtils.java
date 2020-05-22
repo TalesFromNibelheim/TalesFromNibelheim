@@ -3,6 +3,7 @@ package pl.grsrpg.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import pl.grsrpg.Game;
+import pl.grsrpg.logger.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;
