@@ -1,12 +1,19 @@
 package pl.grsrpg.card;
 
+import pl.grsrpg.player.GamePlayerMage;
+import pl.grsrpg.player.GamePlayerScout;
+import pl.grsrpg.player.GamePlayerWarrior;
+import pl.grsrpg.player.Player;
+
 public class GameCardItem extends GameCard {
     private float health;
-    private float strength;
-    private float agility;
-    private float magicPoints;
+    private int strength;
+    private int agility;
+    private int magicPoints;
     private int gold;
-    private float itemValue;
+    private int itemValue;
+    private float armor;
+    private Class profession;
 
     //TODO CONSTRUCTOR
 
@@ -14,15 +21,15 @@ public class GameCardItem extends GameCard {
         return health;
     }
 
-    public float getStrength() {
+    public int getStrength() {
         return strength;
     }
 
-    public float getAgility() {
+    public int getAgility() {
         return agility;
     }
 
-    public float getMagicPoints() {
+    public int getMagicPoints() {
         return magicPoints;
     }
 
@@ -30,7 +37,28 @@ public class GameCardItem extends GameCard {
         return gold;
     }
 
-    public float getItemValue() {
+    public int getItemValue() {
         return itemValue;
+    }
+
+    public float getArmor() {
+        return armor;
+    }
+
+    public Class getProfession() {
+        return profession;
+    }
+
+    @Override
+    public boolean execute(Player player) {
+
+        if ( (player instanceof GamePlayerMage && this.getProfession() == GamePlayerMage.class) ||
+              (player instanceof GamePlayerScout && this.getProfession() == GamePlayerScout.class) ||
+                (player instanceof GamePlayerWarrior && this.getProfession() == GamePlayerWarrior.class) ) {
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

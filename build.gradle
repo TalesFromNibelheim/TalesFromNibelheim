@@ -1,6 +1,7 @@
 plugins {
     id 'java'
 }
+apply plugin : 'jacoco'
 
 group 'pl.grsrpg'
 version '1.0-SNAPSHOT'
