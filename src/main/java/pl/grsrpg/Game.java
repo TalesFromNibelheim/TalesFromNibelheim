@@ -20,6 +20,7 @@ public class Game {
 
     public Game() {
         this.board = new GameBoard();
+
     }
 
     public static void main(String[] args){

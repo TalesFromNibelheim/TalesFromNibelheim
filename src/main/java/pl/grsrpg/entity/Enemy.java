@@ -22,7 +22,7 @@ public class Enemy implements Entity {
     }
 
     @Override
-    public boolean attack(Entity enemy) {
+    public boolean takeDamage(float damage) {
         return false;
     }
 }

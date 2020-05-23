@@ -13,5 +13,5 @@ public interface Entity {
 
     float getBaseMagicPoints();
 
-    boolean attack(Entity enemy);
+    boolean takeDamage(float damage);
 }

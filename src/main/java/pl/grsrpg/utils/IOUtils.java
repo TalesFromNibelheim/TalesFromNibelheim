@@ -9,8 +9,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 public class IOUtils {
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static Scanner getScanner() {
+        return scanner;
+    }
+
     private static final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
 
     public static ObjectMapper getMapper() {
