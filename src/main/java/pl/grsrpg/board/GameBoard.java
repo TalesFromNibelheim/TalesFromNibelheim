@@ -61,4 +61,8 @@ public class GameBoard implements Board {
             e.printStackTrace();
         }
     }
+
+    public void startGame(){
+
+    }
 }
