@@ -35,7 +35,7 @@ public class GamePlayerWarrior extends GamePlayer {
     }
 
     int knockdown(){
-        this.magicPoints  -= 5;
+        this.baseMagicPoints  -= 5;
         if(DiceRoll.rollPrivate(1,6) >= 4)
             System.out.println("Zadajesz dodatkowe obrazenia przy uderzeniu:" + "wartosc do ustalenia");
         return 0 ;// tu bedzie ile obrazen jak sie wymysli

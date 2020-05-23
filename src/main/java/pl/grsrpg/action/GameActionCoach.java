@@ -15,13 +15,13 @@ public class GameActionCoach extends GameAction {
     private int getPrice(Player player, Attribute attribute){
         switch (attribute){
             case AGILITY:
-                return (int) (price * Math.log(player.getAgility()));
+                return (int) (price * Math.log(player.getBaseAgility()));
             case STRENGTH:
-                return (int) (price * Math.log(player.getStrength()));
+                return (int) (price * Math.log(player.getBaseStrength()));
             case MAXHEALTH:
-                return (int) (price * Math.log(player.getMaxHealth()));
+                return (int) (price * Math.log(player.getBaseMaxHealth()));
             case MAGICPOINTS:
-                return (int) (price * Math.log(player.getMagicPoints()));
+                return (int) (price * Math.log(player.getBaseMagicPoints()));
             default:
                 return 0;
         }
