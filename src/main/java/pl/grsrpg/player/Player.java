@@ -1,6 +1,7 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.card.Card;
+import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
 
