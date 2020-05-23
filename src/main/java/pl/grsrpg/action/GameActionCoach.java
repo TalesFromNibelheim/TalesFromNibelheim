@@ -1,7 +1,9 @@
 package pl.grsrpg.action;
 
+import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.Player;
 import pl.grsrpg.utils.Attribute;
+import pl.grsrpg.utils.IOUtils;
 
 
 public class GameActionCoach extends GameAction {
@@ -30,17 +32,44 @@ public class GameActionCoach extends GameAction {
         }
     }
 
+
+
     private void priceList(Player player){
-        System.out.println("Strength + 1  (price: " + getPrice(player , Attribute.STRENGTH ) + ")" );
-        System.out.println("Agility + 1  (price: " + getPrice(player , Attribute.AGILITY ) + ")" );
-        System.out.println("Magic Points + 1  (price: " + getPrice(player , Attribute.MAGICPOINTS ) + ")" );
-        System.out.println("Max Health + 1  (price: " + getPrice(player , Attribute.MAXHEALTH ) + ")" );
+        System.out.println("1. Strength + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.STRENGTH) + Logger.WHITE + ")" );
+        System.out.println("2. Agility + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.AGILITY) + Logger.WHITE + ")" );
+        System.out.println("3. Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAGICPOINTS) + Logger.WHITE + ")" );
+        System.out.println("4. Max Health + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAXHEALTH) +  Logger.WHITE + ")" );
+    }
+
+    private boolean checkPlayerGold(Player player, Attribute attribute){
+        switch (attribute){
+            case AGILITY:
+                return (player.getGold() >= getPrice(player,Attribute.AGILITY));
+            case STRENGTH:
+                return (player.getGold() >= getPrice(player,Attribute.STRENGTH));
+            case MAXHEALTH:
+                return(player.getGold() >= getPrice(player,Attribute.MAXHEALTH));
+            case MAGICPOINTS:
+                return(player.getGold() >= getPrice(player,Attribute.MAGICPOINTS));
+            default:
+                return false;
+        }
     }
 
     public void textMenu(Player player){
         System.out.println("You meet " + name + " on your way." );
         System.out.println("Hello. Do u want to improve your attributes for a small fee?" );
         priceList(player);
+        Attribute choice = Attribute.fromId(IOUtils.getScanner().nextInt());
+        while(choice == null){ choice = Attribute.fromId(IOUtils.getScanner().nextInt());}
+        if(checkPlayerGold(player, choice)){
+
+        }
+
+
+
+
+
 
     }
 

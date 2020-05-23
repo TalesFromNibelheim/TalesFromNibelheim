@@ -6,7 +6,7 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toMap;
 
 public enum Attribute {
-    MAXHEALTH(0),
+    MAXHEALTH(4),
     STRENGTH(1),
     AGILITY(2),
     MAGICPOINTS(3);
