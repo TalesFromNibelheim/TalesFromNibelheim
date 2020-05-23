@@ -97,20 +97,28 @@ public class GameBoard implements Board {
                 System.out.print("Scout");
                 break;
             case 3:
+            default:
                 player = new GamePlayerWarrior(name, level1GameFields.get(0));
                 System.out.print("Warrior");
                 break;
+
         }
         System.out.println(Logger.RESET+" known as "+Logger.BRIGHT_GREEN+name+Logger.WHITE);
         while (true){
-
+            int choice = nextAction();
+            switch (choice){
+                case 1:
+                    
+            }
         }
     }
 
-    public void showAvailableAction(){
-        System.out.println("What is your next move?");
+    public int nextAction(){
+        System.out.println("Possible actions: ");
         System.out.println("1. Display statistics.");
         System.out.println("2. Show your items.");
-
+        System.out.println("3. Roll a dice and move to new field.");
+        System.out.print("What is your next move? ");
+        return IOUtils.getScanner().nextInt();
     }
 }
