@@ -8,10 +8,17 @@ public class GamePlayerWarrior extends GamePlayer {
     private static final float startStrength = 5;
     private static final float startAgility = 2;
     private static final float startMagicPoints = 2;
-    private static final int startInventorySize = 10;
+    private static final int startEquipmentCapacity = 10;
 
     public GamePlayerWarrior(String name, Field currentField) {
-        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startInventorySize, currentField);
+        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
+    }
+
+    int knockdown(){
+        this.baseMagicPoints  -= 5;
+        if(DiceRoll.rollPrivate(1,6) >= 4)
+            System.out.println("Zadajesz dodatkowe obrazenia przy uderzeniu:" + "wartosc do ustalenia");
+        return 0 ;// tu bedzie ile obrazen jak sie wymysli
     }
 
     public static float getStartMaxHealth() {
@@ -30,14 +37,17 @@ public class GamePlayerWarrior extends GamePlayer {
         return startMagicPoints;
     }
 
-    public static int getStartInventorySize() {
-        return startInventorySize;
+    public static int getStartEquipmentCapacity() {
+        return startEquipmentCapacity;
     }
 
-    int knockdown(){
-        this.baseMagicPoints  -= 5;
-        if(DiceRoll.rollPrivate(1,6) >= 4)
-            System.out.println("Zadajesz dodatkowe obrazenia przy uderzeniu:" + "wartosc do ustalenia");
-        return 0 ;// tu bedzie ile obrazen jak sie wymysli
+    public static String getStartDescription(){
+        return  " Start Attributes: \n"+
+                " Max Health: "+startMaxHealth+"\n"+
+                " Strength : "+startStrength+"\n"+
+                " Agility : "+startAgility+"\n"+
+                " Magic Points : "+startMagicPoints+"\n"+
+                " Equipment Capacity : "+startEquipmentCapacity;
     }
+
 }

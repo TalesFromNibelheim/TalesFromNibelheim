@@ -1,6 +1,7 @@
 package pl.grsrpg.player;
 
 import lombok.Getter;
+import lombok.Setter;
 import pl.grsrpg.card.Card;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
@@ -10,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
+@Setter
 public abstract class GamePlayer extends Enemy implements Player {
     protected int equipmentCapacity;
     protected List<Card> cards = new LinkedList<>();

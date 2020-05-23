@@ -1,8 +1,10 @@
 package pl.grsrpg.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Enemy implements Entity {
     protected final String name;
     protected float health;

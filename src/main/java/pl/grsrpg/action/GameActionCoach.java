@@ -69,8 +69,7 @@ public class GameActionCoach extends GameAction {
 
 
 
-
-
+        
     }
 
 }

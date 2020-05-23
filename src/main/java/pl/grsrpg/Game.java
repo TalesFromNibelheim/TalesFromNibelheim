@@ -20,12 +20,12 @@ public class Game {
 
     public Game() {
         this.board = new GameBoard();
-
+        this.board.startGame();
     }
 
     public static void main(String[] args){
         loadConfig();
-        //Game game = new Game();
+        Game game = new Game();
     }
 
     private static void loadConfig(){

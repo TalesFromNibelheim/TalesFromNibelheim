@@ -14,4 +14,12 @@ public interface Entity {
     float getBaseMagicPoints();
 
     boolean takeDamage(float damage);
+
+    void setBaseMaxHealth(float maxHealth);
+
+    void setBaseStrength(float strength);
+
+    void setBaseAgility(float agility);
+
+    void setBaseMagicPoints(float magicPoints);
 }

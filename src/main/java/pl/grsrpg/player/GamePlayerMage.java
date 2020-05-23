@@ -7,10 +7,10 @@ public class GamePlayerMage extends GamePlayer{
     private static final float startStrength = 5;
     private static final float startAgility = 2;
     private static final float startMagicPoints = 2;
-    private static final int startInventorySize = 10;
+    private static final int startEquipmentCapacity = 10;
 
     public GamePlayerMage(String name, Field currentField) {
-        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startInventorySize, currentField);
+        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
     }
 
     public static float getStartMaxHealth() {
@@ -29,7 +29,16 @@ public class GamePlayerMage extends GamePlayer{
         return startMagicPoints;
     }
 
-    public static int getStartInventorySize() {
-        return startInventorySize;
+    public static int getStartEquipmentCapacity() {
+        return startEquipmentCapacity;
+    }
+
+    public static String getStartDescription(){
+        return  " Start Attributes: \n"+
+                " Max Health: "+startMaxHealth+"\n"+
+                " Strength : "+startStrength+"\n"+
+                " Agility : "+startAgility+"\n"+
+                " Magic Points : "+startMagicPoints+"\n"+
+                " Equipment Capacity : "+startEquipmentCapacity;
     }
 }
