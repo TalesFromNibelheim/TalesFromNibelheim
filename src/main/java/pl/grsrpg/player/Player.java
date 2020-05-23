@@ -15,7 +15,7 @@ public interface Player extends Entity {
 
     Card removeCard(String name);
 
-    int getInventorySize();
+    int getEquipmentCapacity();
 
     int getGold();
 
@@ -24,4 +24,12 @@ public interface Player extends Entity {
     Field getCurrentField();
 
     void fight(Entity entity);
+
+    float getAdditionalMaxHealth();
+
+    float getAdditionalStrength();
+
+    float getAdditionalAgility();
+
+    float getAdditionalMagicPoints();
 }

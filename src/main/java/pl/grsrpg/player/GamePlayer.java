@@ -1,5 +1,6 @@
 package pl.grsrpg.player;
 
+import lombok.Getter;
 import pl.grsrpg.card.Card;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
@@ -8,22 +9,29 @@ import pl.grsrpg.field.Field;
 import java.util.LinkedList;
 import java.util.List;
 
+@Getter
 public abstract class GamePlayer extends Enemy implements Player {
-    protected int inventorySize;
+    protected int equipmentCapacity;
     protected List<Card> cards = new LinkedList<>();
     protected Field currentField;
     protected int gold;
 
-    public GamePlayer(String name, float maxHealth, float strength, float agility, float magicPoints, int inventorySize, Field currentField) {
+    protected float additionalMaxHealth;
+
+    protected float additionalStrength;
+    protected float additionalAgility;
+    protected float additionalMagicPoints;
+
+    public GamePlayer(String name, float maxHealth, float strength, float agility, float magicPoints, int equipmentCapacity, Field currentField) {
         super(name, maxHealth, strength, agility, magicPoints);
-        this.inventorySize = inventorySize;
+        this.equipmentCapacity = equipmentCapacity;
         this.currentField = currentField;
         this.gold = 0;
     }
 
     @Override
     public boolean addCard(Card card) {
-        if(cards.size() < inventorySize){
+        if(cards.size() < equipmentCapacity){
             cards.add(card);
             return true;
         }
@@ -49,8 +57,8 @@ public abstract class GamePlayer extends Enemy implements Player {
     }
 
     @Override
-    public int getInventorySize() {
-        return inventorySize;
+    public int getEquipmentCapacity() {
+        return equipmentCapacity;
     }
 
     @Override
