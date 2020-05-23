@@ -15,7 +15,7 @@ public interface Player extends Entity {
 
     Card removeCard(String name);
 
-    int getInventorySize();
+    int getEquipmentCapacity();
 
     int getGold();
 
