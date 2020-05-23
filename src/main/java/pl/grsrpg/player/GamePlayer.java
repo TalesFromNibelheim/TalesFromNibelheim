@@ -2,6 +2,7 @@ package pl.grsrpg.player;
 
 import pl.grsrpg.card.Card;
 import pl.grsrpg.entity.Enemy;
+import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
 
 import java.util.LinkedList;
@@ -55,5 +56,29 @@ public abstract class GamePlayer extends Enemy implements Player {
     @Override
     public String getInfo() {
         return null;
+    }
+
+    @Override
+    public int getGold() {
+        return gold;
+    }
+
+    @Override
+    public boolean removeGold(int amount) {
+        if(this.gold >= amount){
+            this.gold -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Field getCurrentField() {
+        return currentField;
+    }
+
+    @Override
+    public void fight(Entity entity) {
+
     }
 }
