@@ -41,7 +41,6 @@ public class GameActionCoach extends GameAction {
         System.out.println("You meet " + name + " on your way." );
         System.out.println("Hello. Do u want to improve your attributes for a small fee?" );
         priceList(player);
-
     }
 
 }

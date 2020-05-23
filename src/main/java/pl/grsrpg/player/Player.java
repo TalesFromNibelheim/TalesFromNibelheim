@@ -32,4 +32,12 @@ public interface Player extends Entity {
     float getAdditionalAgility();
 
     float getAdditionalMagicPoints();
+
+    void setAdditionalMaxHealth(float maxHealth);
+
+    void setAdditionalStrength(float strength);
+
+    void setAdditionalAgility(float agility);
+
+    void setAdditionalMagicPoints(float magicPoints);
 }
