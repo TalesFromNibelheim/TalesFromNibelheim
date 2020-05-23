@@ -2,6 +2,6 @@ package pl.grsrpg.card;
 
 import pl.grsrpg.entity.Entity;
 
-public class Friend extends GameCard {
+public class GameCardFriend extends GameCard {
     Entity entity;
 }

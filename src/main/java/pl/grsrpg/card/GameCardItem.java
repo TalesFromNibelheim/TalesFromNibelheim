@@ -1,7 +1,6 @@
 package pl.grsrpg.card;
 
-public class Item extends GameCard {
-
+public class GameCardItem extends GameCard {
     private float health;
     private float strength;
     private float agility;
