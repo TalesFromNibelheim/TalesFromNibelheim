@@ -10,7 +10,6 @@ import pl.grsrpg.player.GamePlayerMage;
 import pl.grsrpg.player.GamePlayerScout;
 import pl.grsrpg.player.GamePlayerWarrior;
 import pl.grsrpg.player.Player;
-import pl.grsrpg.utils.Attribute;
 import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;
@@ -20,21 +19,23 @@ import java.util.*;
 
 public class GameBoard implements Board {
     private String name;
-    private List<Field> level1GameFields;
-    private List<Field> level2GameFields;
-    private List<Field> level3GameFields;
-    private List<Card> cards;
+    private List<Field> level1GameFields = new ArrayList<>();
+    private List<Field> level2GameFields = new ArrayList<>();
+    private List<Field> level3GameFields = new ArrayList<>();
+    private List<Card> cards = new ArrayList<>();
     private Player player;
 
     public GameBoard(){
-/*        loadLevel(level1GameFields, "data/level-1-field-common.yml", "level-1-field-common.yml", Game.getConfig().getLevel1Size());
+        loadLevel(level1GameFields, "data/level-1-field-common.yml", "level-1-field-common.yml", Game.getConfig().getLevel1Size());
         addFieldFromFile(level1GameFields, "data/level-1-field-boss.yml", "level-1-field-boss.yml");
 
         loadLevel(level2GameFields, "data/level-2-field-common.yml", "level-2-field-common.yml", Game.getConfig().getLevel2Size());
         addFieldFromFile(level2GameFields, "data/level-2-field-boss.yml", "level-2-field-boss.yml");
 
         loadLevel(level3GameFields, "data/level-3-field-common.yml", "level-3-field-common.yml", Game.getConfig().getLevel3Size());
-        addFieldFromFile(level3GameFields, "data/level-3-field-boss.yml", "level-3-field-boss.yml");*/
+        addFieldFromFile(level3GameFields, "data/level-3-field-boss.yml", "level-3-field-boss.yml");
+
+        loadCards();
     }
 
     private void loadLevel(List<Field> levelList, String levelFileName, String resource, int size){
@@ -42,9 +43,10 @@ public class GameBoard implements Board {
         try {
             List<GameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {});
             Collections.shuffle(gameFields);
-            levelList = new ArrayList<>(gameFields.subList(0, Game.getConfig().getLevel1Size()-1));
+            levelList.addAll(gameFields.subList(0, size-1));
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -53,18 +55,21 @@ public class GameBoard implements Board {
         try {
             List<GameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {});
             Collections.shuffle(gameFields);
+            System.out.println(gameFields);
             levelList.add(gameFields.get(0));
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 
     private void loadCards(){
         File cardsFile = IOUtils.openFile("data/cards.yml", "cards.yml");
         try {
-            this.cards = IOUtils.getMapper().readValue(cardsFile, new TypeReference<>() {});
+            this.cards.addAll(IOUtils.getMapper().readValue(cardsFile, new TypeReference<>() {}));
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(1);
         }
     }
 
@@ -79,7 +84,7 @@ public class GameBoard implements Board {
         System.out.println(GamePlayerScout.getStartDescription());
         System.out.println("3. Warrior");
         System.out.println(GamePlayerWarrior.getStartDescription());
-        System.out.print("What is your choose: ");
+        System.out.print("What is your choice: ");
         int classChoose  = IOUtils.getScanner().nextInt();
         System.out.print("You will be "+Logger.YELLOW);
         switch (classChoose){
@@ -96,6 +101,16 @@ public class GameBoard implements Board {
                 System.out.print("Warrior");
                 break;
         }
-        System.out.println(Logger.WHITE+" known as "+Logger.BRIGHT_GREEN+name+Logger.WHITE);
+        System.out.println(Logger.RESET+" known as "+Logger.BRIGHT_GREEN+name+Logger.WHITE);
+        while (true){
+
+        }
+    }
+
+    public void showAvailableAction(){
+        System.out.println("What is your next move?");
+        System.out.println("1. Display statistics.");
+        System.out.println("2. Show your items.");
+
     }
 }

@@ -47,14 +47,14 @@ public class Logger {
     public static final String BLINK_RAPID = "\u001B[6m";
     
     public static void printError(String content) {
-        System.out.println(WHITE + "[" + RED + BLINK_SLOW + "ERROR" + RESET + WHITE + "] " + content + RESET);
+        System.out.println("[" + RED + BLINK_SLOW + "ERROR" + RESET + "] " + content);
     }
 
     public static void printWarning(String content) {
-        System.out.println(WHITE + "[" + YELLOW + "WARNING" + WHITE + "] " + content + RESET);
+        System.out.println("[" + YELLOW + "WARNING" + RESET + "] " + content);
     }
 
     public static void printInfo(String content) {
-        System.out.println(WHITE + "[" + CYAN + "INFO" + WHITE + "] " + content + RESET);
+        System.out.println(WHITE + "[" + CYAN + "INFO" + RESET + "] " + content);
     }
 }
