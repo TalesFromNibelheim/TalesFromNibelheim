@@ -1,6 +1,8 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.field.Field;
+import pl.grsrpg.manager.fight.MageFightManager;
+import pl.grsrpg.manager.fight.WarriorFightManager;
 import pl.grsrpg.utils.DiceRoll;
 
 public class GamePlayerWarrior extends GamePlayer {
@@ -12,6 +14,7 @@ public class GamePlayerWarrior extends GamePlayer {
 
     public GamePlayerWarrior(String name, Field currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startInventorySize, currentField);
+        this.fightManager = new WarriorFightManager();
     }
 
     public static float getStartMaxHealth() {
@@ -32,12 +35,5 @@ public class GamePlayerWarrior extends GamePlayer {
 
     public static int getStartInventorySize() {
         return startInventorySize;
-    }
-
-    int knockdown(){
-        this.baseMagicPoints  -= 5;
-        if(DiceRoll.rollPrivate(1,6) >= 4)
-            System.out.println("Zadajesz dodatkowe obrazenia przy uderzeniu:" + "wartosc do ustalenia");
-        return 0 ;// tu bedzie ile obrazen jak sie wymysli
     }
 }
