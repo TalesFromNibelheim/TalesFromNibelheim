@@ -12,4 +12,9 @@ public class GameField implements Field{
     private String name;
     private String description;
 /*    private List<Action> actions;*/
+
+/*    public GameField(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }*/
 }

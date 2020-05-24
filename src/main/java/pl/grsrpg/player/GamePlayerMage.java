@@ -4,10 +4,10 @@ import pl.grsrpg.field.Field;
 import pl.grsrpg.manager.fight.MageFightManager;
 
 public class GamePlayerMage extends GamePlayer{
-    private static final float startMaxHealth = 20;
-    private static final float startStrength = 5;
-    private static final float startAgility = 2;
-    private static final float startMagicPoints = 2;
+    private static final int startMaxHealth = 20;
+    private static final int startStrength = 5;
+    private static final int startAgility = 2;
+    private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
     public GamePlayerMage(String name, Field currentField) {
@@ -15,19 +15,19 @@ public class GamePlayerMage extends GamePlayer{
         this.fightManager = new MageFightManager();
     }
 
-    public static float getStartMaxHealth() {
+    public static int getStartMaxHealth() {
         return startMaxHealth;
     }
 
-    public static float getStartStrength() {
+    public static int getStartStrength() {
         return startStrength;
     }
 
-    public static float getStartAgility() {
+    public static int getStartAgility() {
         return startAgility;
     }
 
-    public static float getStartMagicPoints() {
+    public static int getStartMagicPoints() {
         return startMagicPoints;
     }
 

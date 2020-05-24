@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import pl.grsrpg.Game;
 import pl.grsrpg.card.Card;
 import pl.grsrpg.card.GameCard;
-import pl.grsrpg.config.Config;
 import pl.grsrpg.field.BossField;
 import pl.grsrpg.field.BossGameField;
 import pl.grsrpg.field.Field;
@@ -24,10 +23,10 @@ import java.util.*;
 
 public class GameBoard implements Board {
     private String name;
-    private List<Field> level1GameFields = new ArrayList<>();
-    private List<Field> level2GameFields = new ArrayList<>();
-    private List<Field> level3GameFields = new ArrayList<>();
-    private List<Card> cards = new ArrayList<>();
+    private final List<Field> level1GameFields = new ArrayList<>();
+    private final List<Field> level2GameFields = new ArrayList<>();
+    private final List<Field> level3GameFields = new ArrayList<>();
+    private final List<Card> cards = new ArrayList<>();
     private Player player;
 
     public GameBoard() {
@@ -46,8 +45,7 @@ public class GameBoard implements Board {
     private void loadLevel(List<Field> levelList, String levelFileName, String resource, int size) {
         File levelFile = IOUtils.openFile(levelFileName, resource);
         try {
-            List<GameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {
-            });
+            List<GameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>(){});
             Collections.shuffle(gameFields);
             levelList.addAll(gameFields.subList(0, size - 1));
         } catch (IOException e) {
@@ -59,10 +57,8 @@ public class GameBoard implements Board {
     private void addFieldFromFile(List<Field> levelList, String levelFileName, String resource) {
         File levelFile = IOUtils.openFile(levelFileName, resource);
         try {
-            List<GameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {
-            });
+            List<BossGameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>(){});
             Collections.shuffle(gameFields);
-            System.out.println(gameFields);
             levelList.add(gameFields.get(0));
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,21 +69,13 @@ public class GameBoard implements Board {
     private void loadCards() {
         File cardsFile = IOUtils.openFile("data/cards.yml", "cards.yml");
         try {
-            List<GameCard> cards = IOUtils.getMapper().readValue(cardsFile, new TypeReference<>() {});
+            List<GameCard> cards = IOUtils.getMapper().readValue(cardsFile, new TypeReference<>(){});
             this.cards.addAll(cards);
+            System.out.println(cards);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
         }
-    }
-
-    private int nextAction() {
-        System.out.println("Possible actions: ");
-        System.out.println("1. Display statistics.");
-        System.out.println("2. Show your items.");
-        System.out.println("3. Roll a dice and move to new field.");
-        System.out.print("What is your next move?(default: 3) ");
-        return IOUtils.getScanner().nextInt();
     }
 
     public void startGame() {
@@ -120,7 +108,7 @@ public class GameBoard implements Board {
                 break;
 
         }
-        System.out.println(Logger.RESET + " known as " + Logger.BRIGHT_GREEN + name + Logger.WHITE);
+        System.out.println(Logger.RESET + " known as " + Logger.BRIGHT_GREEN + name + Logger.RESET);
         while (true) {
             int choice = nextAction();
             switch (choice) {
@@ -133,8 +121,27 @@ public class GameBoard implements Board {
                 default:
                 case 3:
                     movePlayer();
+                    break;
+                case 4:
+                    saveAndQuit();
+                    break;
             }
         }
+    }
+
+    private int nextAction() {
+        System.out.println("Possible actions: ");
+        System.out.println("1. Display statistics.");
+        System.out.println("2. Show your items.");
+        System.out.println("3. Roll a dice and move to new field.");
+        System.out.println("4. Save and quit.");
+        System.out.print("What is your next move?(default: 3) ");
+        return IOUtils.getScanner().nextInt();
+    }
+
+    private void saveAndQuit(){
+        System.out.println(Logger.CYAN + "See you later!" + Logger.RESET);
+        System.exit(0);
     }
 
     private void movePlayer() {
@@ -144,7 +151,7 @@ public class GameBoard implements Board {
             Field field = availableFields.get(i - 1);
             System.out.println(i + ". " + field.getName() + "\n " + field.getDescription());
         }
-        System.out.println("Where you want to move?(default: 1) ");
+        System.out.print("Where you want to move?(default: 1) ");
         int choice = IOUtils.getScanner().nextInt() - 1;
         if (choice >= availableFields.size() || choice < 0) {
             choice = 0;
