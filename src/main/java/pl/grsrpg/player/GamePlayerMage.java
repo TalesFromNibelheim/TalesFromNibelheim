@@ -1,6 +1,7 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.field.Field;
+import pl.grsrpg.manager.fight.MageFightManager;
 
 public class GamePlayerMage extends GamePlayer{
     private static final float startMaxHealth = 20;
@@ -11,6 +12,7 @@ public class GamePlayerMage extends GamePlayer{
 
     public GamePlayerMage(String name, Field currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
+        this.fightManager = new MageFightManager();
     }
 
     public static float getStartMaxHealth() {

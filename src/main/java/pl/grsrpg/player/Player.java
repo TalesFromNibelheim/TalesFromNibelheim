@@ -1,6 +1,7 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.card.Card;
+import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
 
@@ -27,21 +28,31 @@ public interface Player extends Entity {
 
     void fight(Entity entity);
 
-    float getAdditionalMaxHealth();
+    int getAdditionalMaxHealth();
 
-    float getAdditionalStrength();
+    int getAdditionalStrength();
 
-    float getAdditionalAgility();
+    int getAdditionalAgility();
 
-    float getAdditionalMagicPoints();
+    int getAdditionalMagicPoints();
 
-    void setAdditionalMaxHealth(float maxHealth);
+    void setAdditionalMaxHealth(int maxHealth);
 
-    void setAdditionalStrength(float strength);
+    void setAdditionalStrength(int strength);
 
-    void setAdditionalAgility(float agility);
+    void setAdditionalAgility(int agility);
 
-    void setAdditionalMagicPoints(float magicPoints);
+    void setAdditionalMagicPoints(int magicPoints);
 
     int getCurrentMapLevel();
+
+    void addGold(int value);
+
+    void addAdditionalMaxHealth(int maxHealth);
+
+    void addAdditionalStrength(int strength);
+
+    void addAdditionalAgility(int agility);
+
+    void addAdditionalMagicPoints(int magicPoints);
 }

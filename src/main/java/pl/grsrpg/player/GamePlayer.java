@@ -3,9 +3,11 @@ package pl.grsrpg.player;
 import lombok.Getter;
 import lombok.Setter;
 import pl.grsrpg.card.Card;
+import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
+import pl.grsrpg.manager.fight.FightManager;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +26,8 @@ public abstract class GamePlayer extends Enemy implements Player {
     protected float additionalStrength;
     protected float additionalAgility;
     protected float additionalMagicPoints;
+
+    protected FightManager fightManager;
 
     public GamePlayer(String name, float maxHealth, float strength, float agility, float magicPoints, int equipmentCapacity, Field currentField) {
         super(name, maxHealth, strength, agility, magicPoints);
@@ -90,7 +94,10 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     @Override
     public void fight(Entity entity) {
-
+        if(entity instanceof Boss)
+            fightManager.fight((Boss) entity);
+        else
+            fightManager.fight((Enemy) entity);
     }
 
     @Override

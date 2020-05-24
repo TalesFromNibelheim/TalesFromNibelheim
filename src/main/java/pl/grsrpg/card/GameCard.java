@@ -1,8 +1,9 @@
 package pl.grsrpg.card;
 
-import pl.grsrpg.player.GamePlayerWarrior;
+import lombok.Getter;
 
-public abstract class GameCard implements Card{
+@Getter
+public abstract class GameCard implements Card {
     private String name;
     private String description;
 }
