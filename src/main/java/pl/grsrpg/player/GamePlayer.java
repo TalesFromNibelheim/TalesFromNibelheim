@@ -22,6 +22,7 @@ public abstract class GamePlayer extends Enemy implements Player {
     protected int gold;
 
     protected int additionalMaxHealth;
+    protected float armor;
 
     protected int additionalStrength;
     protected int additionalAgility;

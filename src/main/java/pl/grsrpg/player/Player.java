@@ -22,6 +22,8 @@ public interface Player extends Entity {
 
     int getGold();
 
+    void setGold(int gold);
+
     boolean removeGold(int amount);
 
     Field getCurrentField();
@@ -53,6 +55,8 @@ public interface Player extends Entity {
     void addAdditionalStrength(int strength);
 
     void addAdditionalAgility(int agility);
+
+    boolean dodge ();
 
     void addAdditionalMagicPoints(int magicPoints);
 }
