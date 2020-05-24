@@ -2,6 +2,7 @@ package pl.grsrpg.player;
 
 import pl.grsrpg.field.Field;
 import pl.grsrpg.logger.Logger;
+import pl.grsrpg.manager.fight.WarriorFightManager;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.entity.Entity;
 
@@ -14,6 +15,7 @@ public class GamePlayerWarrior extends GamePlayer {
 
     public GamePlayerWarrior(String name, Field currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
+        this.fightManager = new WarriorFightManager();
     }
 
     float knockdown(){
@@ -37,7 +39,6 @@ public class GamePlayerWarrior extends GamePlayer {
         System.out.println(Logger.YELLOW + "God supports you. You gain " + numberOfAdditionalArmor + " additional armor." + Logger.RESET);
         return
     }
-
 
 
     public static int getStartMaxHealth() {
@@ -68,7 +69,4 @@ public class GamePlayerWarrior extends GamePlayer {
                 " Magic Points : "+startMagicPoints+"\n"+
                 " Equipment Capacity : "+startEquipmentCapacity;
     }
-
-
-
 }

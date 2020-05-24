@@ -3,23 +3,23 @@ package pl.grsrpg.entity;
 public interface Entity {
     String getName();
 
-    float getHealth();
+    int getHealth();
 
-    float getBaseMaxHealth();
+    int getBaseMaxHealth();
 
-    float getBaseStrength();
+    int getBaseStrength();
 
-    float getBaseAgility();
+    int getBaseAgility();
 
-    float getBaseMagicPoints();
+    int getBaseMagicPoints();
 
     boolean takeDamage(float damage);
 
-    void setBaseMaxHealth(float maxHealth);
+    void setBaseMaxHealth(int maxHealth);
 
-    void setBaseStrength(float strength);
+    void setBaseStrength(int strength);
 
-    void setBaseAgility(float agility);
+    void setBaseAgility(int agility);
 
-    void setBaseMagicPoints(float magicPoints);
+    void setBaseMagicPoints(int magicPoints);
 }

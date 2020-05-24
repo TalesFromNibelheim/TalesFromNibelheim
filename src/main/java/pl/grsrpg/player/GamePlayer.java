@@ -3,9 +3,11 @@ package pl.grsrpg.player;
 import lombok.Getter;
 import lombok.Setter;
 import pl.grsrpg.card.Card;
+import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
+import pl.grsrpg.manager.fight.FightManager;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public abstract class GamePlayer extends Enemy implements Player {
     protected int equipmentCapacity;
     protected List<Card> cards = new LinkedList<>();
+    protected int currentMapLevel = 1;
     protected Field currentField;
     protected int gold;
 
@@ -25,7 +28,9 @@ public abstract class GamePlayer extends Enemy implements Player {
     protected int additionalAgility;
     protected int additionalMagicPoints;
 
-    public GamePlayer(String name, float maxHealth, float strength, float agility, float magicPoints, int equipmentCapacity, Field currentField) {
+    protected FightManager fightManager;
+
+    public GamePlayer(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity, Field currentField) {
         super(name, maxHealth, strength, agility, magicPoints);
         this.equipmentCapacity = equipmentCapacity;
         this.currentField = currentField;
@@ -43,9 +48,10 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     @Override
     public Card removeCard(String name) {
-/*        for(int i = 0; i < cards.size(); i++){
-            if(cards.get(i))
-        }*/
+        for(int i = 0; i < cards.size(); i++){
+            if(cards.get(i).getName().equals(name))
+                return cards.remove(i);
+        }
         return null;
     }
 
@@ -60,18 +66,8 @@ public abstract class GamePlayer extends Enemy implements Player {
     }
 
     @Override
-    public int getEquipmentCapacity() {
-        return equipmentCapacity;
-    }
-
-    @Override
     public String getInfo() {
         return null;
-    }
-
-    @Override
-    public int getGold() {
-        return gold;
     }
 
     @Override
@@ -84,12 +80,40 @@ public abstract class GamePlayer extends Enemy implements Player {
     }
 
     @Override
-    public Field getCurrentField() {
-        return currentField;
+    public void fight(Entity entity) {
+        if(entity instanceof Boss)
+            fightManager.fight((Boss) entity);
+        else
+            fightManager.fight((Enemy) entity);
     }
 
     @Override
-    public void fight(Entity entity) {
+    public String getItemsInfo() {
+        return null;
+    }
 
+    @Override
+    public void addGold(int value) {
+        this.gold += value;
+    }
+
+    @Override
+    public void addAdditionalMaxHealth(int maxHealth) {
+        this.additionalMaxHealth += maxHealth;
+    }
+
+    @Override
+    public void addAdditionalStrength(int strength) {
+        this.additionalStrength += strength;
+    }
+
+    @Override
+    public void addAdditionalAgility(int agility) {
+        this.additionalAgility += agility;
+    }
+
+    @Override
+    public void addAdditionalMagicPoints(int magicPoints) {
+        this.additionalMagicPoints += magicPoints;
     }
 }

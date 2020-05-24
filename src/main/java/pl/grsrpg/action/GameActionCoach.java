@@ -25,9 +25,9 @@ public class GameActionCoach extends GameAction {
             case STRENGTH:
                 return (int) (price + (Math.pow(player.getAdditionalStrength() - player.getBaseStrength(),2)) * multiplier);
             case MAXHEALTH:
-                return (int) (price + (Math.pow(player.getAdditionalMaxHealth() - player.getBaseStrength(),2)) * multiplier);
+                return (int) (price + (Math.pow(player.getAdditionalMaxHealth() - player.getBaseMaxHealth(),2)) * multiplier);
             case MAGICPOINTS:
-                return (int) (price + (Math.pow(player.getAdditionalMagicPoints() - player.getBaseStrength(),2))* multiplier);
+                return (int) (price + (Math.pow(player.getAdditionalMagicPoints() - player.getBaseMagicPoints(),2))* multiplier);
             default:
                 return 0;
         }
