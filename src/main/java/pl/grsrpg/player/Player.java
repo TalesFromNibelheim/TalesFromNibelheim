@@ -43,4 +43,6 @@ public interface Player extends Entity {
 
     void setAdditionalMagicPoints(float magicPoints);
 
+    boolean dodge ();
+
 }

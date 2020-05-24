@@ -36,10 +36,10 @@ public class GameActionCoach extends GameAction {
 
 
     private void priceList(Player player){
-        System.out.println("1. Strength + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.STRENGTH) + Logger.WHITE + ")" );
-        System.out.println("2. Agility + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.AGILITY) + Logger.WHITE + ")" );
-        System.out.println("3. Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAGICPOINTS) + Logger.WHITE + ")" );
-        System.out.println("4. Max Health + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAXHEALTH) +  Logger.WHITE + ")" );
+        System.out.println(Logger.CYAN + "1." + " Strength + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.STRENGTH) + Logger.WHITE + ")" );
+        System.out.println(Logger.CYAN + "2." + " Agility + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.AGILITY) + Logger.WHITE + ")" );
+        System.out.println(Logger.CYAN + "3." + " Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAGICPOINTS) + Logger.WHITE + ")" );
+        System.out.println(Logger.CYAN + "4." + " Max Health + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAXHEALTH) +  Logger.WHITE + ")" );
     }
 
     private void increase(Player player){
@@ -64,20 +64,20 @@ public class GameActionCoach extends GameAction {
         }
     }
 
-    private void improveAttributesAndPay(Player player, Attribute choice , int number){
+    private void improveAttributes(Player player, Attribute choice , int number){
         switch (choice){
             case AGILITY:
                 player.setBaseAgility(player.getBaseAgility() + number );
-                player.setGold(player.getGold() - getPrice(player,Attribute.AGILITY));
+                break;
             case STRENGTH:
                 player.setBaseStrength(player.getBaseStrength() + number );
-                player.setGold(player.getGold() - getPrice(player,Attribute.STRENGTH));
+                break;
             case MAXHEALTH:
                 player.setBaseMaxHealth(player.getBaseMaxHealth() + number );
-                player.setGold(player.getGold() - getPrice(player,Attribute.MAXHEALTH));
+                break;
             case MAGICPOINTS:
                 player.setBaseMagicPoints(player.getBaseMagicPoints() + number );
-                player.setGold(player.getGold() - getPrice(player,Attribute.MAGICPOINTS));
+                break;
         }
     }
 
@@ -95,11 +95,11 @@ public class GameActionCoach extends GameAction {
         while(choice == null) choice = Attribute.fromId(IOUtils.getScanner().nextInt());
         if(checkPlayerGold(player, choice)){
             if(!luckyMan){
-                System.out.println("Excellent. Training was successful. Do you want to see your attributes now?" );
-                improveAttributesAndPay(player, choice, 1);
+                System.out.println("Training was successful. Do you want to see your attributes now?" );
+                improveAttributes(player, choice, 1);
             }
             else{
-                improveAttributesAndPay(player, choice, 2);
+                improveAttributes(player, choice, 2);
                 System.out.println("Wow you're very smart. Training was successful. Do you want to see your attributes now?");
                 luckyMan = false;
             }

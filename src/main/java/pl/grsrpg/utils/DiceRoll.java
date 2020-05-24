@@ -16,16 +16,16 @@ public class DiceRoll {
         sumFromDices += rand;
         for(int i = 1 ; i < numberOfDices; i++){
             rand = (generator.nextInt()% numberOnDice ) + 1;
-            System.out.println("Your roll: " +  Logger.YELLOW + rand);
+            System.out.println("Your roll: " +  Logger.YELLOW + rand + Logger.RESET);
             if(first != rand) combo = false;
             sumFromDices += rand;
         }
         if(combo && numberOfDices > 1){
             sumFromDices += first;
-            System.out.println("So Lucky! You get " + Logger.YELLOW + first + Logger.WHITE  + " extra stitches to your result!" );
+            System.out.println("So Lucky! You get " + Logger.YELLOW + first + Logger.RESET  + " extra stitches to your result!" );
         }
-        System.out.println("So Lucky! You get " + Logger.YELLOW + first + Logger.WHITE + " stitches extra to your result!" );
-        System.out.println( Logger.RED + "Together: " + Logger.YELLOW + sumFromDices);
+        System.out.println("So Lucky! You get " + Logger.YELLOW + first + Logger.RESET + " stitches extra to your result!" );
+        System.out.println(Logger.RED + "Together: " + Logger.YELLOW + sumFromDices + Logger.RESET);
         return sumFromDices;
     }
 
@@ -41,9 +41,7 @@ public class DiceRoll {
     }
 
     public static boolean luckyRoll() {
-        int rand = (generator.nextInt()% 6 ) + 1;
-        if(rand == 6) return true;
-        return false;
+        return ((generator.nextInt()% 6 ) + 1) == 6;
     }
 
 }

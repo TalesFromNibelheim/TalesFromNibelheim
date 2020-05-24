@@ -18,11 +18,12 @@ public abstract class GamePlayer extends Enemy implements Player {
     protected Field currentField;
     protected int gold;
 
-    protected float additionalMaxHealth;
+    protected int additionalMaxHealth;
+    protected float armor;
 
-    protected float additionalStrength;
-    protected float additionalAgility;
-    protected float additionalMagicPoints;
+    protected int additionalStrength;
+    protected int additionalAgility;
+    protected int additionalMagicPoints;
 
     public GamePlayer(String name, float maxHealth, float strength, float agility, float magicPoints, int equipmentCapacity, Field currentField) {
         super(name, maxHealth, strength, agility, magicPoints);

@@ -1,39 +1,58 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.field.Field;
+import pl.grsrpg.logger.Logger;
 import pl.grsrpg.utils.DiceRoll;
+import pl.grsrpg.entity.Entity;
 
 public class GamePlayerWarrior extends GamePlayer {
-    private static final float startMaxHealth = 20;
-    private static final float startStrength = 5;
-    private static final float startAgility = 2;
-    private static final float startMagicPoints = 2;
+    private static final int startMaxHealth = 20;
+    private static final int startStrength = 5;
+    private static final int startAgility = 2;
+    private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
     public GamePlayerWarrior(String name, Field currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
     }
 
-    int knockdown(){
+    float knockdown(){
         this.baseMagicPoints  -= 5;
         if(DiceRoll.rollPrivate(1,6) >= 4)
-            System.out.println("Zadajesz dodatkowe obrazenia przy uderzeniu:" + "wartosc do ustalenia");
-        return 0 ;// tu bedzie ile obrazen jak sie wymysli
+            System.out.println("You deal additional damage " + ( 2.5 * this.additionalStrength ) );
+        return 2*this.additionalStrength;
     }
 
-    public static float getStartMaxHealth() {
+    float cleave(Entity entity){
+        this.baseMagicPoints -= 5;
+        if(this.health < this.health*0.3) return 2.5F * (this.additionalStrength + startStrength);
+        if(entity.getHealth() < entity.getBaseMaxHealth()*0.2) return entity.getHealth();
+        return 2F* (this.additionalStrength + startStrength);
+    }
+
+    float blessingOfTheShield(int numberOfTour, int numberOfAdditionalArmor ){
+        this.baseMagicPoints -= 5;
+        numberOfTour = DiceRoll.rollPrivate(2,4);
+        numberOfAdditionalArmor = DiceRoll.rollPrivate(5,30);
+        System.out.println(Logger.YELLOW + "God supports you. You gain " + numberOfAdditionalArmor + " additional armor." + Logger.RESET);
+        return
+    }
+
+
+
+    public static int getStartMaxHealth() {
         return startMaxHealth;
     }
 
-    public static float getStartStrength() {
+    public static int getStartStrength() {
         return startStrength;
     }
 
-    public static float getStartAgility() {
+    public static int getStartAgility() {
         return startAgility;
     }
 
-    public static float getStartMagicPoints() {
+    public static int getStartMagicPoints() {
         return startMagicPoints;
     }
 
@@ -49,5 +68,7 @@ public class GamePlayerWarrior extends GamePlayer {
                 " Magic Points : "+startMagicPoints+"\n"+
                 " Equipment Capacity : "+startEquipmentCapacity;
     }
+
+
 
 }
