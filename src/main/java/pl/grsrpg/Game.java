@@ -1,9 +1,12 @@
 package pl.grsrpg;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Getter;
+import pl.grsrpg.card.GameCardItem;
 import pl.grsrpg.config.Config;
 import pl.grsrpg.board.Board;
 import pl.grsrpg.board.GameBoard;
+import pl.grsrpg.player.GamePlayerWarrior;
 import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;
@@ -20,12 +23,12 @@ public class Game {
 
     public Game() {
         this.board = new GameBoard();
-
+        this.board.startGame();
     }
 
     public static void main(String[] args){
         loadConfig();
-        //Game game = new Game();
+        Game game = new Game();
     }
 
     private static void loadConfig(){

@@ -1,0 +1,9 @@
+- type: "item"
+  name: "Kox miecz"
+  description: "Patrz jaki mam zajebisty miecz!"
+  strength: 2000
+  itemValue: 100000
+  profession: "pl.grsrpg.player.GamePlayerWarrior"
+- type: "friend"
+  name: "XD"
+  description: "Big oof"

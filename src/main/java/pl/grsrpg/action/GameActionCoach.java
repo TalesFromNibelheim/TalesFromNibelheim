@@ -22,9 +22,9 @@ public class GameActionCoach extends GameAction {
             case STRENGTH:
                 return (int) (price * (Math.exp(player.getBaseStrength())*1/2) * multiplier);
             case MAXHEALTH:
-                return (int) (price * (Math.exp(player.getBaseStrength())*1/2) * multiplier);
+                return (int) (price * (Math.exp(player.getBaseMaxHealth())*1/2) * multiplier);
             case MAGICPOINTS:
-                return (int) (price * (Math.exp(player.getBaseStrength())*1/2) * multiplier);
+                return (int) (price * (Math.exp(player.getBaseMagicPoints())*1/2) * multiplier);
             default:
                 return 0;
         }
@@ -41,7 +41,6 @@ public class GameActionCoach extends GameAction {
         System.out.println("You meet " + name + " on your way." );
         System.out.println("Hello. Do u want to improve your attributes for a small fee?" );
         priceList(player);
-
     }
 
 }

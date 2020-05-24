@@ -12,6 +12,8 @@ public interface Player extends Entity {
 
     String getInfo();
 
+    String getItemsInfo();
+
     boolean addCard(Card card);
 
     Card removeCard(String name);
@@ -26,29 +28,31 @@ public interface Player extends Entity {
 
     void fight(Entity entity);
 
-    float getAdditionalMaxHealth();
+    int getAdditionalMaxHealth();
 
-    float getAdditionalStrength();
+    int getAdditionalStrength();
 
-    float getAdditionalAgility();
+    int getAdditionalAgility();
 
-    float getAdditionalMagicPoints();
+    int getAdditionalMagicPoints();
 
-    void setAdditionalMaxHealth(float value);
+    void setAdditionalMaxHealth(int maxHealth);
 
-    void setAdditionalStrength(float value);
+    void setAdditionalStrength(int strength);
 
-    void setAdditionalAgility(float value);
+    void setAdditionalAgility(int agility);
 
-    void setAdditionalMagicPoints(float value);
+    void setAdditionalMagicPoints(int magicPoints);
+
+    int getCurrentMapLevel();
 
     void addGold(int value);
 
-    void addAdditionalMaxHealth(float value);
+    void addAdditionalMaxHealth(int maxHealth);
 
-    void addAdditionalStrength(float value);
+    void addAdditionalStrength(int strength);
 
-    void addAdditionalAgility(float value);
+    void addAdditionalAgility(int agility);
 
-    void addAdditionalMagicPoints(float value);
+    void addAdditionalMagicPoints(int magicPoints);
 }

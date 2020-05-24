@@ -1,12 +1,18 @@
 package pl.grsrpg.card;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import pl.grsrpg.player.GamePlayerMage;
 import pl.grsrpg.player.GamePlayerScout;
 import pl.grsrpg.player.GamePlayerWarrior;
 import pl.grsrpg.player.Player;
 
+@Getter
+@ToString
+@Setter
 public class GameCardItem extends GameCard {
-    private float health;
+    private int health;
     private int strength;
     private int agility;
     private int magicPoints;
@@ -14,40 +20,6 @@ public class GameCardItem extends GameCard {
     private int itemValue;
     private float armor;
     private Class profession;
-
-    //TODO CONSTRUCTOR
-
-    public float getHealth() {
-        return health;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getAgility() {
-        return agility;
-    }
-
-    public int getMagicPoints() {
-        return magicPoints;
-    }
-
-    public int getGold() {
-        return gold;
-    }
-
-    public int getItemValue() {
-        return itemValue;
-    }
-
-    public float getArmor() {
-        return armor;
-    }
-
-    public Class getProfession() {
-        return profession;
-    }
 
     @Override
     public boolean execute(Player player) {
