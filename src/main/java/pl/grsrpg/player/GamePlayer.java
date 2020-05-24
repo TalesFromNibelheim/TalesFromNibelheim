@@ -15,6 +15,7 @@ import java.util.List;
 public abstract class GamePlayer extends Enemy implements Player {
     protected int equipmentCapacity;
     protected List<Card> cards = new LinkedList<>();
+    protected int currentMapLevel = 1;
     protected Field currentField;
     protected int gold;
 
@@ -90,5 +91,10 @@ public abstract class GamePlayer extends Enemy implements Player {
     @Override
     public void fight(Entity entity) {
 
+    }
+
+    @Override
+    public String getItemsInfo() {
+        return null;
     }
 }

@@ -11,6 +11,8 @@ public interface Player extends Entity {
 
     String getInfo();
 
+    String getItemsInfo();
+
     boolean addCard(Card card);
 
     Card removeCard(String name);
@@ -40,4 +42,6 @@ public interface Player extends Entity {
     void setAdditionalAgility(float agility);
 
     void setAdditionalMagicPoints(float magicPoints);
+
+    int getCurrentMapLevel();
 }
