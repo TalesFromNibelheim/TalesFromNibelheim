@@ -1,6 +1,6 @@
 # GRSRPG
 
-Board game inspired console RPG game with ability to customize gameplay via .yaml files.<br><br>
+Board game inspired, console RPG game with ability to customize gameplay via .yaml files.<br><br>
 
 Config
 -------------
