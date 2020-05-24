@@ -1,5 +1,6 @@
 package pl.grsrpg.card;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.ToString;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.player.Player;

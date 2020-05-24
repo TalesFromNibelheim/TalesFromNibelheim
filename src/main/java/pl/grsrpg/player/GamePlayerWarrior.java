@@ -13,7 +13,7 @@ public class GamePlayerWarrior extends GamePlayer {
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
-    public GamePlayerWarrior(String name, Field currentField) {
+    public GamePlayerWarrior(String name, int currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
         this.fightManager = new WarriorFightManager();
     }
@@ -37,7 +37,7 @@ public class GamePlayerWarrior extends GamePlayer {
         numberOfTour = DiceRoll.rollPrivate(2,4);
         numberOfAdditionalArmor = DiceRoll.rollPrivate(5,30);
         System.out.println(Logger.YELLOW + "God supports you. You gain " + numberOfAdditionalArmor + " additional armor." + Logger.RESET);
-        return
+        return 0F;
     }
 
 

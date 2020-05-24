@@ -1,6 +1,8 @@
 package pl.grsrpg.board;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.Getter;
 import pl.grsrpg.Game;
 import pl.grsrpg.card.Card;
 import pl.grsrpg.card.GameCard;
@@ -20,7 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-
+@Getter
 public class GameBoard implements Board {
     private String name;
     private final List<Field> level1GameFields = new ArrayList<>();
@@ -71,7 +73,6 @@ public class GameBoard implements Board {
         try {
             List<GameCard> cards = IOUtils.getMapper().readValue(cardsFile, new TypeReference<>(){});
             this.cards.addAll(cards);
-            System.out.println(cards);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
@@ -94,21 +95,26 @@ public class GameBoard implements Board {
         System.out.print("You will be " + Logger.YELLOW);
         switch (classChoose) {
             case 1:
-                player = new GamePlayerMage(name, level1GameFields.get(0));
+                player = new GamePlayerMage(name, 0);
                 System.out.print("Mage");
                 break;
             case 2:
-                player = new GamePlayerScout(name, level1GameFields.get(0));
+                player = new GamePlayerScout(name, 0);
                 System.out.print("Scout");
                 break;
             case 3:
             default:
-                player = new GamePlayerWarrior(name, level1GameFields.get(0));
+                player = new GamePlayerWarrior(name, 0);
                 System.out.print("Warrior");
                 break;
 
         }
         System.out.println(Logger.RESET + " known as " + Logger.BRIGHT_GREEN + name + Logger.RESET);
+        player.addCard(cards.get(0));
+        player.addCard(cards.get(1));
+    }
+
+    public void gameLoop(){
         while (true) {
             int choice = nextAction();
             switch (choice) {
@@ -116,7 +122,7 @@ public class GameBoard implements Board {
                     System.out.println(player.getInfo());
                     break;
                 case 2:
-                    System.out.println(player.getItemsInfo());
+                    System.out.println(player.getCardsInfo());
                     break;
                 default:
                 case 3:
@@ -124,7 +130,7 @@ public class GameBoard implements Board {
                     break;
                 case 4:
                     saveAndQuit();
-                    break;
+                    System.exit(0);
             }
         }
     }
@@ -141,7 +147,12 @@ public class GameBoard implements Board {
 
     private void saveAndQuit(){
         System.out.println(Logger.CYAN + "See you later!" + Logger.RESET);
-        System.exit(0);
+        try {
+            IOUtils.getMapper().enable(SerializationFeature.INDENT_OUTPUT);
+            IOUtils.getMapper().writeValue(new File(IOUtils.getDataPath()+"/data/save.yml"), this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void movePlayer() {
@@ -178,7 +189,7 @@ public class GameBoard implements Board {
     }
 
     private void getLevel1Fields(List<Field> ret, int fieldsToMove) {
-        int currentField = level1GameFields.indexOf(player.getCurrentField());
+        int currentField = player.getCurrentField();
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, fieldsToMove)));
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, -fieldsToMove)));
         if (((BossField) level1GameFields.get(level1GameFields.size() - 1)).isDefeated()) {
@@ -196,7 +207,7 @@ public class GameBoard implements Board {
     }
 
     private void getLevel2Fields(List<Field> ret, int fieldsToMove) {
-        int currentField = level2GameFields.indexOf(player.getCurrentField());
+        int currentField = player.getCurrentField();
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, fieldsToMove)));
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, -fieldsToMove)));
         if (((BossField) level2GameFields.get(level2GameFields.size() - 1)).isDefeated()) {
@@ -217,7 +228,7 @@ public class GameBoard implements Board {
     }
 
     private void getLevel3Fields(List<Field> ret) {
-        int currentField = level3GameFields.indexOf(player.getCurrentField());
+        int currentField = player.getCurrentField();
         if(currentField - 1 == -1){
             ret.add(level2GameFields.get(level2GameFields.size() - 1));
         } else {

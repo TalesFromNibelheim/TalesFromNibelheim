@@ -1,10 +1,20 @@
 package pl.grsrpg.player;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import pl.grsrpg.card.Card;
-import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = GamePlayerWarrior.class, name = "warrior"),
+        @JsonSubTypes.Type(value = GamePlayerScout.class, name = "scout"),
+        @JsonSubTypes.Type(value = GamePlayerMage.class, name = "mage")
+})
 public interface Player extends Entity {
     void recalculateAttributes();
 
@@ -12,7 +22,7 @@ public interface Player extends Entity {
 
     String getInfo();
 
-    String getItemsInfo();
+    String getCardsInfo();
 
     boolean addCard(Card card);
 
@@ -26,7 +36,7 @@ public interface Player extends Entity {
 
     boolean removeGold(int amount);
 
-    Field getCurrentField();
+    int getCurrentField();
 
     void fight(Entity entity);
 

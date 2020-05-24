@@ -1,8 +1,14 @@
 package pl.grsrpg.player;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 import lombok.Setter;
 import pl.grsrpg.card.Card;
+import pl.grsrpg.card.GameCardEnemy;
+import pl.grsrpg.card.GameCardFriend;
+import pl.grsrpg.card.GameCardItem;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
@@ -11,6 +17,7 @@ import pl.grsrpg.manager.fight.FightManager;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -18,7 +25,7 @@ public abstract class GamePlayer extends Enemy implements Player {
     protected int equipmentCapacity;
     protected List<Card> cards = new LinkedList<>();
     protected int currentMapLevel = 1;
-    protected Field currentField;
+    protected int currentField;
     protected int gold;
 
     protected int additionalMaxHealth;
@@ -30,10 +37,10 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     protected FightManager fightManager;
 
-    public GamePlayer(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity, Field currentField) {
+    public GamePlayer(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity, int currentField) {
         super(name, maxHealth, strength, agility, magicPoints);
         this.equipmentCapacity = equipmentCapacity;
-        this.currentField = currentField;
+        this.currentField = 0;
         this.gold = 0;
     }
 
@@ -65,6 +72,7 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     }
 
+    @JsonIgnore
     @Override
     public String getInfo() {
         return null;
@@ -87,9 +95,13 @@ public abstract class GamePlayer extends Enemy implements Player {
             fightManager.fight((Enemy) entity);
     }
 
+    @JsonIgnore
     @Override
-    public String getItemsInfo() {
-        return null;
+    public String getCardsInfo() {
+        int i = 2;
+        return "Cards: \n 1. "+cards.stream()
+                .map(card -> "Name: "+card.getName()+",\n  Description: "+card.getDescription())
+                .collect(Collectors.joining("\n "+(i++)+". ", "", ""));
     }
 
     @Override
@@ -115,5 +127,15 @@ public abstract class GamePlayer extends Enemy implements Player {
     @Override
     public void addAdditionalMagicPoints(int magicPoints) {
         this.additionalMagicPoints += magicPoints;
+    }
+
+    @Override
+    public boolean dodge() {
+        return false;
+    }
+
+    @JsonIgnore
+    public FightManager getFightManager() {
+        return fightManager;
     }
 }

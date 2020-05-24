@@ -19,11 +19,14 @@ public class Game {
         return config;
     }
 
-    private final Board board;
+    private Board board;
 
     public Game() {
-        this.board = new GameBoard();
-        this.board.startGame();
+        if(!loadGame()){
+            this.board = new GameBoard();
+            this.board.startGame();
+        }
+        this.board.gameLoop();
     }
 
     public static void main(String[] args){
@@ -38,5 +41,22 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean loadGame(){
+        File save = new File(IOUtils.getDataPath()+"/data/save.yml");
+        if(save.exists()){
+            System.out.print("Found previous game save, load it?[Y/n] ");
+            String choice = IOUtils.getScanner().next();
+            if(choice.equals("n"))
+                return false;
+            try{
+                this.board = IOUtils.getMapper().readValue(save, GameBoard.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return true;
+        }
+        return false;
     }
 }
