@@ -55,6 +55,12 @@ public class GameCardItem extends GameCard {
         if ( (player instanceof GamePlayerMage && this.getProfession() == GamePlayerMage.class) ||
               (player instanceof GamePlayerScout && this.getProfession() == GamePlayerScout.class) ||
                 (player instanceof GamePlayerWarrior && this.getProfession() == GamePlayerWarrior.class) ) {
+            player.addAdditionalMaxHealth(this.getHealth());
+            player.addAdditionalAgility(this.getAgility());
+            player.addAdditionalMagicPoints(this.getMagicPoints());
+            player.addAdditionalStrength(this.getStrength());
+            player.addGold(this.getGold());
+            //todo co z tym armorem?
             return true;
         }else{
             return false;
