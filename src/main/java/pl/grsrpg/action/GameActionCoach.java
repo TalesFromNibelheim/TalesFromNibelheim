@@ -42,12 +42,7 @@ public class GameActionCoach extends GameAction {
         System.out.println(Logger.CYAN + "4." + " Max Health + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAXHEALTH) +  Logger.WHITE + ")" );
     }
 
-    private void increase(Player player){
-        System.out.println("1. Strength + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.STRENGTH) + Logger.WHITE + ")" );
-        System.out.println("2. Agility + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.AGILITY) + Logger.WHITE + ")" );
-        System.out.println("3. Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAGICPOINTS) + Logger.WHITE + ")" );
-        System.out.println("4. Max Health + 1  (" + Logger.RED + "price: " + getPrice(player , Attribute.MAXHEALTH) +  Logger.WHITE + ")" );
-    }
+
 
     private boolean checkPlayerGold(Player player, Attribute attribute){
         switch (attribute){
