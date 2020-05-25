@@ -1,9 +1,12 @@
 package pl.grsrpg.player;
 
+import lombok.NoArgsConstructor;
 import pl.grsrpg.field.Field;
+import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.MageFightManager;
 
-public class GamePlayerMage extends GamePlayer{
+@NoArgsConstructor
+public class GamePlayerMage extends GamePlayer {
     private static final int startMaxHealth = 20;
     private static final int startStrength = 5;
     private static final int startAgility = 2;
@@ -35,12 +38,12 @@ public class GamePlayerMage extends GamePlayer{
         return startEquipmentCapacity;
     }
 
-    public static String getStartDescription(){
-        return  " Start Attributes: \n"+
-                " Max Health: "+startMaxHealth+"\n"+
-                " Strength : "+startStrength+"\n"+
-                " Agility : "+startAgility+"\n"+
-                " Magic Points : "+startMagicPoints+"\n"+
-                " Equipment Capacity : "+startEquipmentCapacity;
+    public static String getStartDescription() {
+        return " Start Attributes: \n" +
+                "  Max Health: " + Logger.YELLOW + startMaxHealth + "\n" + Logger.RESET +
+                "  Strength: " + Logger.YELLOW + startStrength + "\n" + Logger.RESET +
+                "  Agility: " + Logger.YELLOW + startAgility + "\n" + Logger.RESET +
+                "  Magic Points: " + Logger.YELLOW + startMagicPoints + "\n" + Logger.RESET +
+                "  Equipment Capacity: " + Logger.YELLOW + startEquipmentCapacity + Logger.RESET;
     }
 }

@@ -47,7 +47,8 @@ public class GameBoard implements Board {
     private void loadLevel(List<Field> levelList, String levelFileName, String resource, int size) {
         File levelFile = IOUtils.openFile(levelFileName, resource);
         try {
-            List<GameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>(){});
+            List<GameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {
+            });
             Collections.shuffle(gameFields);
             levelList.addAll(gameFields.subList(0, size - 1));
         } catch (IOException e) {
@@ -59,7 +60,8 @@ public class GameBoard implements Board {
     private void addFieldFromFile(List<Field> levelList, String levelFileName, String resource) {
         File levelFile = IOUtils.openFile(levelFileName, resource);
         try {
-            List<BossGameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>(){});
+            List<BossGameField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {
+            });
             Collections.shuffle(gameFields);
             levelList.add(gameFields.get(0));
         } catch (IOException e) {
@@ -71,7 +73,8 @@ public class GameBoard implements Board {
     private void loadCards() {
         File cardsFile = IOUtils.openFile("data/cards.yml", "cards.yml");
         try {
-            List<GameCard> cards = IOUtils.getMapper().readValue(cardsFile, new TypeReference<>(){});
+            List<GameCard> cards = IOUtils.getMapper().readValue(cardsFile, new TypeReference<>() {
+            });
             this.cards.addAll(cards);
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,11 +87,11 @@ public class GameBoard implements Board {
         System.out.print("Choose name you want to be known in here: ");
         String name = IOUtils.getScanner().next();
         System.out.println("Professions available: ");
-        System.out.println("1. Mage");
+        System.out.println(Logger.YELLOW + "1. " + Logger.CYAN + "Mage" + Logger.RESET);
         System.out.println(GamePlayerMage.getStartDescription());
-        System.out.println("2. Scout");
+        System.out.println(Logger.YELLOW + "2. " + Logger.CYAN + "Scout" + Logger.RESET);
         System.out.println(GamePlayerScout.getStartDescription());
-        System.out.println("3. Warrior");
+        System.out.println(Logger.YELLOW + "3. " + Logger.CYAN + "Warrior" + Logger.RESET);
         System.out.println(GamePlayerWarrior.getStartDescription());
         System.out.print("What is your choice:(default: 3) ");
         int classChoose = IOUtils.getScanner().nextInt();
@@ -112,9 +115,10 @@ public class GameBoard implements Board {
         System.out.println(Logger.RESET + " known as " + Logger.BRIGHT_GREEN + name + Logger.RESET);
         player.addCard(cards.get(0));
         player.addCard(cards.get(1));
+        player.recalculateAttributes();
     }
 
-    public void gameLoop(){
+    public void gameLoop() {
         while (true) {
             int choice = nextAction();
             switch (choice) {
@@ -136,20 +140,23 @@ public class GameBoard implements Board {
     }
 
     private int nextAction() {
+        System.out.println();
         System.out.println("Possible actions: ");
-        System.out.println("1. Display statistics.");
-        System.out.println("2. Show your items.");
-        System.out.println("3. Roll a dice and move to new field.");
-        System.out.println("4. Save and quit.");
+        System.out.println(Logger.YELLOW + "1. " + Logger.RESET + "Display statistics.");
+        System.out.println(Logger.YELLOW + "2. " + Logger.RESET + "Show your items.");
+        System.out.println(Logger.YELLOW + "3. " + Logger.RESET + "Roll a dice and move to new field.");
+        System.out.println(Logger.YELLOW + "4. " + Logger.RESET + "Save and quit.");
         System.out.print("What is your next move?(default: 3) ");
-        return IOUtils.getScanner().nextInt();
+        int choice = IOUtils.getScanner().nextInt();
+        System.out.println();
+        return choice;
     }
 
-    private void saveAndQuit(){
+    private void saveAndQuit() {
         System.out.println(Logger.CYAN + "See you later!" + Logger.RESET);
         try {
             IOUtils.getMapper().enable(SerializationFeature.INDENT_OUTPUT);
-            IOUtils.getMapper().writeValue(new File(IOUtils.getDataPath()+"/data/save.yml"), this);
+            IOUtils.getMapper().writeValue(new File(IOUtils.getDataPath() + "/data/save.yml"), this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,15 +167,27 @@ public class GameBoard implements Board {
         System.out.println("Available fields to move: ");
         for (int i = 1; i <= availableFields.length; i++) {
             Field field = availableFields[i - 1];
-            System.out.println(i + ". " + field.getName() + "\n " + field.getDescription());
+            System.out.print(Logger.YELLOW + i + ". ");
+            if(field instanceof BossField)
+                System.out.print(Logger.RED+"BOSS ");
+            System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription());
         }
         System.out.print("Where you want to move?(default: 1) ");
         int choice = IOUtils.getScanner().nextInt() - 1;
-        if (choice >= availableFields.length || choice < 0) {
+        if (choice > availableFields.length || choice < 0) {
             choice = 0;
         }
         Field nextField = availableFields[choice];
-        player.move(nextField);
+        int mapLevel = 1;
+        int fieldNumber = level1GameFields.indexOf(nextField);
+        if (fieldNumber == -1 && level2GameFields.contains(nextField)) {
+            mapLevel = 2;
+            fieldNumber = level2GameFields.indexOf(nextField);
+        } else if(fieldNumber == -1){
+            mapLevel = 3;
+            fieldNumber = level3GameFields.indexOf(nextField);
+        }
+        player.move(mapLevel, fieldNumber, nextField);
     }
 
     private Set<Field> getNextFields() {
@@ -216,12 +235,12 @@ public class GameBoard implements Board {
             }
         }
         int nextLevelMove = 0;
-        if ( currentField <= level2GameFields.size() / 2 && currentField + fieldsToMove > level2GameFields.size() / 2 ) {
-            nextLevelMove = currentField + fieldsToMove - (level2GameFields.size()/2) - 1;
+        if (currentField <= level2GameFields.size() / 2 && currentField + fieldsToMove > level2GameFields.size() / 2) {
+            nextLevelMove = currentField + fieldsToMove - (level2GameFields.size() / 2) - 1;
         } else if (currentField >= level2GameFields.size() / 2 && currentField - fieldsToMove < level2GameFields.size() / 2) {
-            nextLevelMove = currentField - (level2GameFields.size()/2) - fieldsToMove;
+            nextLevelMove = currentField - (level2GameFields.size() / 2) - fieldsToMove;
         }
-        if(nextLevelMove != 0){
+        if (nextLevelMove != 0) {
             ret.add(level1GameFields.get(wrap(level1GameFields.size(), level1GameFields.size() - 1, nextLevelMove)));
             ret.add(level1GameFields.get(wrap(level1GameFields.size(), level1GameFields.size() - 1, -nextLevelMove)));
         }
@@ -229,7 +248,7 @@ public class GameBoard implements Board {
 
     private void getLevel3Fields(Set<Field> ret) {
         int currentField = player.getCurrentField();
-        if(currentField - 1 == -1){
+        if (currentField - 1 == -1) {
             ret.add(level2GameFields.get(level2GameFields.size() - 1));
         } else {
             ret.add(level3GameFields.get(currentField - 1));
@@ -239,6 +258,6 @@ public class GameBoard implements Board {
 
 
     private int wrap(int listSize, int currentPosition, int nextPosition) {
-        return (currentPosition + nextPosition < 0 ? (currentPosition + nextPosition % listSize) + listSize : currentPosition + nextPosition % listSize);
+        return ( (currentPosition + nextPosition) % listSize  < 0 ? ( (currentPosition + nextPosition) % listSize) + listSize : (currentPosition + nextPosition) % listSize);
     }
 }

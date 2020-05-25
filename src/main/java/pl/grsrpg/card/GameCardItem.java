@@ -34,10 +34,11 @@ public class GameCardItem extends GameCard {
             player.addAdditionalStrength(this.getStrength());
             player.addGold(this.getGold());
             //todo co z tym armorem?
+            if(gold != 0)
+                player.addCard(this);
             return true;
         }else{
             return false;
         }
-
     }
 }

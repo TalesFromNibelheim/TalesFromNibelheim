@@ -18,7 +18,7 @@ import pl.grsrpg.field.Field;
 public interface Player extends Entity {
     void recalculateAttributes();
 
-    void move(Field field);
+    void move(int mapLevel, int filedNumber, Field field);
 
     String getInfo();
 

@@ -1,18 +1,15 @@
 package pl.grsrpg.player;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.grsrpg.card.Card;
-import pl.grsrpg.card.GameCardEnemy;
-import pl.grsrpg.card.GameCardFriend;
-import pl.grsrpg.card.GameCardItem;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.Field;
+import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.FightManager;
 
 import java.util.LinkedList;
@@ -21,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public abstract class GamePlayer extends Enemy implements Player {
     protected int equipmentCapacity;
     protected List<Card> cards = new LinkedList<>();
@@ -35,6 +33,7 @@ public abstract class GamePlayer extends Enemy implements Player {
     protected int additionalAgility;
     protected int additionalMagicPoints;
 
+    @JsonIgnore
     protected FightManager fightManager;
 
     public GamePlayer(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity, int currentField) {
@@ -46,7 +45,7 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     @Override
     public boolean addCard(Card card) {
-        if(cards.size() < equipmentCapacity){
+        if (cards.size() < equipmentCapacity) {
             cards.add(card);
             return true;
         }
@@ -55,8 +54,8 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     @Override
     public Card removeCard(String name) {
-        for(int i = 0; i < cards.size(); i++){
-            if(cards.get(i).getName().equals(name))
+        for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).getName().equals(name))
                 return cards.remove(i);
         }
         return null;
@@ -64,23 +63,41 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     @Override
     public void recalculateAttributes() {
+        this.resetAdditionalAttributes();
+        for (Card card : cards) {
+            card.execute(this);
+        }
+    }
 
+    private void resetAdditionalAttributes() {
+        this.additionalMagicPoints = 0;
+        this.additionalAgility = 0;
+        this.additionalStrength = 0;
+        this.additionalMaxHealth = 0;
+        this.armor = 0;
     }
 
     @Override
-    public void move(Field field) {
-
+    public void move(int mapLevel, int filedNumber, Field field) {
+        this.currentField = filedNumber;
+        this.currentMapLevel = mapLevel;
+        field.execute(this);
     }
 
     @JsonIgnore
     @Override
     public String getInfo() {
-        return null;
+        return  "Statistics: \n" +
+                " Health: " + Logger.CYAN + this.health + Logger.RESET + "/" + Logger.YELLOW + (this.baseMaxHealth + this.additionalMaxHealth) + "\n" + Logger.RESET +
+                " Strength: " + Logger.YELLOW + (this.baseStrength + this.additionalStrength) + "\n" + Logger.RESET +
+                " Agility: " + Logger.YELLOW + +(this.baseAgility + this.additionalAgility) + "\n" + Logger.RESET +
+                " Magic Points: " + Logger.YELLOW + (this.baseMagicPoints + this.additionalMagicPoints) + "\n" + Logger.RESET +
+                " Equipment: " + Logger.CYAN + this.cards.size() + Logger.RESET + "/" + Logger.YELLOW + equipmentCapacity + Logger.RESET;
     }
 
     @Override
     public boolean removeGold(int amount) {
-        if(this.gold >= amount){
+        if (this.gold >= amount) {
             this.gold -= amount;
             return true;
         }
@@ -89,7 +106,7 @@ public abstract class GamePlayer extends Enemy implements Player {
 
     @Override
     public void fight(Entity entity) {
-        if(entity instanceof Boss)
+        if (entity instanceof Boss)
             fightManager.fight((Boss) entity);
         else
             fightManager.fight((Enemy) entity);
@@ -99,9 +116,9 @@ public abstract class GamePlayer extends Enemy implements Player {
     @Override
     public String getCardsInfo() {
         int i = 2;
-        return "Cards: \n 1. "+cards.stream()
-                .map(card -> "Name: "+card.getName()+",\n  Description: "+card.getDescription())
-                .collect(Collectors.joining("\n "+(i++)+". ", "", ""));
+        return "Cards: \n " + Logger.YELLOW + "1. " + Logger.RESET + cards.stream()
+                .map(card -> "Name: " + Logger.CYAN + card.getName() + Logger.RESET + "\n    Description: " + card.getDescription())
+                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", ""));
     }
 
     @Override
@@ -132,10 +149,5 @@ public abstract class GamePlayer extends Enemy implements Player {
     @Override
     public boolean dodge() {
         return false;
-    }
-
-    @JsonIgnore
-    public FightManager getFightManager() {
-        return fightManager;
     }
 }
