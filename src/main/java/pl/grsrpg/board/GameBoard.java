@@ -156,24 +156,24 @@ public class GameBoard implements Board {
     }
 
     private void movePlayer() {
-        List<Field> availableFields = getNextFields();
+        Field[] availableFields = getNextFields().toArray(new Field[0]);
         System.out.println("Available fields to move: ");
-        for (int i = 1; i <= availableFields.size(); i++) {
-            Field field = availableFields.get(i - 1);
+        for (int i = 1; i <= availableFields.length; i++) {
+            Field field = availableFields[i - 1];
             System.out.println(i + ". " + field.getName() + "\n " + field.getDescription());
         }
         System.out.print("Where you want to move?(default: 1) ");
         int choice = IOUtils.getScanner().nextInt() - 1;
-        if (choice >= availableFields.size() || choice < 0) {
+        if (choice >= availableFields.length || choice < 0) {
             choice = 0;
         }
-        Field nextField = availableFields.get(choice);
+        Field nextField = availableFields[choice];
         player.move(nextField);
     }
 
-    private List<Field> getNextFields() {
+    private Set<Field> getNextFields() {
         int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove());
-        List<Field> ret = new ArrayList<>();
+        Set<Field> ret = new HashSet<>();
         switch (player.getCurrentMapLevel()) {
             case 1:
                 getLevel1Fields(ret, fieldsToMove);
@@ -188,7 +188,7 @@ public class GameBoard implements Board {
         return ret;
     }
 
-    private void getLevel1Fields(List<Field> ret, int fieldsToMove) {
+    private void getLevel1Fields(Set<Field> ret, int fieldsToMove) {
         int currentField = player.getCurrentField();
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, fieldsToMove)));
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, -fieldsToMove)));
@@ -206,7 +206,7 @@ public class GameBoard implements Board {
         }
     }
 
-    private void getLevel2Fields(List<Field> ret, int fieldsToMove) {
+    private void getLevel2Fields(Set<Field> ret, int fieldsToMove) {
         int currentField = player.getCurrentField();
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, fieldsToMove)));
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, -fieldsToMove)));
@@ -227,7 +227,7 @@ public class GameBoard implements Board {
         }
     }
 
-    private void getLevel3Fields(List<Field> ret) {
+    private void getLevel3Fields(Set<Field> ret) {
         int currentField = player.getCurrentField();
         if(currentField - 1 == -1){
             ret.add(level2GameFields.get(level2GameFields.size() - 1));
