@@ -1,19 +1,23 @@
 package pl.grsrpg.manager.fight;
 
+import lombok.NoArgsConstructor;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.logger.Logger;
-import pl.grsrpg.player.GamePlayerWarrior;
+import pl.grsrpg.player.IPlayer;
+import pl.grsrpg.player.PlayerWarrior;
 import pl.grsrpg.utils.IOUtils;
 import pl.grsrpg.utils.DiceRoll;
 
+@NoArgsConstructor
 public class WarriorFightManager extends NormalFightManager{
-    GamePlayerWarrior player;
+    public WarriorFightManager(IPlayer player) {
+        super(player);
+    }
+
     int tour = DiceRoll.rollPrivate(1,2);
     int numberOfTour = 0;
     int numberOfAdditionalArmor = 0;
     int time = 0;
-
-
 
     private void chooseAttack(){
         System.out.println(Logger.CYAN + "1." + Logger.RESET + " Basic Attack." );
@@ -38,16 +42,14 @@ public class WarriorFightManager extends NormalFightManager{
         System.out.println(Logger.YELLOW + "God supports you. You gain " + numberOfAdditionalArmor + " additional armor for "+ numberOfTour +" tours." + Logger.RESET);
     }
 
-
-
-
     @Override
     public boolean fight(Enemy enemy) {
+        PlayerWarrior warrior = (PlayerWarrior)player;
         while(enemy.getHealth() > 0 && player.getHealth() > 0){
             switch(tour){
                 case 1: // tura wojownika
                     if(numberOfTour >= 0) numberOfTour--;
-                    System.out.println("It's your turn " + Logger.BLUE  /*imie wojownika*/ + "." + Logger.RESET);
+                    System.out.println("It's your turn " + Logger.BLUE + warrior.getName() + "." + Logger.RESET);
                     System.out.println("Your current health: " + Logger.RED  +player.getHealth()+ "." + Logger.RESET);
                     System.out.println("Choose your attack: " );
                     chooseAttack();
@@ -59,13 +61,13 @@ public class WarriorFightManager extends NormalFightManager{
                             enemy.takeDamage(basicAttack());
                             break;
                         case 2:
-                            enemy.takeDamage(player.knockdown());
+                            enemy.takeDamage(warrior.knockdown());
                             break;
                         case 3:
-                            enemy.takeDamage(player.cleave(enemy));
+                            enemy.takeDamage(warrior.cleave(enemy));
                             break;
                         case 4:
-                            player.blessingOfTheShield();
+                            warrior.blessingOfTheShield();
                             bless();
                     }
                     if(numberOfTour < 0){
@@ -77,15 +79,7 @@ public class WarriorFightManager extends NormalFightManager{
                 case 2:
 
             }
-
-
-
-
         }
         return true;
     }
-
-
-
-
 }

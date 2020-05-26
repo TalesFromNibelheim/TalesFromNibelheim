@@ -1,9 +1,7 @@
 package pl.grsrpg.action;
 
-import pl.grsrpg.player.Player;
+import lombok.Getter;
 
-public interface Action {
-
-    boolean execute(Player player);
-
+@Getter
+public abstract class Action implements IAction {
 }
