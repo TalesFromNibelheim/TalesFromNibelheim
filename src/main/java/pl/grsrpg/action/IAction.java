@@ -17,4 +17,6 @@ public interface IAction {
 
     boolean execute(IPlayer player);
 
+    String getInfo();
+
 }

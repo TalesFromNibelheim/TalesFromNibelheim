@@ -30,10 +30,10 @@ public class DiceRoll {
 
     public static int rollPrivate(int numberOfDices, int numberOnDice) {
         int sumFromDices = 0;
-        int rand = (generator.nextInt()% numberOnDice ) + 1;
+        int rand = generator.nextInt(numberOnDice) + 1;
         sumFromDices += rand;
         for(int i = 1 ; i < numberOfDices; i++){
-            rand = (generator.nextInt()% numberOnDice ) + 1;
+            rand = generator.nextInt(numberOnDice) + 1;
             sumFromDices += rand;
         }
         return sumFromDices;

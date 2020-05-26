@@ -1,13 +1,25 @@
 package pl.grsrpg;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Getter;
+import pl.grsrpg.action.Action;
+import pl.grsrpg.action.ActionCoach;
+import pl.grsrpg.action.ActionFight;
+import pl.grsrpg.action.ActionTakeCard;
+import pl.grsrpg.card.CardItem;
 import pl.grsrpg.config.Config;
 import pl.grsrpg.board.IBoard;
 import pl.grsrpg.board.Board;
+import pl.grsrpg.entity.Boss;
+import pl.grsrpg.entity.Enemy;
+import pl.grsrpg.field.BossField;
+import pl.grsrpg.field.Field;
 import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class Game {
@@ -16,19 +28,29 @@ public class Game {
         return config;
     }
 
+    private static Game game;
+
+    public static Game getGame() {
+        return game;
+    }
+
     private IBoard board;
+
+    public IBoard getBoard() {
+        return board;
+    }
 
     public Game() {
         if(!loadGame()){
             this.board = new Board();
             this.board.startGame();
         }
-        this.board.gameLoop();
     }
 
     public static void main(String[] args){
         loadConfig();
-        Game game = new Game();
+        game = new Game();
+        game.startGameLoop();
     }
 
     private static void loadConfig(){
@@ -55,5 +77,9 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    private void startGameLoop(){
+        this.board.gameLoop();
     }
 }

@@ -10,7 +10,6 @@ import pl.grsrpg.player.IPlayer;
 
 @Getter
 @ToString
-@Setter
 public class CardItem extends Card {
     private int health;
     private int strength;
@@ -19,14 +18,13 @@ public class CardItem extends Card {
     private int gold;
     private int itemValue;
     private float armor;
-    private Class profession;
+    private Class profession = null;
 
     @Override
     public boolean execute(IPlayer player) {
-
         if ( (player instanceof PlayerMage && this.getProfession() == PlayerMage.class) ||
               (player instanceof PlayerScout && this.getProfession() == PlayerScout.class) ||
-                (player instanceof PlayerWarrior && this.getProfession() == PlayerWarrior.class) ) {
+                (player instanceof PlayerWarrior && this.getProfession() == PlayerWarrior.class) || this.getProfession() == null ) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());
             player.addAdditionalMagicPoints(this.getMagicPoints());

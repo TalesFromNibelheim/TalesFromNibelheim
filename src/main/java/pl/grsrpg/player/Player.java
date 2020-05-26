@@ -78,10 +78,10 @@ public abstract class Player extends Enemy implements IPlayer {
     }
 
     @Override
-    public void move(int mapLevel, int filedNumber, IField IField) {
+    public void move(int mapLevel, int filedNumber, IField field) {
         this.currentField = filedNumber;
         this.currentMapLevel = mapLevel;
-        IField.execute(this);
+        field.execute(this);
     }
 
     @JsonIgnore
@@ -105,11 +105,11 @@ public abstract class Player extends Enemy implements IPlayer {
     }
 
     @Override
-    public void fight(Entity entity) {
+    public boolean fight(Entity entity) {
         if (entity instanceof Boss)
-            fightManager.fight((Boss) entity);
+            return fightManager.fight((Boss) entity);
         else
-            fightManager.fight((Enemy) entity);
+            return fightManager.fight((Enemy) entity);
     }
 
     @JsonIgnore

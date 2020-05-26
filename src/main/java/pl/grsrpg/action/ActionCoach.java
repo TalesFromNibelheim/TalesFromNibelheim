@@ -1,5 +1,7 @@
 package pl.grsrpg.action;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 import pl.grsrpg.utils.Attribute;
@@ -8,9 +10,11 @@ import pl.grsrpg.utils.IOUtils;
 
 
 public class ActionCoach extends Action {
-
+    @JsonProperty
     protected String name;
+    @JsonProperty
     protected float price;
+    @JsonProperty
     protected float multiplier;
 
     @Override
@@ -82,7 +86,7 @@ public class ActionCoach extends Action {
         }
     }
 
-    public void textMenu(IPlayer player){
+    private void textMenu(IPlayer player){
         int temp = 0;
         boolean luckyMan = false;
         if(DiceRoll.luckyRoll()) luckyMan = true;
@@ -118,4 +122,9 @@ public class ActionCoach extends Action {
         System.out.println("See you soon!" );
     }
 
+    @JsonIgnore
+    @Override
+    public String getInfo() {
+        return "Meet Coach: "+Logger.CYAN+name+Logger.RESET;
+    }
 }

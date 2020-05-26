@@ -1,5 +1,6 @@
 package pl.grsrpg.board;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Getter;
@@ -75,6 +76,7 @@ public class Board implements IBoard {
         try {
             List<Card> cards = IOUtils.getMapper().readValue(cardsFile, new TypeReference<>() {
             });
+            Collections.shuffle(cards);
             this.cards.addAll(cards);
         } catch (IOException e) {
             e.printStackTrace();
@@ -113,8 +115,6 @@ public class Board implements IBoard {
 
         }
         System.out.println(Logger.RESET + " known as " + Logger.BRIGHT_GREEN + name + Logger.RESET);
-        player.addCard(cards.get(0));
-        player.addCard(cards.get(1));
         player.recalculateAttributes();
     }
 
@@ -259,5 +259,26 @@ public class Board implements IBoard {
 
     private int wrap(int listSize, int currentPosition, int nextPosition) {
         return ( (currentPosition + nextPosition) % listSize  < 0 ? ( (currentPosition + nextPosition) % listSize) + listSize : (currentPosition + nextPosition) % listSize);
+    }
+
+    @JsonIgnore
+    public IField getField(int level, int filedNumber){
+        switch (level) {
+            case 1:
+                return level1GameFields.get(filedNumber);
+            case 2:
+                return level2GameFields.get(filedNumber);
+            case 3:
+                return level3GameFields.get(filedNumber);
+        }
+        return null;
+    }
+
+    @JsonIgnore
+    public ICard drawCard(){
+        if(cards.isEmpty()){
+            loadCards();
+        }
+        return cards.remove(0);
     }
 }

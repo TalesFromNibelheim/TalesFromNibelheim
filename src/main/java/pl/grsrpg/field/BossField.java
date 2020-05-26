@@ -2,6 +2,7 @@ package pl.grsrpg.field;
 
 import lombok.Getter;
 import lombok.ToString;
+import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
@@ -10,8 +11,8 @@ import pl.grsrpg.utils.IOUtils;
 @Getter
 @ToString
 public class BossField extends Field implements IBossIField {
-    private boolean defeated;
-    private Entity boss;
+    private boolean defeated = false;
+    private Boss boss;
 
     @Override
     public void execute(IPlayer player) {
@@ -23,7 +24,9 @@ public class BossField extends Field implements IBossIField {
         System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
         int choice = IOUtils.getScanner().nextInt();
         if(choice == 1){
-            player.fight(boss);
+            if(player.fight(boss)){
+                defeated = true;
+            }
         } else {
             super.execute(player);
         }

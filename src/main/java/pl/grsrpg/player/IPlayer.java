@@ -38,7 +38,7 @@ public interface IPlayer extends Entity {
 
     int getCurrentField();
 
-    void fight(Entity entity);
+    boolean fight(Entity entity);
 
     int getAdditionalMaxHealth();
 

@@ -2,6 +2,7 @@ package pl.grsrpg.field;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import pl.grsrpg.card.ICard;
 import pl.grsrpg.player.IPlayer;
 
 @JsonTypeInfo(
@@ -18,4 +19,6 @@ public interface IField {
     String getDescription();
 
     void execute(IPlayer player);
+
+    void setUndefeatedCard(ICard undefeatedCard);
 }
