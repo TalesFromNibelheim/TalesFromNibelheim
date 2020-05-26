@@ -66,7 +66,5 @@ public interface IPlayer extends Entity {
 
     void addAdditionalAgility(int agility);
 
-    boolean dodge ();
-
     void addAdditionalMagicPoints(int magicPoints);
 }

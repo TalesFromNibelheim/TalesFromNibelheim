@@ -116,9 +116,9 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public String getCardsInfo() {
         int i = 2;
-        return "Cards: \n " + Logger.YELLOW + "1. " + Logger.RESET + cards.stream()
+        return  "Cards: \n " + Logger.YELLOW + (cards.size() > 0 ? "1. " + Logger.RESET + cards.stream()
                 .map(card -> "Name: " + Logger.CYAN + card.getName() + Logger.RESET + "\n    Description: " + card.getDescription())
-                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", ""));
+                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", "")) : "None" + Logger.RESET );
     }
 
     @Override
@@ -144,10 +144,5 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public void addAdditionalMagicPoints(int magicPoints) {
         this.additionalMagicPoints += magicPoints;
-    }
-
-    @Override
-    public boolean dodge() {
-        return false;
     }
 }

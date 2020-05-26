@@ -40,7 +40,7 @@ public class DiceRoll {
     }
 
     public static boolean luckyRoll() {
-        return ((generator.nextInt()% 6 ) + 1) == 6;
+        return ((generator.nextInt(6) ) + 1) == 6;
     }
 
 }
