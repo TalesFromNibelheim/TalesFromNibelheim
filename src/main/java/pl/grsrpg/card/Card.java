@@ -1,10 +1,15 @@
 package pl.grsrpg.card;
 
-import pl.grsrpg.player.Player;
+import lombok.Getter;
+import pl.grsrpg.player.IPlayer;
 
-public interface Card {
+@Getter
+public abstract class Card implements ICard {
+    private String name;
+    private String description;
 
-    boolean execute(Player player);
-    String getName();
-    String getDescription();
+    @Override
+    public boolean execute(IPlayer player) {
+        return false;
+    }
 }

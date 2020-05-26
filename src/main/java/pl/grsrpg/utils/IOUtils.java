@@ -2,6 +2,7 @@ package pl.grsrpg.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 import pl.grsrpg.Game;
 import pl.grsrpg.logger.Logger;
 
@@ -18,9 +19,14 @@ public class IOUtils {
         return scanner;
     }
 
-    private static final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+    private static ObjectMapper mapper = null;
 
     public static ObjectMapper getMapper() {
+        if(mapper == null){
+            YAMLFactory f = new YAMLFactory();
+            f.disable(YAMLGenerator.Feature.USE_NATIVE_TYPE_ID);
+            mapper = new ObjectMapper(f);
+        }
         return mapper;
     }
 
