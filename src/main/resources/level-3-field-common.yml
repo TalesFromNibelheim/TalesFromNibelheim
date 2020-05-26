@@ -1,6 +1,32 @@
 - type: "normal"
-  name: "XD"
-  description: "XDD"
+  name: "Nice field"
+  description: "That's nice field!"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Wolf"
+        baseMaxHealth: 10
+        baseStrength: 5
+        baseAgility: 2
+        baseMagicPoints: 0
+    - type: "coach"
+      name: "Pudzian"
+      price: 10.0
+      multiplier: 1.0
 - type: "normal"
-  name: "XD"
-  description: "XDD"
+  name: "Nicer field"
+  description: "That's very nice field!"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Wolf"
+        baseMaxHealth: 10
+        baseStrength: 5
+        baseAgility: 2
+        baseMagicPoints: 0
+    - type: "coach"
+      name: "Pudzian"
+      price: 10.0
+      multiplier: 1.0
