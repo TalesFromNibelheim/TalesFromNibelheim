@@ -29,13 +29,13 @@ public class ActionCoach extends Action {
     private int getPrice(IPlayer player, Attribute attribute) {
         switch (attribute) {
             case AGILITY:
-                return (int) (price + (Math.pow(player.getBaseAgility() - getStartAttribute(player, Attribute.AGILITY), 2)) * multiplier);
+                return (int) (price + (Math.pow(player.getBaseAgility() - player.getStartAttribute(Attribute.AGILITY), 2)) * multiplier);
             case STRENGTH:
-                return (int) (price + (Math.pow(player.getBaseStrength() - getStartAttribute(player, Attribute.STRENGTH), 2)) * multiplier);
+                return (int) (price + (Math.pow(player.getBaseStrength() - player.getStartAttribute(Attribute.STRENGTH), 2)) * multiplier);
             case MAXHEALTH:
-                return (int) (price + (Math.pow(player.getBaseMaxHealth() - getStartAttribute(player, Attribute.MAXHEALTH), 2)) * multiplier);
+                return (int) (price + (Math.pow(player.getBaseMaxHealth() - player.getStartAttribute(Attribute.MAXHEALTH), 2)) * multiplier);
             case MAGICPOINTS:
-                return (int) (price + (Math.pow(player.getBaseMagicPoints() - getStartAttribute(player, Attribute.MAGICPOINTS), 2)) * multiplier);
+                return (int) (price + (Math.pow(player.getBaseMagicPoints() - player.getStartAttribute(Attribute.MAGICPOINTS), 2)) * multiplier);
             default:
                 return 0;
         }
@@ -46,45 +46,6 @@ public class ActionCoach extends Action {
         System.out.println(Logger.CYAN + "2." + " Agility + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.AGILITY) + Logger.WHITE + ")");
         System.out.println(Logger.CYAN + "3." + " Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAGICPOINTS) + Logger.WHITE + ")");
         System.out.println(Logger.CYAN + "4." + " Max Health + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAXHEALTH) + Logger.WHITE + ")");
-    }
-
-    private int getStartAttribute(IPlayer player, Attribute attribute) {
-        switch (attribute) {
-            case AGILITY:
-                if (PlayerWarrior.class.equals(player.getClass())) {
-                    return PlayerWarrior.getStartAgility();
-                } else if (PlayerMage.class.equals(player.getClass())) {
-                    return PlayerMage.getStartAgility();
-                } else if (PlayerScout.class.equals(player.getClass())) {
-                    return PlayerScout.getStartAgility();
-                }
-            case STRENGTH:
-                if (PlayerWarrior.class.equals(player.getClass())) {
-                    return PlayerWarrior.getStartStrength();
-                } else if (PlayerMage.class.equals(player.getClass())) {
-                    return PlayerMage.getStartStrength();
-                } else if (PlayerScout.class.equals(player.getClass())) {
-                    return PlayerScout.getStartStrength();
-                }
-            case MAXHEALTH:
-                if (PlayerWarrior.class.equals(player.getClass())) {
-                    return PlayerWarrior.getStartMaxHealth();
-                } else if (PlayerMage.class.equals(player.getClass())) {
-                    return PlayerMage.getStartMaxHealth();
-                } else if (PlayerScout.class.equals(player.getClass())) {
-                    return PlayerScout.getStartMaxHealth();
-                }
-            case MAGICPOINTS:
-                if (PlayerWarrior.class.equals(player.getClass())) {
-                    return PlayerWarrior.getStartMagicPoints();
-                } else if (PlayerMage.class.equals(player.getClass())) {
-                    return PlayerMage.getStartMagicPoints();
-                } else if (PlayerScout.class.equals(player.getClass())) {
-                    return PlayerScout.getStartMagicPoints();
-                }
-            default:
-                return 0;
-        }
     }
 
     private boolean checkPlayerGold(IPlayer player, Attribute attribute) {

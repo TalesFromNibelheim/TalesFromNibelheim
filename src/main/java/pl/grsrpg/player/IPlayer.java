@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.IField;
+import pl.grsrpg.utils.Attribute;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -48,14 +49,6 @@ public interface IPlayer extends Entity {
 
     int getAdditionalMagicPoints();
 
-    void setAdditionalMaxHealth(int maxHealth);
-
-    void setAdditionalStrength(int strength);
-
-    void setAdditionalAgility(int agility);
-
-    void setAdditionalMagicPoints(int magicPoints);
-
     int getCurrentMapLevel();
 
     void addGold(int value);
@@ -67,4 +60,6 @@ public interface IPlayer extends Entity {
     void addAdditionalAgility(int agility);
 
     void addAdditionalMagicPoints(int magicPoints);
+
+    int getStartAttribute(Attribute attribute);
 }

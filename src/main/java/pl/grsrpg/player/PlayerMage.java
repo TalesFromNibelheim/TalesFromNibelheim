@@ -3,6 +3,7 @@ package pl.grsrpg.player;
 import lombok.NoArgsConstructor;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.MageFightManager;
+import pl.grsrpg.utils.Attribute;
 
 @NoArgsConstructor
 public class PlayerMage extends Player {
@@ -45,4 +46,21 @@ public class PlayerMage extends Player {
                 "  Magic Points: " + Logger.YELLOW + startMagicPoints + "\n" + Logger.RESET +
                 "  Equipment Capacity: " + Logger.YELLOW + startEquipmentCapacity + Logger.RESET;
     }
+
+    @Override
+    public int getStartAttribute(Attribute attribute){
+        switch (attribute) {
+            case AGILITY:
+                return PlayerMage.getStartAgility();
+            case STRENGTH:
+                return PlayerMage.getStartStrength();
+            case MAXHEALTH:
+                return PlayerMage.getStartMaxHealth();
+            case MAGICPOINTS:
+                return PlayerMage.getStartMagicPoints();
+            default:
+                return 0;
+        }
+    }
+
 }
