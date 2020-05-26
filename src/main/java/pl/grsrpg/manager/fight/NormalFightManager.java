@@ -1,14 +1,18 @@
 package pl.grsrpg.manager.fight;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import pl.grsrpg.card.GameCardEnemy;
-import pl.grsrpg.card.GameCardFriend;
-import pl.grsrpg.card.GameCardItem;
+import lombok.NoArgsConstructor;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
+import pl.grsrpg.player.IPlayer;
 
+@NoArgsConstructor
 public abstract class NormalFightManager implements FightManager{
+    protected IPlayer player;
+
+    public NormalFightManager(IPlayer player) {
+        this.player = player;
+    }
+
     @Override
     public boolean fight(Enemy enemy) {
         return false;

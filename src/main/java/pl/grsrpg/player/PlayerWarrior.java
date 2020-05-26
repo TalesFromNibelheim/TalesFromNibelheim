@@ -1,23 +1,22 @@
 package pl.grsrpg.player;
 
 import lombok.NoArgsConstructor;
-import pl.grsrpg.field.Field;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.WarriorFightManager;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.entity.Entity;
 
 @NoArgsConstructor
-public class GamePlayerWarrior extends GamePlayer {
+public class PlayerWarrior extends Player {
     private static final int startMaxHealth = 20;
     private static final int startStrength = 5;
     private static final int startAgility = 2;
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
-    public GamePlayerWarrior(String name, int currentField) {
+    public PlayerWarrior(String name, int currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
-        this.fightManager = new WarriorFightManager();
+        this.fightManager = new WarriorFightManager(this);
     }
 
     float knockdown(){

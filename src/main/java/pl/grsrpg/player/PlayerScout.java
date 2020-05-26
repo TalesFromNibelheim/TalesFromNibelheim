@@ -5,16 +5,16 @@ import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.ScoutFightManager;
 
 @NoArgsConstructor
-public class GamePlayerScout extends GamePlayer {
+public class PlayerScout extends Player {
     private static final int startMaxHealth = 20;
     private static final int startStrength = 5;
     private static final int startAgility = 2;
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
-    public GamePlayerScout(String name, int currentField) {
+    public PlayerScout(String name, int currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
-        this.fightManager = new ScoutFightManager();
+        this.fightManager = new ScoutFightManager(this);
     }
 
     public static int getStartMaxHealth() {

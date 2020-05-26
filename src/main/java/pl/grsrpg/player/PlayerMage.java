@@ -1,21 +1,20 @@
 package pl.grsrpg.player;
 
 import lombok.NoArgsConstructor;
-import pl.grsrpg.field.Field;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.MageFightManager;
 
 @NoArgsConstructor
-public class GamePlayerMage extends GamePlayer {
+public class PlayerMage extends Player {
     private static final int startMaxHealth = 20;
     private static final int startStrength = 5;
     private static final int startAgility = 2;
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
-    public GamePlayerMage(String name, int currentField) {
+    public PlayerMage(String name, int currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
-        this.fightManager = new MageFightManager();
+        this.fightManager = new MageFightManager(this);
     }
 
     public static int getStartMaxHealth() {

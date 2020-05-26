@@ -1,14 +1,14 @@
 package pl.grsrpg.card;
 
 import pl.grsrpg.entity.Enemy;
-import pl.grsrpg.player.Player;
+import pl.grsrpg.player.IPlayer;
 
-public class GameCardEnemy extends GameCard {
+public class CardEnemy extends Card {
     private Enemy enemy;
     private int prize;
 
     @Override
-    public boolean execute(Player player) {
+    public boolean execute(IPlayer player) {
         //TODO walka
         return true;
     }

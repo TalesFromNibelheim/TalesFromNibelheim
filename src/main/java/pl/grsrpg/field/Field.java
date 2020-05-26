@@ -1,21 +1,23 @@
 package pl.grsrpg.field;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import pl.grsrpg.player.Player;
+import lombok.Getter;
+import lombok.ToString;
+import pl.grsrpg.action.IAction;
+import pl.grsrpg.player.IPlayer;
+import pl.grsrpg.utils.DiceRoll;
 
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = GameField.class, name = "normal"),
-        @JsonSubTypes.Type(value = BossGameField.class, name = "boss"),
-})
-public interface Field {
-    String getName();
+import java.util.List;
 
-    String getDescription();
+@Getter
+@ToString
+public class Field implements IField {
+    private String name;
+    private String description;
+    private List<IAction> actions;
 
-    void execute(Player player);
+    @Override
+    public void execute(IPlayer player) {
+        int actionNumber = DiceRoll.rollPublic(1, actions.size());
+        actions.get(actionNumber - 1).execute(player);
+    }
 }

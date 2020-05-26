@@ -1,18 +1,17 @@
 package pl.grsrpg.card;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import pl.grsrpg.player.GamePlayerMage;
-import pl.grsrpg.player.GamePlayerScout;
-import pl.grsrpg.player.GamePlayerWarrior;
-import pl.grsrpg.player.Player;
+import pl.grsrpg.player.PlayerMage;
+import pl.grsrpg.player.PlayerScout;
+import pl.grsrpg.player.PlayerWarrior;
+import pl.grsrpg.player.IPlayer;
 
 @Getter
 @ToString
 @Setter
-public class GameCardItem extends GameCard {
+public class CardItem extends Card {
     private int health;
     private int strength;
     private int agility;
@@ -23,11 +22,11 @@ public class GameCardItem extends GameCard {
     private Class profession;
 
     @Override
-    public boolean execute(Player player) {
+    public boolean execute(IPlayer player) {
 
-        if ( (player instanceof GamePlayerMage && this.getProfession() == GamePlayerMage.class) ||
-              (player instanceof GamePlayerScout && this.getProfession() == GamePlayerScout.class) ||
-                (player instanceof GamePlayerWarrior && this.getProfession() == GamePlayerWarrior.class) ) {
+        if ( (player instanceof PlayerMage && this.getProfession() == PlayerMage.class) ||
+              (player instanceof PlayerScout && this.getProfession() == PlayerScout.class) ||
+                (player instanceof PlayerWarrior && this.getProfession() == PlayerWarrior.class) ) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());
             player.addAdditionalMagicPoints(this.getMagicPoints());
