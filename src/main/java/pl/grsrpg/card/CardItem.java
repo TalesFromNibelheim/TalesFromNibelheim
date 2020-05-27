@@ -31,7 +31,7 @@ public class CardItem extends Card {
             player.addAdditionalStrength(this.getStrength());
             player.addGold(this.getGold());
             //todo co z tym armorem?
-            if(gold != 0)
+            if(gold == 0)
                 player.addCard(this);
             return true;
         }else{

@@ -22,9 +22,6 @@ public class Field implements IField {
 
     @Override
     public void execute(IPlayer player) {
-        System.out.println();
-        System.out.println("You are now in "+ Logger.CYAN+name+Logger.RESET);
-        System.out.println("From possible actions: ");
         for(int i = 1; i <= actions.size(); i++){
             IAction action = actions.get(i - 1);
             if(action instanceof ActionTakeCard && undefeatedCard != null){

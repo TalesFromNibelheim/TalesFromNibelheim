@@ -55,8 +55,10 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public ICard removeCard(String name) {
         for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getName().equals(name))
+            if (cards.get(i).getName().equals(name)){
+                this.recalculateAttributes();
                 return cards.remove(i);
+            }
         }
         return null;
     }
@@ -81,6 +83,9 @@ public abstract class Player extends Enemy implements IPlayer {
     public void move(int mapLevel, int filedNumber, IField field) {
         this.currentField = filedNumber;
         this.currentMapLevel = mapLevel;
+        System.out.println();
+        System.out.println("You are now in "+ Logger.CYAN+field.getName()+Logger.RESET);
+        System.out.println("From possible actions: ");
         field.execute(this);
     }
 
