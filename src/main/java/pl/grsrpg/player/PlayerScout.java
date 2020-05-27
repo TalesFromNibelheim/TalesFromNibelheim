@@ -3,6 +3,7 @@ package pl.grsrpg.player;
 import lombok.NoArgsConstructor;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.ScoutFightManager;
+import pl.grsrpg.utils.DiceRoll;
 
 @NoArgsConstructor
 public class PlayerScout extends Player {
@@ -11,6 +12,7 @@ public class PlayerScout extends Player {
     private static final int startAgility = 2;
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
+    int magicPoints;
 
     public PlayerScout(String name, int currentField) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
@@ -36,6 +38,30 @@ public class PlayerScout extends Player {
     public static int getStartEquipmentCapacity() {
         return startEquipmentCapacity;
     }
+
+
+    float CriticalArrrow(){
+        magicPoints -= 5;
+        return 0.5F*(getBaseAgility() + getAdditionalAgility());
+    }
+
+    float seriesOfArrows(){
+        magicPoints -= 5;
+        return  0.2F*(getBaseAgility() + getAdditionalAgility())* DiceRoll.rollPrivate(3,2);
+    }
+
+    float repetableArrow(){
+        magicPoints -= 5;
+        return  2*(getBaseAgility() + getAdditionalAgility());
+    }
+
+    float basicAttack(){
+        return(getBaseAgility() + getAdditionalAgility())*0.2F;
+    }
+
+
+
+
 
     public static String getStartDescription() {
         return " Start Attributes: \n" +

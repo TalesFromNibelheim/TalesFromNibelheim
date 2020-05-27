@@ -32,9 +32,15 @@ public class WarriorFightManager extends NormalFightManager{
         return dmg;
     }
 
-    private void printDmg(float dmg){
-        System.out.println("Enemy lost " + dmg + " hp." );
+    private float enemyAttack(Enemy enemy){
+        float dmg = ( 0.4F * enemy.getBaseStrength())* DiceRoll.rollPrivate(1,4);
+        printDmg(dmg);
+        return dmg;
     }
+
+
+
+    private void printDmg(float dmg){ System.out.println("Enemy lost " + dmg + " hp." );}
 
     private void bless(){
         numberOfTour = DiceRoll.rollPrivate(2,4);
@@ -42,12 +48,20 @@ public class WarriorFightManager extends NormalFightManager{
         System.out.println(Logger.YELLOW + "God supports you. You gain " + numberOfAdditionalArmor + " additional armor for "+ numberOfTour +" tours." + Logger.RESET);
     }
 
+    private float damageReduce(){
+        float absorb = DiceRoll.rollPrivate(1,4)* (player.getArmor() + numberOfAdditionalArmor );
+        System.out.println(Logger.WHITE + "Your armor absorb: " + absorb + " damage." +  Logger.RESET);
+        return absorb;
+    }
+
     @Override
     public boolean fight(Enemy enemy) {
+        boolean stun = false;
         PlayerWarrior warrior = (PlayerWarrior)player;
         while(enemy.getHealth() > 0 && player.getHealth() > 0){
             switch(tour){
                 case 1: // tura wojownika
+                    stun = false;
                     if(numberOfTour >= 0) numberOfTour--;
                     System.out.println("It's your turn " + Logger.BLUE + warrior.getName() + "." + Logger.RESET);
                     System.out.println("Your current health: " + Logger.RED  +player.getHealth()+ "." + Logger.RESET);
@@ -62,6 +76,7 @@ public class WarriorFightManager extends NormalFightManager{
                             break;
                         case 2:
                             enemy.takeDamage(warrior.knockdown());
+                            stun = true;
                             break;
                         case 3:
                             enemy.takeDamage(warrior.cleave(enemy));
@@ -76,8 +91,18 @@ public class WarriorFightManager extends NormalFightManager{
                     }
                     tour = 2;
                     break;
-                case 2:
-
+                case 2: // tura wroga
+                    if(!stun){
+                        System.out.println(Logger.BLUE +"Opponent's turn." + Logger.RESET);
+                        System.out.println("Enemy current health: " + Logger.RED  +enemy.getHealth()+ "." + Logger.RESET);
+                        float enemyDamage = enemyAttack(enemy);
+                        float absorb = damageReduce();
+                        if(enemyDamage - absorb <= 0) enemyDamage = 0;
+                        else enemyDamage -= absorb;
+                        player.takeDamage(enemyDamage);
+                        System.out.println("Enemy dealt you: " + Logger.RED + enemyDamage + " damage." + Logger.RESET);
+                    }
+                    tour = 1;
             }
         }
         return true;
