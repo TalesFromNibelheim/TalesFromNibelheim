@@ -150,4 +150,9 @@ public abstract class Player extends Enemy implements IPlayer {
     public boolean dodge() {
         return false;
     }
+
+    @Override
+    public void addArmor(float armor){
+        this.armor += armor;
+    }
 }

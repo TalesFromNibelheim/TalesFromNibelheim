@@ -1,8 +1,6 @@
 package pl.grsrpg.card;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import pl.grsrpg.player.PlayerMage;
 import pl.grsrpg.player.PlayerScout;
 import pl.grsrpg.player.PlayerWarrior;
@@ -10,6 +8,8 @@ import pl.grsrpg.player.IPlayer;
 
 @Getter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class CardItem extends Card {
     private int health;
     private int strength;
@@ -22,19 +22,18 @@ public class CardItem extends Card {
 
     @Override
     public boolean execute(IPlayer player) {
-        if ( (player instanceof PlayerMage && this.getProfession() == PlayerMage.class) ||
-              (player instanceof PlayerScout && this.getProfession() == PlayerScout.class) ||
-                (player instanceof PlayerWarrior && this.getProfession() == PlayerWarrior.class) || this.getProfession() == null ) {
+        if (this.gold == 0 && player.addCard(this) &&
+                (this.profession == null || this.profession == player.getClass() ) ) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());
             player.addAdditionalMagicPoints(this.getMagicPoints());
             player.addAdditionalStrength(this.getStrength());
-            player.addGold(this.getGold());
-            //todo co z tym armorem?
-            if(gold != 0)
-                player.addCard(this);
+            player.addArmor(this.armor);
             return true;
-        }else{
+        } else if (this.gold != 0) {
+            player.addGold(this.gold);
+            return true;
+        } else {
             return false;
         }
     }
