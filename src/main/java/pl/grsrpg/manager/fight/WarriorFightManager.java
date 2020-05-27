@@ -38,9 +38,9 @@ public class WarriorFightManager extends NormalFightManager{
         return dmg;
     }
 
-
-
     private void printDmg(float dmg){ System.out.println("Enemy lost " + dmg + " hp." );}
+
+
 
     private void bless(){
         numberOfTour = DiceRoll.rollPrivate(2,4);

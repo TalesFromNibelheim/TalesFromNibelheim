@@ -40,22 +40,22 @@ public class PlayerScout extends Player {
     }
 
 
-    float CriticalArrrow(){
+    public float CriticalArrrow(){
         magicPoints -= 5;
         return 0.5F*(getBaseAgility() + getAdditionalAgility());
     }
 
-    float seriesOfArrows(){
+    public float seriesOfArrows(){
         magicPoints -= 5;
         return  0.2F*(getBaseAgility() + getAdditionalAgility())* DiceRoll.rollPrivate(3,2);
     }
 
-    float repetableArrow(){
+    public float repetableArrow(){
         magicPoints -= 5;
         return  2*(getBaseAgility() + getAdditionalAgility());
     }
 
-    float basicAttack(){
+    public float basicAttack(){
         return(getBaseAgility() + getAdditionalAgility())*0.2F;
     }
 
