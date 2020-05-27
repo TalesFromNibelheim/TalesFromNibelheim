@@ -28,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: GRSRPG
-        path: "build/libs/*"
+        path: "./build/libs/*"
