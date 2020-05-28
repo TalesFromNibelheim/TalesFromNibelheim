@@ -34,6 +34,7 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int additionalAgility;
     protected int additionalMagicPoints;
 
+    protected int additionalCapacity = 0;
     protected boolean addPoint = false;
     protected float multiplierGold = 1;
     protected boolean friend = false;
@@ -130,7 +131,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public void addGold(int value) {
-        this.gold += value;
+        this.gold += (multiplierGold * value);
     }
 
     @Override
@@ -166,5 +167,17 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public boolean getFriend(){
         return this.friend;
+    }
+
+    @Override
+    public void setFriend(boolean friend){
+        if(!friend){
+            this.friend = false;
+            this.additionalCapacity = 0;
+            this.addPoint = false;
+            this.multiplierGold = 1;
+        }else{
+            this.friend = true;
+        }
     }
 }

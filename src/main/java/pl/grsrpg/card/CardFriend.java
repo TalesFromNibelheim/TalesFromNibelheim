@@ -16,6 +16,14 @@ public class CardFriend extends Card {
     private boolean addPoint;
     private float multiplierGold;
 
+    public CardFriend(String name, String description, int capacity, boolean point, float multiplier)
+    {
+        super(name, description, true);
+        this.capacity = capacity;
+        this.addPoint = point;
+        this.multiplierGold = multiplier;
+    }
+
     @Override
     public boolean execute(IPlayer player) {
         if (this.capacity != 0 && !this.addPoint && this.multiplierGold == 0) {
