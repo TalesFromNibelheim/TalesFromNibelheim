@@ -10,7 +10,7 @@ import pl.grsrpg.player.PlayerWarrior;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class GameCardItemTest {
+public class CardItemTest {
 
     @Test
     public void increaseAttributesWarriorTest(){
@@ -65,7 +65,7 @@ public class GameCardItemTest {
     @Test
     public void addGoldFromCardItemToWarriorTest()
     {
-        Card card = new CardItem("1", "", true, 0,0,0,0,1000,1000,0,null);
+        Card card = new CardItem("1", "", false, 0,0,0,0,1000,1000,0,null);
         Player player = new PlayerWarrior();
         card.execute(player);
         assertEquals(player.getGold(),1000);
@@ -73,7 +73,7 @@ public class GameCardItemTest {
     @Test
     public void addGoldFromCardItemToScoutTest()
     {
-        Card card = new CardItem("1", "", true, 0,0,0,0,1000,1000,0,null);
+        Card card = new CardItem("1", "", false, 0,0,0,0,1000,1000,0,null);
         Player player = new PlayerScout();
         card.execute(player);
         assertEquals(player.getGold(),1000);
@@ -81,7 +81,7 @@ public class GameCardItemTest {
     @Test
     public void addGoldFromCardItemToMageTest()
     {
-        Card card = new CardItem("1", "", true, 0,0,0,0,1000,1000,0,null);
+        Card card = new CardItem("1", "", false, 0,0,0,0,1000,1000,0,null);
         Player player = new PlayerMage();
         card.execute(player);
         assertEquals(player.getGold(),1000);

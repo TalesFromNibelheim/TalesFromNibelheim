@@ -48,6 +48,8 @@ public interface IPlayer extends Entity {
 
     int getAdditionalMagicPoints();
 
+    boolean getAddPoint();
+
     void setAdditionalMaxHealth(int maxHealth);
 
     void setAdditionalStrength(int strength);
@@ -55,6 +57,16 @@ public interface IPlayer extends Entity {
     void setAdditionalAgility(int agility);
 
     void setAdditionalMagicPoints(int magicPoints);
+
+    void setEquipmentCapacity(int capacity);
+
+    void setAddPoint(boolean addPoint);
+
+    void setMultiplierGold(float multiplierGold);
+
+    void setFriend(boolean friend);
+
+    boolean getFriend();
 
     int getCurrentMapLevel();
 

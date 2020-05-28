@@ -34,6 +34,9 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int additionalAgility;
     protected int additionalMagicPoints;
 
+    protected boolean addPoint = false;
+    protected float multiplierGold = 1;
+    protected boolean friend = false;
     @JsonIgnore
     protected FightManager fightManager;
 
@@ -153,5 +156,15 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public void addArmor(float armor){
         this.armor += armor;
+    }
+
+    @Override
+    public boolean getAddPoint(){
+        return this.addPoint;
+    }
+
+    @Override
+    public boolean getFriend(){
+        return this.friend;
     }
 }

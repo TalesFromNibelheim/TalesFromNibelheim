@@ -191,7 +191,7 @@ public class Board implements IBoard {
     }
 
     private Set<IField> getNextFields() {
-        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove());
+        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(),player.getAddPoint());
         Set<IField> ret = new HashSet<>();
         switch (player.getCurrentMapLevel()) {
             case 1:
