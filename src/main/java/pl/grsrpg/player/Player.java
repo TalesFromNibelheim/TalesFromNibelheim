@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.grsrpg.card.Card;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
@@ -36,7 +37,7 @@ public abstract class Player extends Enemy implements IPlayer {
     @JsonIgnore
     protected FightManager fightManager;
 
-    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity, int currentField) {
+    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity) {
         super(name, maxHealth, strength, agility, magicPoints);
         this.equipmentCapacity = equipmentCapacity;
         this.currentField = 0;
@@ -44,9 +45,9 @@ public abstract class Player extends Enemy implements IPlayer {
     }
 
     @Override
-    public boolean addCard(ICard ICard) {
-        if (cards.size() < equipmentCapacity) {
-            cards.add(ICard);
+    public boolean addCard(ICard card) {
+        if (cards.size() < equipmentCapacity && !cards.contains(card)) {
+            cards.add(card);
             return true;
         }
         return false;
@@ -59,6 +60,20 @@ public abstract class Player extends Enemy implements IPlayer {
                 return cards.remove(i);
         }
         return null;
+    }
+
+    @Override
+    public boolean hasCard(String name) {
+        for (ICard card : cards) {
+            if (card.getName().equals(name))
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasCard(ICard card) {
+        return cards.contains(card);
     }
 
     @Override
@@ -144,11 +159,6 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public void addAdditionalMagicPoints(int magicPoints) {
         this.additionalMagicPoints += magicPoints;
-    }
-
-    @Override
-    public boolean dodge() {
-        return false;
     }
 
     @Override

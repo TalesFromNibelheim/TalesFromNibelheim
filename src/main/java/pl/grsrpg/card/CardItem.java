@@ -1,15 +1,12 @@
 package pl.grsrpg.card;
 
 import lombok.*;
-import pl.grsrpg.player.PlayerMage;
-import pl.grsrpg.player.PlayerScout;
-import pl.grsrpg.player.PlayerWarrior;
 import pl.grsrpg.player.IPlayer;
 
 @Getter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class CardItem extends Card {
     private int health;
     private int strength;
@@ -20,10 +17,22 @@ public class CardItem extends Card {
     private float armor;
     private Class profession = null;
 
+    public CardItem(String name, String description, int health, int strength, int agility, int magicPoints, int gold, int itemValue, float armor, Class profession) {
+        super(name, description);
+        this.health = health;
+        this.strength = strength;
+        this.agility = agility;
+        this.magicPoints = magicPoints;
+        this.gold = gold;
+        this.itemValue = itemValue;
+        this.armor = armor;
+        this.profession = profession;
+    }
+
     @Override
     public boolean execute(IPlayer player) {
-        if (this.gold == 0 && player.addCard(this) &&
-                (this.profession == null || this.profession == player.getClass() ) ) {
+        if (this.gold == 0 && (player.hasCard(this) || player.addCard(this)) &&
+                (this.profession == null || this.profession == player.getClass())) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());
             player.addAdditionalMagicPoints(this.getMagicPoints());

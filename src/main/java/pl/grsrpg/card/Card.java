@@ -1,14 +1,20 @@
 package pl.grsrpg.card;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import pl.grsrpg.player.IPlayer;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@EqualsAndHashCode
 public abstract class Card implements ICard {
-    private String name;
-    private String description;
+    protected String name;
+    protected String description;
+
+    public Card(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
     @Override
     public boolean execute(IPlayer player) {

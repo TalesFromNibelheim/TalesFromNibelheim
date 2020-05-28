@@ -18,15 +18,19 @@ import pl.grsrpg.field.IField;
 public interface IPlayer extends Entity {
     void recalculateAttributes();
 
-    void move(int mapLevel, int filedNumber, IField IField);
+    void move(int mapLevel, int filedNumber, IField field);
 
     String getInfo();
 
     String getCardsInfo();
 
-    boolean addCard(ICard ICard);
+    boolean addCard(ICard card);
 
     ICard removeCard(String name);
+
+    boolean hasCard(ICard card);
+
+    boolean hasCard(String name);
 
     int getEquipmentCapacity();
 
@@ -65,8 +69,6 @@ public interface IPlayer extends Entity {
     void addAdditionalStrength(int strength);
 
     void addAdditionalAgility(int agility);
-
-    boolean dodge ();
 
     void addAdditionalMagicPoints(int magicPoints);
 
