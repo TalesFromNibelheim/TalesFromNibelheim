@@ -24,8 +24,8 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int equipmentCapacity;
     protected List<ICard> cards = new LinkedList<>();
     protected int currentMapLevel = 1;
-    protected int currentField;
-    protected int gold;
+    protected int currentField = 0;
+    protected int gold = 0;
 
     protected int additionalMaxHealth;
     protected float armor;
@@ -44,8 +44,6 @@ public abstract class Player extends Enemy implements IPlayer {
     public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity) {
         super(name, maxHealth, strength, agility, magicPoints);
         this.equipmentCapacity = equipmentCapacity;
-        this.currentField = 0;
-        this.gold = 0;
     }
 
     @Override
