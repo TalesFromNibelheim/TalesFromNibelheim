@@ -1,5 +1,6 @@
 - type: "item"
   name: "Kox miecz"
+  carriable: true
   description: "Patrz jaki mam zajebisty miecz!"
   strength: 2000
   itemValue: 100000

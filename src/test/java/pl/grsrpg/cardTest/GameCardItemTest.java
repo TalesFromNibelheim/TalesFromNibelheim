@@ -14,7 +14,7 @@ public class GameCardItemTest {
 
     @Test
     public void increaseAttributesWarriorTest(){
-        Card card = new CardItem("1", "",1,2,3,4,0,2,3, PlayerWarrior.class);
+        Card card = new CardItem("1", "", true, 1,2,3,4,0,2,3, PlayerWarrior.class);
         Player player = new PlayerWarrior();
         player.setEquipmentCapacity(2);
         card.execute(player);
@@ -27,7 +27,7 @@ public class GameCardItemTest {
     @Test
     public void increaseAttributesScoutTest()
     {
-        Card card = new CardItem("1", "",7,4,1,2,0,10,3, PlayerScout.class);
+        Card card = new CardItem("1", "", true, 7,4,1,2,0,10,3, PlayerScout.class);
         Player player = new PlayerScout();
         player.setEquipmentCapacity(2);
         card.execute(player);
@@ -40,7 +40,7 @@ public class GameCardItemTest {
     @Test
     public void increaseAttributesMageTest()
     {
-        Card card = new CardItem("1", "",8,7,6,5,0,11,4, PlayerScout.class);
+        Card card = new CardItem("1", "", true, 8,7,6,5,0,11,4, PlayerScout.class);
         Player player = new PlayerScout();
         player.setEquipmentCapacity(2);
         card.execute(player);
@@ -53,7 +53,7 @@ public class GameCardItemTest {
     @Test
     public void failIncreaseAttributesTest()
     {
-        Card card = new CardItem("1", "",8,7,6,5,0,11,4, PlayerWarrior.class);
+        Card card = new CardItem("1", "", true, 8,7,6,5,0,11,4, PlayerWarrior.class);
         Player player = new PlayerScout();
         card.execute(player);
         assertEquals( 0, player.getAdditionalAgility(),0.01);
@@ -65,7 +65,7 @@ public class GameCardItemTest {
     @Test
     public void addGoldFromCardItemToWarriorTest()
     {
-        Card card = new CardItem("1", "",0,0,0,0,1000,1000,0,null);
+        Card card = new CardItem("1", "", true, 0,0,0,0,1000,1000,0,null);
         Player player = new PlayerWarrior();
         card.execute(player);
         assertEquals(player.getGold(),1000);
@@ -73,7 +73,7 @@ public class GameCardItemTest {
     @Test
     public void addGoldFromCardItemToScoutTest()
     {
-        Card card = new CardItem("1", "",0,0,0,0,1000,1000,0,null);
+        Card card = new CardItem("1", "", true, 0,0,0,0,1000,1000,0,null);
         Player player = new PlayerScout();
         card.execute(player);
         assertEquals(player.getGold(),1000);
@@ -81,7 +81,7 @@ public class GameCardItemTest {
     @Test
     public void addGoldFromCardItemToMageTest()
     {
-        Card card = new CardItem("1", "",0,0,0,0,1000,1000,0,null);
+        Card card = new CardItem("1", "", true, 0,0,0,0,1000,1000,0,null);
         Player player = new PlayerMage();
         card.execute(player);
         assertEquals(player.getGold(),1000);

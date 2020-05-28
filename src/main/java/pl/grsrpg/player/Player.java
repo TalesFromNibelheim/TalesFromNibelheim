@@ -46,7 +46,10 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public boolean addCard(ICard card) {
-        if (cards.size() < equipmentCapacity && !cards.contains(card)) {
+        if (cards.size() < equipmentCapacity) {
+            card.execute(this);
+            if(!card.isCarriable())
+                return true;
             cards.add(card);
             return true;
         }
@@ -60,20 +63,6 @@ public abstract class Player extends Enemy implements IPlayer {
                 return cards.remove(i);
         }
         return null;
-    }
-
-    @Override
-    public boolean hasCard(String name) {
-        for (ICard card : cards) {
-            if (card.getName().equals(name))
-                return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean hasCard(ICard card) {
-        return cards.contains(card);
     }
 
     @Override

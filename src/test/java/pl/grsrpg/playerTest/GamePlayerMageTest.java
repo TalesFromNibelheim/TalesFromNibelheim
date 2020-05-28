@@ -19,9 +19,9 @@ public class GamePlayerMageTest {
     public void addCardTest() {
         Player player = new PlayerMage();
         player.setEquipmentCapacity(1);
-        Card card = new CardItem("1", "", 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
+        Card card = new CardItem("1", "", true,  1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         assertTrue(player.addCard(card));
-        Card card1 = new CardItem("2", "",3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
+        Card card1 = new CardItem("2", "", true, 3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
         assertFalse(player.addCard(card1));
     }
 
@@ -29,7 +29,7 @@ public class GamePlayerMageTest {
     public void failAddCardTest() {
         Player player = new PlayerMage();
         player.setEquipmentCapacity(0);
-        Card card = new CardItem("1", "",1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
+        Card card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         assertFalse(player.addCard(card));
     }
 
@@ -37,9 +37,9 @@ public class GamePlayerMageTest {
     public void removeCardTest() {
         Player player = new PlayerMage();
         player.setEquipmentCapacity(10);
-        Card card = new CardItem("1", "",1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
-        Card card1 = new CardItem("2", "",3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
-        Card card2 = new CardItem("3", "",4, 5, 6, 4, 0, 1, 4, PlayerMage.class);
+        Card card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
+        Card card1 = new CardItem("2", "", true, 3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
+        Card card2 = new CardItem("3", "", true, 4, 5, 6, 4, 0, 1, 4, PlayerMage.class);
         card.setName("C1");
         card1.setName("C2");
         card2.setName("C3");
@@ -60,9 +60,9 @@ public class GamePlayerMageTest {
     public void recalculateAttributesTest() {
         Player player = new PlayerMage();
         player.setEquipmentCapacity(3);
-        Card card = new CardItem("1", "",1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
-        Card card1 = new CardItem("2", "",3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
-        Card card2 = new CardItem("3", "",4, 5, 6, 4, 0, 1, 4, PlayerMage.class);
+        Card card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
+        Card card1 = new CardItem("2", "", true, 3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
+        Card card2 = new CardItem("3", "", true, 4, 5, 6, 4, 0, 1, 4, PlayerMage.class);
         player.addCard(card);
         player.addCard(card1);
         player.addCard(card2);
@@ -78,7 +78,7 @@ public class GamePlayerMageTest {
     public void AdditionalTest() {
         Player player = new PlayerMage();
         player.setEquipmentCapacity(2);
-        ICard card = new CardItem("1", "",1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
+        ICard card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         player.addCard(card);
         player.recalculateAttributes();
         assertEquals(1, player.getAdditionalMaxHealth(), 0.01);

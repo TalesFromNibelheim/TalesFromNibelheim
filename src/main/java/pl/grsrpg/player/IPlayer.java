@@ -28,10 +28,6 @@ public interface IPlayer extends Entity {
 
     ICard removeCard(String name);
 
-    boolean hasCard(ICard card);
-
-    boolean hasCard(String name);
-
     int getEquipmentCapacity();
 
     int getGold();

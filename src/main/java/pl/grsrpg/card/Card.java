@@ -10,10 +10,12 @@ import pl.grsrpg.player.IPlayer;
 public abstract class Card implements ICard {
     protected String name;
     protected String description;
+    protected boolean carriable;
 
-    public Card(String name, String description) {
+    public Card(String name, String description, boolean carriable) {
         this.name = name;
         this.description = description;
+        this.carriable = carriable;
     }
 
     @Override

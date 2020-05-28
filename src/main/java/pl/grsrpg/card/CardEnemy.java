@@ -14,7 +14,7 @@ public class CardEnemy extends Card {
     private int prize;
 
     public CardEnemy(String name, String description, Enemy enemy, int prize) {
-        super(name, description);
+        super(name, description, false);
         this.enemy = enemy;
         this.prize = prize;
     }

@@ -17,8 +17,8 @@ public class CardItem extends Card {
     private float armor;
     private Class profession = null;
 
-    public CardItem(String name, String description, int health, int strength, int agility, int magicPoints, int gold, int itemValue, float armor, Class profession) {
-        super(name, description);
+    public CardItem(String name, String description, boolean carriable, int health, int strength, int agility, int magicPoints, int gold, int itemValue, float armor, Class profession) {
+        super(name, description, carriable);
         this.health = health;
         this.strength = strength;
         this.agility = agility;
@@ -31,19 +31,15 @@ public class CardItem extends Card {
 
     @Override
     public boolean execute(IPlayer player) {
-        if (this.gold == 0 && (player.hasCard(this) || player.addCard(this)) &&
-                (this.profession == null || this.profession == player.getClass())) {
+        if (this.gold == 0 && (this.profession == null || this.profession == player.getClass())) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());
             player.addAdditionalMagicPoints(this.getMagicPoints());
             player.addAdditionalStrength(this.getStrength());
             player.addArmor(this.armor);
-            return true;
         } else if (this.gold != 0) {
             player.addGold(this.gold);
-            return true;
-        } else {
-            return false;
         }
+        return true;
     }
 }
