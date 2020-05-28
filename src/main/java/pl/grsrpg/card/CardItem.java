@@ -31,13 +31,13 @@ public class CardItem extends Card {
 
     @Override
     public boolean execute(IPlayer player) {
-        if (this.gold == 0 && (this.profession == null || this.profession == player.getClass())) {
+        if (carriable && (this.profession == null || this.profession == player.getClass())) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());
             player.addAdditionalMagicPoints(this.getMagicPoints());
             player.addAdditionalStrength(this.getStrength());
             player.addArmor(this.armor);
-        } else if (this.gold != 0) {
+        } else {
             player.addGold(this.gold);
         }
         return true;
