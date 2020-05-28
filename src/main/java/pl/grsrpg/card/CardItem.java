@@ -1,15 +1,12 @@
 package pl.grsrpg.card;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import pl.grsrpg.player.PlayerMage;
-import pl.grsrpg.player.PlayerScout;
-import pl.grsrpg.player.PlayerWarrior;
+import lombok.*;
 import pl.grsrpg.player.IPlayer;
 
 @Getter
 @ToString
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class CardItem extends Card {
     private int health;
     private int strength;
@@ -20,22 +17,29 @@ public class CardItem extends Card {
     private float armor;
     private Class profession = null;
 
+    public CardItem(String name, String description, boolean carriable, int health, int strength, int agility, int magicPoints, int gold, int itemValue, float armor, Class profession) {
+        super(name, description, carriable);
+        this.health = health;
+        this.strength = strength;
+        this.agility = agility;
+        this.magicPoints = magicPoints;
+        this.gold = gold;
+        this.itemValue = itemValue;
+        this.armor = armor;
+        this.profession = profession;
+    }
+
     @Override
     public boolean execute(IPlayer player) {
-        if ( (player instanceof PlayerMage && this.getProfession() == PlayerMage.class) ||
-              (player instanceof PlayerScout && this.getProfession() == PlayerScout.class) ||
-                (player instanceof PlayerWarrior && this.getProfession() == PlayerWarrior.class) || this.getProfession() == null ) {
+        if (carriable && (this.profession == null || this.profession == player.getClass())) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());
             player.addAdditionalMagicPoints(this.getMagicPoints());
             player.addAdditionalStrength(this.getStrength());
-            player.addGold(this.getGold());
-            //todo co z tym armorem?
-            if(gold != 0)
-                player.addCard(this);
-            return true;
-        }else{
-            return false;
+            player.addArmor(this.armor);
+        } else {
+            player.addGold(this.gold);
         }
+        return true;
     }
 }

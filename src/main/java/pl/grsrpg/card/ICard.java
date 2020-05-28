@@ -19,4 +19,6 @@ public interface ICard {
     String getName();
 
     String getDescription();
+
+    boolean isCarriable();
 }

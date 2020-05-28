@@ -12,8 +12,8 @@ public class PlayerScout extends Player {
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
-    public PlayerScout(String name, int currentField) {
-        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
+    public PlayerScout(String name) {
+        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
         this.fightManager = new ScoutFightManager(this);
     }
 

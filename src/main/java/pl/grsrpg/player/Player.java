@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.grsrpg.card.Card;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
@@ -23,8 +24,8 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int equipmentCapacity;
     protected List<ICard> cards = new LinkedList<>();
     protected int currentMapLevel = 1;
-    protected int currentField;
-    protected int gold;
+    protected int currentField = 0;
+    protected int gold = 0;
 
     protected int additionalMaxHealth;
     protected float armor;
@@ -33,20 +34,25 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int additionalAgility;
     protected int additionalMagicPoints;
 
+    protected int additionalCapacity = 0;
+    protected boolean addPoint = false;
+    protected float multiplierGold = 1;
+    protected boolean friend = false;
     @JsonIgnore
     protected FightManager fightManager;
 
-    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity, int currentField) {
+    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity) {
         super(name, maxHealth, strength, agility, magicPoints);
         this.equipmentCapacity = equipmentCapacity;
-        this.currentField = 0;
-        this.gold = 0;
     }
 
     @Override
-    public boolean addCard(ICard ICard) {
+    public boolean addCard(ICard card) {
         if (cards.size() < equipmentCapacity) {
-            cards.add(ICard);
+            card.execute(this);
+            if(!card.isCarriable())
+                return true;
+            cards.add(card);
             return true;
         }
         return false;
@@ -123,7 +129,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public void addGold(int value) {
-        this.gold += value;
+        this.gold += (multiplierGold * value);
     }
 
     @Override
@@ -147,7 +153,29 @@ public abstract class Player extends Enemy implements IPlayer {
     }
 
     @Override
-    public boolean dodge() {
-        return false;
+    public void addArmor(float armor){
+        this.armor += armor;
+    }
+
+    @Override
+    public boolean getAddPoint(){
+        return this.addPoint;
+    }
+
+    @Override
+    public boolean getFriend(){
+        return this.friend;
+    }
+
+    @Override
+    public void setFriend(boolean friend){
+        if(!friend){
+            this.friend = false;
+            this.additionalCapacity = 0;
+            this.addPoint = false;
+            this.multiplierGold = 1;
+        }else{
+            this.friend = true;
+        }
     }
 }
