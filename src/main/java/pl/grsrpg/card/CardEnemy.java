@@ -23,6 +23,8 @@ public class CardEnemy extends Card {
     public boolean execute(IPlayer player) {
         if(!player.fight(enemy)){
             Game.getGame().getBoard().getField(player.getCurrentMapLevel(), player.getCurrentField()).setUndefeatedCard(this);
+        } else {
+            player.addGold(prize);
         }
         return true;
     }

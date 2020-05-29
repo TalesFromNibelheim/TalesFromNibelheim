@@ -84,14 +84,16 @@ public class ActionCoach extends Action {
         int temp = 0;
         boolean luckyMan = false;
         if (DiceRoll.luckyRoll()) luckyMan = true;
-        System.out.println("You meet " + name + " on your way.");
+        System.out.println("You meet " + Logger.CYAN + name + Logger.RESET + " on your way.");
         System.out.println("Hello. Do you want to improve your attributes for a small fee?");
-        System.out.println("1. Yes / 2. No");
+        System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
         temp = IOUtils.getScanner().nextInt();
         while (temp == 1) {
-            priceList(player);
-            Attribute choice = Attribute.fromId(IOUtils.getScanner().nextInt());
-            while (choice == null) choice = Attribute.fromId(IOUtils.getScanner().nextInt());
+            Attribute choice = null;
+            while (choice == null) {
+                priceList(player);
+                choice = Attribute.fromId(IOUtils.getScanner().nextInt());
+            }
             if (checkPlayerGold(player, choice)) {
                 if (!luckyMan) {
                     System.out.println("Training was successful. Do you want to see your attributes now?");
@@ -101,15 +103,13 @@ public class ActionCoach extends Action {
                     System.out.println("Wow you're very smart. Training was successful. Do you want to see your attributes now?");
                     luckyMan = false;
                 }
-                System.out.println("1. Yes / 2. No");
-                do temp = IOUtils.getScanner().nextInt();
-                while (temp != 1 && temp != 2);
+                System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
+                temp = IOUtils.getScanner().nextInt();
                 if (temp == 1) player.getInfo();
             } else System.out.println("Sorry you don't have gold enough.");
             System.out.println("Do you want to continue training?");
-            System.out.println("1. Yes / 2. No");
-            do temp = IOUtils.getScanner().nextInt();
-            while (temp != 1 && temp != 2);
+            System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
+            temp = IOUtils.getScanner().nextInt();
         }
         System.out.println("See you soon!");
     }
