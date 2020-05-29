@@ -8,7 +8,7 @@ import pl.grsrpg.Game;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.card.Card;
 import pl.grsrpg.field.BossField;
-import pl.grsrpg.field.IBossIField;
+import pl.grsrpg.field.IBossField;
 import pl.grsrpg.field.IField;
 import pl.grsrpg.field.Field;
 import pl.grsrpg.logger.Logger;
@@ -115,7 +115,6 @@ public class Board implements IBoard {
 
         }
         System.out.println(Logger.RESET + " known as " + Logger.BRIGHT_GREEN + name + Logger.RESET);
-        player.recalculateAttributes();
     }
 
     public void gameLoop() {
@@ -168,7 +167,7 @@ public class Board implements IBoard {
         for (int i = 1; i <= availableFields.length; i++) {
             IField field = availableFields[i - 1];
             System.out.print(Logger.YELLOW + i + ". ");
-            if(field instanceof IBossIField)
+            if(field instanceof IBossField)
                 System.out.print(Logger.RED+"BOSS ");
             System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription());
         }
@@ -211,7 +210,7 @@ public class Board implements IBoard {
         int currentField = player.getCurrentField();
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, fieldsToMove)));
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, -fieldsToMove)));
-        if (((IBossIField) level1GameFields.get(level1GameFields.size() - 1)).isDefeated()) {
+        if (((IBossField) level1GameFields.get(level1GameFields.size() - 1)).isDefeated()) {
             int nextLevelMove = 0;
             if (currentField + fieldsToMove % level1GameFields.size() >= level1GameFields.size()) {
                 nextLevelMove = currentField + fieldsToMove % level1GameFields.size();
@@ -229,7 +228,7 @@ public class Board implements IBoard {
         int currentField = player.getCurrentField();
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, fieldsToMove)));
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, -fieldsToMove)));
-        if (((IBossIField) level2GameFields.get(level2GameFields.size() - 1)).isDefeated()) {
+        if (((IBossField) level2GameFields.get(level2GameFields.size() - 1)).isDefeated()) {
             if (currentField + fieldsToMove % level2GameFields.size() == 0 || currentField - fieldsToMove % level2GameFields.size() == -2) {
                 ret.add(level3GameFields.get(0));
             }

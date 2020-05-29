@@ -61,8 +61,10 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public ICard removeCard(String name) {
         for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getName().equals(name))
+            if (cards.get(i).getName().equals(name)){
+                this.recalculateAttributes();
                 return cards.remove(i);
+            }
         }
         return null;
     }
@@ -87,6 +89,9 @@ public abstract class Player extends Enemy implements IPlayer {
     public void move(int mapLevel, int filedNumber, IField field) {
         this.currentField = filedNumber;
         this.currentMapLevel = mapLevel;
+        System.out.println();
+        System.out.println("You are now in "+ Logger.CYAN+field.getName()+Logger.RESET);
+        System.out.println("From possible actions: ");
         field.execute(this);
     }
 
@@ -122,9 +127,9 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public String getCardsInfo() {
         int i = 2;
-        return "Cards: \n " + Logger.YELLOW + "1. " + Logger.RESET + cards.stream()
+        return  "Cards: \n " + Logger.YELLOW + (cards.size() > 0 ? "1. " + Logger.RESET + cards.stream()
                 .map(card -> "Name: " + Logger.CYAN + card.getName() + Logger.RESET + "\n    Description: " + card.getDescription())
-                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", ""));
+                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", "")) : "None" + Logger.RESET );
     }
 
     @Override

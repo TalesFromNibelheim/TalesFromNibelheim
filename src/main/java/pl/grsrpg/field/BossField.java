@@ -3,14 +3,13 @@ package pl.grsrpg.field;
 import lombok.Getter;
 import lombok.ToString;
 import pl.grsrpg.entity.Boss;
-import pl.grsrpg.entity.Entity;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 import pl.grsrpg.utils.IOUtils;
 
 @Getter
 @ToString
-public class BossField extends Field implements IBossIField {
+public class BossField extends Field implements IBossField {
     private boolean defeated = false;
     private Boss boss;
 
