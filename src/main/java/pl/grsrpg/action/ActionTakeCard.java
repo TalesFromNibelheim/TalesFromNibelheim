@@ -11,7 +11,7 @@ import pl.grsrpg.player.IPlayer;
 public class ActionTakeCard extends Action {
     @Override
     public boolean execute(IPlayer player){
-        return Game.getGame().getBoard().drawCard().execute(player);
+        return player.addCard(Game.getGame().getBoard().drawCard());
     }
 
     @JsonIgnore

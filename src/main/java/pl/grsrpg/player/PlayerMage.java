@@ -13,8 +13,8 @@ public class PlayerMage extends Player {
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
-    public PlayerMage(String name, int currentField) {
-        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
+    public PlayerMage(String name) {
+        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
         this.fightManager = new MageFightManager(this);
     }
 

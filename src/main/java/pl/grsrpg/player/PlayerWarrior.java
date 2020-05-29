@@ -15,8 +15,8 @@ public class PlayerWarrior extends Player {
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
 
-    public PlayerWarrior(String name, int currentField) {
-        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
+    public PlayerWarrior(String name) {
+        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
         this.fightManager = new WarriorFightManager(this);
     }
 

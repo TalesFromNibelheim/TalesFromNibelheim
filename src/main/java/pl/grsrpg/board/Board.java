@@ -100,16 +100,16 @@ public class Board implements IBoard {
         System.out.print("You will be " + Logger.YELLOW);
         switch (classChoose) {
             case 1:
-                player = new PlayerMage(name, 0);
+                player = new PlayerMage(name);
                 System.out.print("Mage");
                 break;
             case 2:
-                player = new PlayerScout(name, 0);
+                player = new PlayerScout(name);
                 System.out.print("Scout");
                 break;
             case 3:
             default:
-                player = new PlayerWarrior(name, 0);
+                player = new PlayerWarrior(name);
                 System.out.print("Warrior");
                 break;
 
@@ -190,7 +190,7 @@ public class Board implements IBoard {
     }
 
     private Set<IField> getNextFields() {
-        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove());
+        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(),player.getAddPoint());
         Set<IField> ret = new HashSet<>();
         switch (player.getCurrentMapLevel()) {
             case 1:
