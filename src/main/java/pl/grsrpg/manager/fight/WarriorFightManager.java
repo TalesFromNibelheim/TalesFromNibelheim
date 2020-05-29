@@ -105,6 +105,13 @@ public class WarriorFightManager extends NormalFightManager{
                     tour = 1;
             }
         }
+        if(player.getHealth() > 0){
+            System.out.println("You won and earn" + Logger.YELLOW + enemy.getReward() + " golds." + Logger.RESET);
+            player.setGold(player.getGold() + enemy.getReward());
+        }else{
+            System.out.println("You lost.");
+        }
+        player.restore();
         return true;
     }
 }

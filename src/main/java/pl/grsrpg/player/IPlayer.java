@@ -71,4 +71,6 @@ public interface IPlayer extends Entity {
     void addAdditionalMagicPoints(int magicPoints);
 
     float getArmor();
+
+    void restore();
 }
