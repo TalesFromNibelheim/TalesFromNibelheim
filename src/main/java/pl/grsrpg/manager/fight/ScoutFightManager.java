@@ -67,7 +67,7 @@ public class ScoutFightManager extends NormalFightManager {
                             printDmg(dmg);
                             break;
                         case 3:
-                            dmg = scout.seriesOfArrows());
+                            dmg = scout.seriesOfArrows();
                             enemy.takeDamage(dmg);
                             printDmg(dmg);
                             break;
