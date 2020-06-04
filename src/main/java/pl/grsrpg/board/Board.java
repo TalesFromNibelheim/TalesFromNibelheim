@@ -96,7 +96,7 @@ public class Board implements IBoard {
         System.out.println(Logger.YELLOW + "3. " + Logger.CYAN + "Warrior" + Logger.RESET);
         System.out.println(PlayerWarrior.getStartDescription());
         System.out.print("What is your choice:(default: 3) ");
-        int classChoose = IOUtils.getScanner().nextInt();
+        int classChoose = IOUtils.nextInt();
         System.out.print("You will be " + Logger.YELLOW);
         switch (classChoose) {
             case 1:
@@ -146,7 +146,7 @@ public class Board implements IBoard {
         System.out.println(Logger.YELLOW + "3. " + Logger.RESET + "Roll a dice and move to new field.");
         System.out.println(Logger.YELLOW + "4. " + Logger.RESET + "Save and quit.");
         System.out.print("What is your next move?(default: 3) ");
-        int choice = IOUtils.getScanner().nextInt();
+        int choice = IOUtils.nextInt();
         System.out.println();
         return choice;
     }
@@ -172,7 +172,7 @@ public class Board implements IBoard {
             System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription());
         }
         System.out.print("Where you want to move?(default: 1) ");
-        int choice = IOUtils.getScanner().nextInt() - 1;
+        int choice = IOUtils.nextInt() - 1;
         if (choice > availableFields.length || choice < 0) {
             choice = 0;
         }

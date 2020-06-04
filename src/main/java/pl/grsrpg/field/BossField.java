@@ -21,7 +21,7 @@ public class BossField extends Field implements IBossField {
         }
         System.out.println("Do you fell enough powerful to fight " + Logger.CYAN + boss.getName() + Logger.RESET + "?");
         System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
-        int choice = IOUtils.getScanner().nextInt();
+        int choice = IOUtils.nextInt();
         if(choice == 1){
             if(player.fight(boss)){
                 defeated = true;

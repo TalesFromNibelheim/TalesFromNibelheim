@@ -87,12 +87,12 @@ public class ActionCoach extends Action {
         System.out.println("You meet " + Logger.CYAN + name + Logger.RESET + " on your way.");
         System.out.println("Hello. Do you want to improve your attributes for a small fee?");
         System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
-        temp = IOUtils.getScanner().nextInt();
+        temp = IOUtils.nextInt();
         while (temp == 1) {
             Attribute choice = null;
             while (choice == null) {
                 priceList(player);
-                choice = Attribute.fromId(IOUtils.getScanner().nextInt());
+                choice = Attribute.fromId(IOUtils.nextInt());
             }
             if (checkPlayerGold(player, choice)) {
                 if (!luckyMan) {
@@ -104,12 +104,12 @@ public class ActionCoach extends Action {
                     luckyMan = false;
                 }
                 System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
-                temp = IOUtils.getScanner().nextInt();
+                temp = IOUtils.nextInt();
                 if (temp == 1) player.getInfo();
             } else System.out.println("Sorry you don't have gold enough.");
             System.out.println("Do you want to continue training?");
             System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
-            temp = IOUtils.getScanner().nextInt();
+            temp = IOUtils.nextInt();
         }
         System.out.println("See you soon!");
     }
