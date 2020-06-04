@@ -60,9 +60,6 @@ public class PlayerScout extends Player {
     }
 
 
-
-
-
     public static String getStartDescription() {
         return " Start Attributes: \n" +
                 "  Max Health: " + Logger.YELLOW + startMaxHealth + "\n" + Logger.RESET +

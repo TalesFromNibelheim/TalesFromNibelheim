@@ -63,12 +63,6 @@ public class PlayerMage extends Player {
         return dmg;
     }
 
-
-
-
-
-
-
     public static String getStartDescription() {
         return " Start Attributes: \n" +
                 "  Max Health: " + Logger.YELLOW + startMaxHealth + "\n" + Logger.RESET +
