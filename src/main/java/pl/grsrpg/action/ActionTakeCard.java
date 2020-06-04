@@ -10,7 +10,7 @@ import pl.grsrpg.player.IPlayer;
 
 public class ActionTakeCard extends Action {
     @Override
-    public boolean execute(IPlayer player){
+    public boolean execute(IPlayer player) {
         return player.addCard(Game.getGame().getBoard().drawCard());
     }
 

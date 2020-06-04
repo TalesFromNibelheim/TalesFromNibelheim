@@ -20,7 +20,6 @@ public class ScoutFightManager implements FightManager {
         this.player = player;
     }
 
-
     private void printDmg(float dmg) {
         System.out.println("Enemy lost " + dmg + " hp.");
     }

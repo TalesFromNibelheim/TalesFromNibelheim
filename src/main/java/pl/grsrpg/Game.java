@@ -12,6 +12,7 @@ import java.io.IOException;
 @Getter
 public class Game {
     private static Config config;
+
     public static Config getConfig() {
         return config;
     }
@@ -29,35 +30,35 @@ public class Game {
     }
 
     public Game() {
-        if(!loadGame()){
+        if (!loadGame()) {
             this.board = new Board();
             this.board.startGame();
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         loadConfig();
         game = new Game();
         game.startGameLoop();
     }
 
-    private static void loadConfig(){
+    private static void loadConfig() {
         File config = IOUtils.openFile("config/config.yml", "config.yml");
-        try{
+        try {
             Game.config = IOUtils.getMapper().readValue(config, Config.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private boolean loadGame(){
-        File save = new File(IOUtils.getDataPath()+"/data/save.yml");
-        if(save.exists()){
+    private boolean loadGame() {
+        File save = new File(IOUtils.getDataPath() + "/data/save.yml");
+        if (save.exists()) {
             System.out.print("Found previous game save, load it?[Y/n] ");
             String choice = IOUtils.getScanner().next();
-            if(choice.equals("n"))
+            if (choice.equals("n"))
                 return false;
-            try{
+            try {
                 this.board = IOUtils.getMapper().readValue(save, Board.class);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -67,7 +68,7 @@ public class Game {
         return false;
     }
 
-    private void startGameLoop(){
+    private void startGameLoop() {
         this.board.gameLoop();
     }
 }

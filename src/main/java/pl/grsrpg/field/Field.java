@@ -22,16 +22,16 @@ public class Field implements IField {
 
     @Override
     public void execute(IPlayer player) {
-        for(int i = 1; i <= actions.size(); i++){
+        for (int i = 1; i <= actions.size(); i++) {
             IAction action = actions.get(i - 1);
-            if(action instanceof ActionTakeCard && undefeatedCard != null){
-                System.out.println(Logger.YELLOW+i+". Card: \n  Name: "+Logger.CYAN+undefeatedCard.getName()+Logger.RESET+"\n  Description: "+undefeatedCard.getDescription());
+            if (action instanceof ActionTakeCard && undefeatedCard != null) {
+                System.out.println(Logger.YELLOW + i + ". Card: \n  Name: " + Logger.CYAN + undefeatedCard.getName() + Logger.RESET + "\n  Description: " + undefeatedCard.getDescription());
             } else {
-                System.out.println(Logger.YELLOW+i+". "+Logger.RESET+action.getInfo());
+                System.out.println(Logger.YELLOW + i + ". " + Logger.RESET + action.getInfo());
             }
         }
         int actionNumber = DiceRoll.rollPrivate(1, actions.size());
-        System.out.println("You drew action number: "+Logger.YELLOW+actionNumber+Logger.RESET);
+        System.out.println("You drew action number: " + Logger.YELLOW + actionNumber + Logger.RESET);
         actions.get(actionNumber - 1).execute(player);
     }
 

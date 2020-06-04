@@ -53,7 +53,7 @@ public abstract class Player extends Enemy implements IPlayer {
     public boolean addCard(ICard card) {
         if (cards.size() < equipmentCapacity) {
             card.execute(this);
-            if(!card.isCarriable())
+            if (!card.isCarriable())
                 return true;
             cards.add(card);
             return true;
@@ -64,7 +64,7 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public ICard removeCard(String name) {
         for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getName().equals(name)){
+            if (cards.get(i).getName().equals(name)) {
                 this.recalculateAttributes();
                 return cards.remove(i);
             }
@@ -93,7 +93,7 @@ public abstract class Player extends Enemy implements IPlayer {
         this.currentField = filedNumber;
         this.currentMapLevel = mapLevel;
         System.out.println();
-        System.out.println("You are now in "+ Logger.CYAN+field.getName()+Logger.RESET);
+        System.out.println("You are now in " + Logger.CYAN + field.getName() + Logger.RESET);
         System.out.println("From possible actions: ");
         field.execute(this);
     }
@@ -101,7 +101,7 @@ public abstract class Player extends Enemy implements IPlayer {
     @JsonIgnore
     @Override
     public String getInfo() {
-        return  "Statistics: \n" +
+        return "Statistics: \n" +
                 " Health: " + Logger.CYAN + this.health + Logger.RESET + "/" + Logger.YELLOW + (this.baseMaxHealth + this.additionalMaxHealth) + "\n" + Logger.RESET +
                 " Strength: " + Logger.YELLOW + (this.baseStrength + this.additionalStrength) + "\n" + Logger.RESET +
                 " Agility: " + Logger.YELLOW + +(this.baseAgility + this.additionalAgility) + "\n" + Logger.RESET +
@@ -127,9 +127,9 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public String getCardsInfo() {
         int i = 2;
-        return  "Cards: \n " + Logger.YELLOW + (cards.size() > 0 ? "1. " + Logger.RESET + cards.stream()
+        return "Cards: \n " + Logger.YELLOW + (cards.size() > 0 ? "1. " + Logger.RESET + cards.stream()
                 .map(card -> "Name: " + Logger.CYAN + card.getName() + Logger.RESET + "\n    Description: " + card.getDescription())
-                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", "")) : "None" + Logger.RESET );
+                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", "")) : "None" + Logger.RESET);
     }
 
     @Override
@@ -161,30 +161,30 @@ public abstract class Player extends Enemy implements IPlayer {
     public void restore() {
         this.magicPoints = this.getMagicPoints();
         this.health = this.getMaxHealth();
-    }  
+    }
 
-    public void addArmor(float armor){
+    public void addArmor(float armor) {
         this.armor += armor;
     }
 
     @Override
-    public boolean getAddPoint(){
+    public boolean getAddPoint() {
         return this.addPoint;
     }
 
     @Override
-    public boolean getFriend(){
+    public boolean getFriend() {
         return this.friend;
     }
 
     @Override
-    public void setFriend(boolean friend){
-        if(!friend){
+    public void setFriend(boolean friend) {
+        if (!friend) {
             this.friend = false;
             this.additionalCapacity = 0;
             this.addPoint = false;
             this.multiplierGold = 1;
-        }else{
+        } else {
             this.friend = true;
         }
     }

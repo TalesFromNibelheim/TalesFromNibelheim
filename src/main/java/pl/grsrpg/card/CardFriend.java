@@ -6,7 +6,7 @@ import pl.grsrpg.player.IPlayer;
 
 @ToString
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper =  true)
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @Getter
 @Setter
@@ -16,8 +16,7 @@ public class CardFriend extends Card {
     private boolean addPoint;
     private float multiplierGold;
 
-    public CardFriend(String name, String description, int capacity, boolean point, float multiplier)
-    {
+    public CardFriend(String name, String description, int capacity, boolean point, float multiplier) {
         super(name, description, true);
         this.capacity = capacity;
         this.addPoint = point;
@@ -30,11 +29,11 @@ public class CardFriend extends Card {
             player.setEquipmentCapacity(player.getEquipmentCapacity() + capacity);
             player.setFriend(true);
             return true;
-        }else if (this.capacity == 0 && this.addPoint && this.multiplierGold == 0){
+        } else if (this.capacity == 0 && this.addPoint && this.multiplierGold == 0) {
             player.setAddPoint(true);
             player.setFriend(true);
             return true;
-        }else if (this.capacity == 0 && !this.addPoint && this.multiplierGold != 0){
+        } else if (this.capacity == 0 && !this.addPoint && this.multiplierGold != 0) {
             player.setMultiplierGold(this.multiplierGold);
             player.setFriend(true);
             return true;

@@ -21,7 +21,7 @@ public class IOUtils {
     }
 
     public static int nextInt() {
-        while(true){
+        while (true) {
             if (scanner.hasNext("[1-9]+")) {
                 return scanner.nextInt();
             }

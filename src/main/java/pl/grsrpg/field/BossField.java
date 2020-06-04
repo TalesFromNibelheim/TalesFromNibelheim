@@ -15,15 +15,15 @@ public class BossField extends Field implements IBossField {
 
     @Override
     public void execute(IPlayer player) {
-        if(defeated){
+        if (defeated) {
             super.execute(player);
             return;
         }
         System.out.println("Do you fell enough powerful to fight " + Logger.CYAN + boss.getName() + Logger.RESET + "?");
-        System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
+        System.out.print(Logger.YELLOW + "1. " + Logger.RESET + "Yes/" + Logger.YELLOW + "2. " + Logger.RESET + "No (default: 2) ");
         int choice = IOUtils.nextInt();
-        if(choice == 1){
-            if(player.fight(boss)){
+        if (choice == 1) {
+            if (player.fight(boss)) {
                 defeated = true;
             }
         } else {

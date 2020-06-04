@@ -167,8 +167,8 @@ public class Board implements IBoard {
         for (int i = 1; i <= availableFields.length; i++) {
             IField field = availableFields[i - 1];
             System.out.print(Logger.YELLOW + i + ". ");
-            if(field instanceof IBossField)
-                System.out.print(Logger.RED+"BOSS ");
+            if (field instanceof IBossField)
+                System.out.print(Logger.RED + "BOSS ");
             System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription());
         }
         System.out.print("Where you want to move?(default: 1) ");
@@ -182,7 +182,7 @@ public class Board implements IBoard {
         if (fieldNumber == -1 && level2GameFields.contains(nextField)) {
             mapLevel = 2;
             fieldNumber = level2GameFields.indexOf(nextField);
-        } else if(fieldNumber == -1){
+        } else if (fieldNumber == -1) {
             mapLevel = 3;
             fieldNumber = level3GameFields.indexOf(nextField);
         }
@@ -190,7 +190,7 @@ public class Board implements IBoard {
     }
 
     private Set<IField> getNextFields() {
-        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(),player.getAddPoint());
+        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(), player.getAddPoint());
         Set<IField> ret = new HashSet<>();
         switch (player.getCurrentMapLevel()) {
             case 1:
@@ -257,11 +257,11 @@ public class Board implements IBoard {
 
 
     private int wrap(int listSize, int currentPosition, int nextPosition) {
-        return ( (currentPosition + nextPosition) % listSize  < 0 ? ( (currentPosition + nextPosition) % listSize) + listSize : (currentPosition + nextPosition) % listSize);
+        return ((currentPosition + nextPosition) % listSize < 0 ? ((currentPosition + nextPosition) % listSize) + listSize : (currentPosition + nextPosition) % listSize);
     }
 
     @JsonIgnore
-    public IField getField(int level, int filedNumber){
+    public IField getField(int level, int filedNumber) {
         switch (level) {
             case 1:
                 return level1GameFields.get(filedNumber);
@@ -274,8 +274,8 @@ public class Board implements IBoard {
     }
 
     @JsonIgnore
-    public ICard drawCard(){
-        if(cards.isEmpty()){
+    public ICard drawCard() {
+        if (cards.isEmpty()) {
             loadCards();
         }
         return cards.remove(0);

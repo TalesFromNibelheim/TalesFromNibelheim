@@ -39,24 +39,24 @@ public class PlayerMage extends Player {
         return startEquipmentCapacity;
     }
 
-    public float thunder(){
-        this.magicPoints  -= 5;
-        float dmg = 0.7F*(2.5F * this.getMagicPoints());
-        System.out.println("You deal " + ( dmg) + " damage and stun enemy.");
+    public float thunder() {
+        this.magicPoints -= 5;
+        float dmg = 0.7F * (2.5F * this.getMagicPoints());
+        System.out.println("You deal " + (dmg) + " damage and stun enemy.");
         return dmg;
     }
 
-    public float fireBall(){
-        this.magicPoints  -= 5;
+    public float fireBall() {
+        this.magicPoints -= 5;
         float dmg = (4F * this.getMagicPoints());
-        System.out.println("You deal " + ( dmg) + " damage.");
+        System.out.println("You deal " + (dmg) + " damage.");
         return dmg;
     }
 
-    public float iceChain(){
-        this.magicPoints  -= 5;
-        float dmg = (this.getMagicPoints())*(DiceRoll.rollPrivate(1,6));
-        System.out.println("You deal " + ( dmg) + " damage.");
+    public float iceChain() {
+        this.magicPoints -= 5;
+        float dmg = (this.getMagicPoints()) * (DiceRoll.rollPrivate(1, 6));
+        System.out.println("You deal " + (dmg) + " damage.");
         return dmg;
     }
 
@@ -70,7 +70,7 @@ public class PlayerMage extends Player {
     }
 
     @Override
-    public int getStartAttribute(Attribute attribute){
+    public int getStartAttribute(Attribute attribute) {
         switch (attribute) {
             case AGILITY:
                 return PlayerMage.getStartAgility();
