@@ -60,7 +60,7 @@ public class ScoutFightManager implements FightManager {
                 printDmg(dmg);
                 break;
             case 2:
-                dmg = player.CriticalArrrow();
+                dmg = player.criticalArrow();
                 enemy.takeDamage(dmg);
                 printDmg(dmg);
                 break;
@@ -70,7 +70,7 @@ public class ScoutFightManager implements FightManager {
                 printDmg(dmg);
                 break;
             case 4:
-                dmg = player.repetableArrow();
+                dmg = player.repeatableArrow();
                 enemy.takeDamage(dmg);
                 printDmg(dmg);
         }
@@ -79,7 +79,7 @@ public class ScoutFightManager implements FightManager {
 
     private void enemyTour(Enemy enemy) {
         float check = DiceRoll.rollPrivate(1, 100);
-        if (0.5F * (check + player.getAdditionalAgility() + player.getBaseAgility()) > 50) dodge = true;
+        if (0.5F * (check + player.getAgility()) > 50) dodge = true;
         if (!dodge) {
             System.out.println(Logger.BLUE + "Opponent's turn." + Logger.RESET);
             System.out.println("Enemy current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);

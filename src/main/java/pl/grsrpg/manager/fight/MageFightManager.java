@@ -38,7 +38,7 @@ public class MageFightManager implements FightManager {
     }
 
     private float basicAttack() {
-        float dmg = (0.2F * player.getBaseStrength() + player.getAdditionalStrength()) * DiceRoll.rollPrivate(1, 4);
+        float dmg = (0.2F * player.getStrength()) * DiceRoll.rollPrivate(1, 4);
         printDmg(dmg);
         return dmg;
     }

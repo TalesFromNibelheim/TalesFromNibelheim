@@ -13,7 +13,6 @@ public class PlayerScout extends Player {
     private static final int startAgility = 2;
     private static final int startMagicPoints = 2;
     private static final int startEquipmentCapacity = 10;
-    int magicPoints;
 
     public PlayerScout(String name) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
@@ -41,23 +40,23 @@ public class PlayerScout extends Player {
     }
 
 
-    public float CriticalArrrow(){
-        magicPoints -= 5;
-        return 0.5F*(getBaseAgility() + getAdditionalAgility());
+    public float criticalArrow(){
+        this.magicPoints -= 5;
+        return 0.5F*(this.getAgility());
     }
 
     public float seriesOfArrows(){
-        magicPoints -= 5;
-        return  0.2F*(getBaseAgility() + getAdditionalAgility())* DiceRoll.rollPrivate(3,2);
+        this.magicPoints -= 5;
+        return  0.2F*(this.getAgility())* DiceRoll.rollPrivate(3,2);
     }
 
-    public float repetableArrow(){
-        magicPoints -= 5;
-        return  2*(getBaseAgility() + getAdditionalAgility());
+    public float repeatableArrow(){
+        this.magicPoints -= 5;
+        return  2*(this.getAgility());
     }
 
     public float basicAttack(){
-        return(getBaseAgility() + getAdditionalAgility())*0.2F;
+        return(this.getAgility())*0.2F;
     }
 
 

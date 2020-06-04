@@ -88,4 +88,12 @@ public interface IPlayer extends Entity {
     int getStartAttribute(Attribute attribute);
 
     void addArmor(float armor);
+
+    int getMaxHealth();
+
+    int getStrength();
+
+    int getAgility();
+
+    int getMagicPoints();
 }

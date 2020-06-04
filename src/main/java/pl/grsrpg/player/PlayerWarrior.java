@@ -20,34 +20,33 @@ public class PlayerWarrior extends Player {
         this.fightManager = new WarriorFightManager(this);
     }
 
-    public float knockdown(){
-        this.baseMagicPoints  -= 5;
-        if(DiceRoll.rollPrivate(1,6) >= 4){
-            System.out.println("You dealt additional damage " + ( 2.5F * this.additionalStrength +0.4F*baseStrength ) + "and knockdown enemy.");
-            return ( 2.5F * this.additionalStrength +0.2F*baseStrength );
+    public float knockdown() {
+        this.magicPoints -= 5;
+        if (DiceRoll.rollPrivate(1, 6) >= 4) {
+            System.out.println("You dealt additional damage " + (2.5F * this.getAdditionalStrength() + 0.4F * this.getBaseStrength()) + "and knockdown enemy.");
+            return (2.5F * this.getAdditionalStrength() + 0.2F * this.getBaseStrength());
         }
 
-        return 2*this.additionalStrength + 0.3F*baseStrength;
+        return 2 * this.getAdditionalStrength() + 0.3F * this.getBaseStrength();
     }
 
-    public float cleave(Entity entity){
-        this.baseMagicPoints -= 5;
-        if(this.health < this.health*0.3){
-            System.out.println("You deal amage " + 2.5F * (this.additionalStrength + startStrength*0.4) + ".");
-            return 2.5F * (this.additionalStrength + startStrength);
+    public float cleave(Entity entity) {
+        this.magicPoints -= 5;
+        if (this.health < this.health * 0.3) {
+            System.out.println("You deal amage " + 2.5F * (this.additionalStrength + startStrength * 0.4) + ".");
+            return 2.5F * (this.getStrength());
         }
-        if(entity.getHealth() < entity.getBaseMaxHealth()*0.2){
-            System.out.println("AMAZING! You dealt " + ( entity.getHealth()) + " damage.");
+        if (entity.getHealth() < entity.getBaseMaxHealth() * 0.2) {
+            System.out.println("AMAZING! You dealt " + (entity.getHealth()) + " damage.");
             return entity.getHealth();
         }
-        System.out.println("You dealt " + ( 2F* (this.additionalStrength + startStrength) ) + " damage.");
-        return 2F* (this.additionalStrength + startStrength);
+        System.out.println("You dealt " + (2F * (this.getStrength())) + " damage.");
+        return 2F * (this.getStrength());
     }
 
-    public void blessingOfTheShield(){
-        this.baseMagicPoints -= 5;
+    public void blessingOfTheShield() {
+        this.magicPoints -= 5;
     }
-
 
     public static int getStartMaxHealth() {
         return startMaxHealth;
@@ -79,7 +78,7 @@ public class PlayerWarrior extends Player {
     }
 
     @Override
-    public int getStartAttribute(Attribute attribute){
+    public int getStartAttribute(Attribute attribute) {
         switch (attribute) {
             case AGILITY:
                 return PlayerWarrior.getStartAgility();
