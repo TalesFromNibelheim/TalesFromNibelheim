@@ -103,9 +103,36 @@ public class WarriorFightManager implements FightManager {
             stun = false;
     }
 
-    private void bossTour(Boss enemy) {
-
+    public void bossAttack(int roll, float dmg, Boss enemy) {
+        if (roll == 1){
+            this.player.takeDamage(dmg);
+            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+        }
+        else if (roll == 2) {
+            dmg = enemy.headHunter(enemy.rage(dmg));
+            this.player.takeDamage(dmg);
+            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+        } else if (roll == 3) {
+            dmg = enemy.finalShot(enemy.rage(dmg));
+            this.player.takeDamage(dmg);
+            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+        }
     }
+
+    private void bossTour(Boss enemy) {
+        if (!stun) {
+            System.out.println(Logger.BLUE + "Opponent's turn." + Logger.RESET);
+            System.out.println("Enemy current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
+            float enemyDamage = enemyAttack(enemy);
+            float absorb = damageReduce();
+            if (enemyDamage - absorb <= 0) enemyDamage = 0;
+            else enemyDamage -= absorb;
+            bossAttack(DiceRoll.rollPrivate(1,4), enemyDamage , enemy);
+        } else
+            System.out.println("Boss can't move!!! Now is your chance.");
+        stun = false;
+    }
+
 
     @Override
     public boolean fight(Entity enemy) {
