@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.grsrpg.card.Card;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
@@ -23,8 +24,8 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int equipmentCapacity;
     protected List<ICard> cards = new LinkedList<>();
     protected int currentMapLevel = 1;
-    protected int currentField;
-    protected int gold;
+    protected int currentField = 0;
+    protected int gold = 0;
 
     protected int additionalMaxHealth;
     protected float armor;
@@ -33,20 +34,25 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int additionalAgility;
     protected int additionalMagicPoints;
 
+    protected int additionalCapacity = 0;
+    protected boolean addPoint = false;
+    protected float multiplierGold = 1;
+    protected boolean friend = false;
     @JsonIgnore
     protected FightManager fightManager;
 
-    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity, int currentField) {
+    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity) {
         super(name, maxHealth, strength, agility, magicPoints);
         this.equipmentCapacity = equipmentCapacity;
-        this.currentField = 0;
-        this.gold = 0;
     }
 
     @Override
-    public boolean addCard(ICard ICard) {
+    public boolean addCard(ICard card) {
         if (cards.size() < equipmentCapacity) {
-            cards.add(ICard);
+            card.execute(this);
+            if(!card.isCarriable())
+                return true;
+            cards.add(card);
             return true;
         }
         return false;
@@ -55,8 +61,10 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public ICard removeCard(String name) {
         for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getName().equals(name))
+            if (cards.get(i).getName().equals(name)){
+                this.recalculateAttributes();
                 return cards.remove(i);
+            }
         }
         return null;
     }
@@ -81,6 +89,9 @@ public abstract class Player extends Enemy implements IPlayer {
     public void move(int mapLevel, int filedNumber, IField field) {
         this.currentField = filedNumber;
         this.currentMapLevel = mapLevel;
+        System.out.println();
+        System.out.println("You are now in "+ Logger.CYAN+field.getName()+Logger.RESET);
+        System.out.println("From possible actions: ");
         field.execute(this);
     }
 
@@ -113,14 +124,14 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public String getCardsInfo() {
         int i = 2;
-        return "Cards: \n " + Logger.YELLOW + "1. " + Logger.RESET + cards.stream()
+        return  "Cards: \n " + Logger.YELLOW + (cards.size() > 0 ? "1. " + Logger.RESET + cards.stream()
                 .map(card -> "Name: " + Logger.CYAN + card.getName() + Logger.RESET + "\n    Description: " + card.getDescription())
-                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", ""));
+                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", "")) : "None" + Logger.RESET );
     }
 
     @Override
     public void addGold(int value) {
-        this.gold += value;
+        this.gold += (multiplierGold * value);
     }
 
     @Override
@@ -145,6 +156,31 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public void restore() {
+    }  
 
+    public void addArmor(float armor){
+        this.armor += armor;
+    }
+
+    @Override
+    public boolean getAddPoint(){
+        return this.addPoint;
+    }
+
+    @Override
+    public boolean getFriend(){
+        return this.friend;
+    }
+
+    @Override
+    public void setFriend(boolean friend){
+        if(!friend){
+            this.friend = false;
+            this.additionalCapacity = 0;
+            this.addPoint = false;
+            this.multiplierGold = 1;
+        }else{
+            this.friend = true;
+        }
     }
 }

@@ -8,7 +8,7 @@ import pl.grsrpg.Game;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.card.Card;
 import pl.grsrpg.field.BossField;
-import pl.grsrpg.field.IBossIField;
+import pl.grsrpg.field.IBossField;
 import pl.grsrpg.field.IField;
 import pl.grsrpg.field.Field;
 import pl.grsrpg.logger.Logger;
@@ -96,26 +96,25 @@ public class Board implements IBoard {
         System.out.println(Logger.YELLOW + "3. " + Logger.CYAN + "Warrior" + Logger.RESET);
         System.out.println(PlayerWarrior.getStartDescription());
         System.out.print("What is your choice:(default: 3) ");
-        int classChoose = IOUtils.getScanner().nextInt();
+        int classChoose = IOUtils.nextInt();
         System.out.print("You will be " + Logger.YELLOW);
         switch (classChoose) {
             case 1:
-                player = new PlayerMage(name, 0);
+                player = new PlayerMage(name);
                 System.out.print("Mage");
                 break;
             case 2:
-                player = new PlayerScout(name, 0);
+                player = new PlayerScout(name);
                 System.out.print("Scout");
                 break;
             case 3:
             default:
-                player = new PlayerWarrior(name, 0);
+                player = new PlayerWarrior(name);
                 System.out.print("Warrior");
                 break;
 
         }
         System.out.println(Logger.RESET + " known as " + Logger.BRIGHT_GREEN + name + Logger.RESET);
-        player.recalculateAttributes();
     }
 
     public void gameLoop() {
@@ -147,7 +146,7 @@ public class Board implements IBoard {
         System.out.println(Logger.YELLOW + "3. " + Logger.RESET + "Roll a dice and move to new field.");
         System.out.println(Logger.YELLOW + "4. " + Logger.RESET + "Save and quit.");
         System.out.print("What is your next move?(default: 3) ");
-        int choice = IOUtils.getScanner().nextInt();
+        int choice = IOUtils.nextInt();
         System.out.println();
         return choice;
     }
@@ -168,12 +167,12 @@ public class Board implements IBoard {
         for (int i = 1; i <= availableFields.length; i++) {
             IField field = availableFields[i - 1];
             System.out.print(Logger.YELLOW + i + ". ");
-            if(field instanceof IBossIField)
+            if(field instanceof IBossField)
                 System.out.print(Logger.RED+"BOSS ");
             System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription());
         }
         System.out.print("Where you want to move?(default: 1) ");
-        int choice = IOUtils.getScanner().nextInt() - 1;
+        int choice = IOUtils.nextInt() - 1;
         if (choice > availableFields.length || choice < 0) {
             choice = 0;
         }
@@ -191,7 +190,7 @@ public class Board implements IBoard {
     }
 
     private Set<IField> getNextFields() {
-        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove());
+        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(),player.getAddPoint());
         Set<IField> ret = new HashSet<>();
         switch (player.getCurrentMapLevel()) {
             case 1:
@@ -211,7 +210,7 @@ public class Board implements IBoard {
         int currentField = player.getCurrentField();
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, fieldsToMove)));
         ret.add(level1GameFields.get(wrap(level1GameFields.size(), currentField, -fieldsToMove)));
-        if (((IBossIField) level1GameFields.get(level1GameFields.size() - 1)).isDefeated()) {
+        if (((IBossField) level1GameFields.get(level1GameFields.size() - 1)).isDefeated()) {
             int nextLevelMove = 0;
             if (currentField + fieldsToMove % level1GameFields.size() >= level1GameFields.size()) {
                 nextLevelMove = currentField + fieldsToMove % level1GameFields.size();
@@ -229,7 +228,7 @@ public class Board implements IBoard {
         int currentField = player.getCurrentField();
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, fieldsToMove)));
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, -fieldsToMove)));
-        if (((IBossIField) level2GameFields.get(level2GameFields.size() - 1)).isDefeated()) {
+        if (((IBossField) level2GameFields.get(level2GameFields.size() - 1)).isDefeated()) {
             if (currentField + fieldsToMove % level2GameFields.size() == 0 || currentField - fieldsToMove % level2GameFields.size() == -2) {
                 ret.add(level3GameFields.get(0));
             }

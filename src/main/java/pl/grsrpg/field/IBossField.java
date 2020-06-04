@@ -1,5 +1,5 @@
 package pl.grsrpg.field;
 
-public interface IBossIField extends IField {
+public interface IBossField extends IField {
     boolean isDefeated();
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 public class DiceRoll {
     private static final Random generator = new Random();
 
-    public static int rollPublic(int numberOfDices, int numberOnDice) {
+    public static int rollPublic(int numberOfDices, int numberOnDice, boolean addPoints) {
         int sumFromDices = 0;
         boolean combo = true;
         int first = generator.nextInt(numberOnDice) + 1;
@@ -25,7 +25,10 @@ public class DiceRoll {
         }
         if (numberOfDices > 1)
             System.out.println(Logger.RED + "Together: " + Logger.YELLOW + sumFromDices + Logger.RESET);
-        return sumFromDices;
+        if(addPoints)
+            return (sumFromDices+1);
+        else
+            return sumFromDices;
     }
 
     public static int rollPrivate(int numberOfDices, int numberOnDice) {
@@ -40,7 +43,7 @@ public class DiceRoll {
     }
 
     public static boolean luckyRoll() {
-        return ((generator.nextInt()% 6 ) + 1) == 6;
+        return ((generator.nextInt(6) ) + 1) == 6;
     }
 
 }

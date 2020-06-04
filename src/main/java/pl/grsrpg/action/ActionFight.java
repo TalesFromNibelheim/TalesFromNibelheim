@@ -11,10 +11,14 @@ import pl.grsrpg.entity.Entity;
 public class ActionFight extends Action {
     @JsonProperty
     private Enemy entity;
+    @JsonProperty
+    private int prize;
 
     @Override
     public boolean execute(IPlayer player){
-        player.fight(entity);
+        if(player.fight(entity)){
+            player.addGold(prize);
+        }
         return true;
     }
 

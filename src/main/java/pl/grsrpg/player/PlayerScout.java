@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.ScoutFightManager;
 import pl.grsrpg.utils.DiceRoll;
+import pl.grsrpg.utils.Attribute;
 
 @NoArgsConstructor
 public class PlayerScout extends Player {
@@ -14,8 +15,8 @@ public class PlayerScout extends Player {
     private static final int startEquipmentCapacity = 10;
     int magicPoints;
 
-    public PlayerScout(String name, int currentField) {
-        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity, currentField);
+    public PlayerScout(String name) {
+        super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
         this.fightManager = new ScoutFightManager(this);
     }
 
@@ -67,5 +68,21 @@ public class PlayerScout extends Player {
                 "  Agility: " + Logger.YELLOW + startAgility + "\n" + Logger.RESET +
                 "  Magic Points: " + Logger.YELLOW + startMagicPoints + "\n" + Logger.RESET +
                 "  Equipment Capacity: " + Logger.YELLOW + startEquipmentCapacity + Logger.RESET;
+    }
+
+    @Override
+    public int getStartAttribute(Attribute attribute){
+        switch (attribute) {
+            case AGILITY:
+                return PlayerScout.getStartAgility();
+            case STRENGTH:
+                return PlayerScout.getStartStrength();
+            case MAXHEALTH:
+                return PlayerScout.getStartMaxHealth();
+            case MAGICPOINTS:
+                return PlayerScout.getStartMagicPoints();
+            default:
+                return 0;
+        }
     }
 }
