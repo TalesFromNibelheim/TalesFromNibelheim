@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class GamePlayerMageTest {
+public class PlayerMageTest {
 
     @Test
     public void addCardTest() {
