@@ -29,4 +29,6 @@ public class Enemy implements Entity {
     public boolean takeDamage(float damage) {
         return false;
     }
+
+
 }

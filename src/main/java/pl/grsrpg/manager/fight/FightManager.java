@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
+import pl.grsrpg.entity.Entity;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -15,7 +16,5 @@ import pl.grsrpg.entity.Enemy;
         @JsonSubTypes.Type(value = MageFightManager.class, name = "mage")
 })
 public interface FightManager {
-    boolean fight(Enemy enemy);
-
-    boolean fight(Boss boss);
+    boolean fight(Entity enemy);
 }

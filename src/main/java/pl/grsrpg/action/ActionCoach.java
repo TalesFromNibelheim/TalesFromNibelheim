@@ -41,11 +41,11 @@ public class ActionCoach extends Action {
         }
     }
 
-    private void priceList(IPlayer player) {
-        System.out.println(Logger.CYAN + "1." + " Strength + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.STRENGTH) + Logger.WHITE + ")");
-        System.out.println(Logger.CYAN + "2." + " Agility + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.AGILITY) + Logger.WHITE + ")");
-        System.out.println(Logger.CYAN + "3." + " Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAGICPOINTS) + Logger.WHITE + ")");
-        System.out.println(Logger.CYAN + "4." + " Max Health + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAXHEALTH) + Logger.WHITE + ")");
+    private void priceList(IPlayer player){
+        System.out.println(Logger.CYAN + "1." + " Strength + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.STRENGTH) + Logger.WHITE + ")" );
+        System.out.println(Logger.CYAN + "2." + " Agility + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.AGILITY) + Logger.WHITE + ")" );
+        System.out.println(Logger.CYAN + "3." + " Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAGICPOINTS) + Logger.WHITE + ")" );
+        System.out.println(Logger.CYAN + "4." + " Max Health + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAXHEALTH) +  Logger.WHITE + ")" );
     }
 
     private boolean checkPlayerGold(IPlayer player, Attribute attribute) {

@@ -3,6 +3,7 @@ package pl.grsrpg.player;
 import lombok.NoArgsConstructor;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.MageFightManager;
+import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.utils.Attribute;
 
 @NoArgsConstructor
@@ -36,6 +37,31 @@ public class PlayerMage extends Player {
 
     public static int getStartEquipmentCapacity() {
         return startEquipmentCapacity;
+    }
+
+    float getMagicPoints(){
+        return this.getAdditionalMagicPoints() + getStartMagicPoints();
+    }
+
+    public float thunder(){
+        this.baseMagicPoints  -= 5;
+        float dmg = 0.7F*(2.5F * this.getMagicPoints());
+        System.out.println("You deal " + ( dmg) + " damage and stun enemy.");
+        return dmg;
+    }
+
+    public float fireBall(){
+        this.baseMagicPoints  -= 5;
+        float dmg = (4F * this.getMagicPoints());
+        System.out.println("You deal " + ( dmg) + " damage.");
+        return dmg;
+    }
+
+    public float iceChain(){
+        this.baseMagicPoints  -= 5;
+        float dmg = (this.getMagicPoints())*(DiceRoll.rollPrivate(1,6));
+        System.out.println("You deal " + ( dmg) + " damage.");
+        return dmg;
     }
 
     public static String getStartDescription() {

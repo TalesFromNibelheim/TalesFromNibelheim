@@ -20,26 +20,32 @@ public class PlayerWarrior extends Player {
         this.fightManager = new WarriorFightManager(this);
     }
 
-    float knockdown(){
+    public float knockdown(){
         this.baseMagicPoints  -= 5;
-        if(DiceRoll.rollPrivate(1,6) >= 4)
-            System.out.println("You deal additional damage " + ( 2.5 * this.additionalStrength ) );
-        return 2*this.additionalStrength;
+        if(DiceRoll.rollPrivate(1,6) >= 4){
+            System.out.println("You dealt additional damage " + ( 2.5F * this.additionalStrength +0.4F*baseStrength ) + "and knockdown enemy.");
+            return ( 2.5F * this.additionalStrength +0.2F*baseStrength );
+        }
+
+        return 2*this.additionalStrength + 0.3F*baseStrength;
     }
 
-    float cleave(Entity entity){
+    public float cleave(Entity entity){
         this.baseMagicPoints -= 5;
-        if(this.health < this.health*0.3) return 2.5F * (this.additionalStrength + startStrength);
-        if(entity.getHealth() < entity.getBaseMaxHealth()*0.2) return entity.getHealth();
+        if(this.health < this.health*0.3){
+            System.out.println("You deal amage " + 2.5F * (this.additionalStrength + startStrength*0.4) + ".");
+            return 2.5F * (this.additionalStrength + startStrength);
+        }
+        if(entity.getHealth() < entity.getBaseMaxHealth()*0.2){
+            System.out.println("AMAZING! You dealt " + ( entity.getHealth()) + " damage.");
+            return entity.getHealth();
+        }
+        System.out.println("You dealt " + ( 2F* (this.additionalStrength + startStrength) ) + " damage.");
         return 2F* (this.additionalStrength + startStrength);
     }
 
-    float blessingOfTheShield(int numberOfTour, int numberOfAdditionalArmor ){
+    public void blessingOfTheShield(){
         this.baseMagicPoints -= 5;
-        numberOfTour = DiceRoll.rollPrivate(2,4);
-        numberOfAdditionalArmor = DiceRoll.rollPrivate(5,30);
-        System.out.println(Logger.YELLOW + "God supports you. You gain " + numberOfAdditionalArmor + " additional armor." + Logger.RESET);
-        return 0F;
     }
 
 

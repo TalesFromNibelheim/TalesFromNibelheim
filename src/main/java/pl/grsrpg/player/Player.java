@@ -117,10 +117,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public boolean fight(Entity entity) {
-        if (entity instanceof Boss)
-            return fightManager.fight((Boss) entity);
-        else
-            return fightManager.fight((Enemy) entity);
+        return fightManager.fight(entity);
     }
 
     @JsonIgnore
@@ -158,6 +155,9 @@ public abstract class Player extends Enemy implements IPlayer {
     }
 
     @Override
+    public void restore() {
+    }  
+
     public void addArmor(float armor){
         this.armor += armor;
     }
