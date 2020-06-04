@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.grsrpg.card.Card;
 import pl.grsrpg.card.ICard;
-import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.IField;
@@ -65,8 +63,9 @@ public abstract class Player extends Enemy implements IPlayer {
     public ICard removeCard(String name) {
         for (int i = 0; i < cards.size(); i++) {
             if (cards.get(i).getName().equals(name)) {
+                ICard card = cards.remove(i);
                 this.recalculateAttributes();
-                return cards.remove(i);
+                return card;
             }
         }
         return null;

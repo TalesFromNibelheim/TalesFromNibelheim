@@ -7,6 +7,8 @@ import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.IField;
 import pl.grsrpg.utils.Attribute;
 
+import java.util.List;
+
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
@@ -28,6 +30,8 @@ public interface IPlayer extends Entity {
     boolean addCard(ICard card);
 
     ICard removeCard(String name);
+
+    List<ICard> getCards();
 
     int getEquipmentCapacity();
 

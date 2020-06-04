@@ -3,7 +3,7 @@ package pl.grsrpg.entity;
 public interface Entity {
     String getName();
 
-    int getHealth();
+    float getHealth();
 
     int getBaseMaxHealth();
 
@@ -13,7 +13,7 @@ public interface Entity {
 
     int getBaseMagicPoints();
 
-    boolean takeDamage(float damage);
+    void takeDamage(float damage);
 
     void setBaseMaxHealth(int maxHealth);
 

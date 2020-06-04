@@ -22,7 +22,7 @@ public class IOUtils {
 
     public static int nextInt() {
         while (true) {
-            if (scanner.hasNext("[1-9]+")) {
+            if (scanner.hasNext("[0-9]+")) {
                 return scanner.nextInt();
             }
             scanner.next();

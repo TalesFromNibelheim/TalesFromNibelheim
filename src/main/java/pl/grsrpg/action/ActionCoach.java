@@ -2,6 +2,8 @@ package pl.grsrpg.action;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import pl.grsrpg.card.CardItem;
+import pl.grsrpg.card.ICard;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 import pl.grsrpg.player.PlayerMage;
@@ -10,6 +12,9 @@ import pl.grsrpg.player.PlayerWarrior;
 import pl.grsrpg.utils.Attribute;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.utils.IOUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ActionCoach extends Action {
@@ -41,11 +46,11 @@ public class ActionCoach extends Action {
         }
     }
 
-    private void priceList(IPlayer player){
-        System.out.println(Logger.CYAN + "1." + " Strength + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.STRENGTH) + Logger.WHITE + ")" );
-        System.out.println(Logger.CYAN + "2." + " Agility + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.AGILITY) + Logger.WHITE + ")" );
-        System.out.println(Logger.CYAN + "3." + " Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAGICPOINTS) + Logger.WHITE + ")" );
-        System.out.println(Logger.CYAN + "4." + " Max Health + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAXHEALTH) +  Logger.WHITE + ")" );
+    private void priceList(IPlayer player) {
+        System.out.println(Logger.CYAN + "1." + " Strength + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.STRENGTH) + Logger.WHITE + ")");
+        System.out.println(Logger.CYAN + "2." + " Agility + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.AGILITY) + Logger.WHITE + ")");
+        System.out.println(Logger.CYAN + "3." + " Magic Points + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAGICPOINTS) + Logger.WHITE + ")");
+        System.out.println(Logger.CYAN + "4." + " Max Health + 1  (" + Logger.RED + "price: " + getPrice(player, Attribute.MAXHEALTH) + Logger.WHITE + ")");
     }
 
     private boolean checkPlayerGold(IPlayer player, Attribute attribute) {
@@ -80,15 +85,11 @@ public class ActionCoach extends Action {
         }
     }
 
-    private void textMenu(IPlayer player) {
-        int temp = 0;
+    private void attributesChoice(IPlayer player) {
+        boolean work = true;
         boolean luckyMan = false;
         if (DiceRoll.luckyRoll()) luckyMan = true;
-        System.out.println("You meet " + Logger.CYAN + name + Logger.RESET + " on your way.");
-        System.out.println("Hello. Do you want to improve your attributes for a small fee?");
-        System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
-        temp = IOUtils.nextInt();
-        while (temp == 1) {
+        while (work) {
             Attribute choice = null;
             while (choice == null) {
                 priceList(player);
@@ -103,14 +104,61 @@ public class ActionCoach extends Action {
                     System.out.println("Wow you're very smart. Training was successful. Do you want to see your attributes now?");
                     luckyMan = false;
                 }
-                System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
-                temp = IOUtils.nextInt();
-                if (temp == 1) player.getInfo();
+                System.out.print(Logger.YELLOW + "1. " + Logger.RESET + "Yes/" + Logger.YELLOW + "2. " + Logger.RESET + "No (default: 2) ");
+                int menuChoice = IOUtils.nextInt();
+                if (menuChoice == 1) player.getInfo();
             } else System.out.println("Sorry you don't have gold enough.");
             System.out.println("Do you want to continue training?");
-            System.out.print(Logger.YELLOW+"1. "+Logger.RESET+"Yes/"+Logger.YELLOW+"2. "+Logger.RESET+"No (default: 2) ");
-            temp = IOUtils.nextInt();
+            System.out.print(Logger.YELLOW + "1. " + Logger.RESET + "Yes/" + Logger.YELLOW + "2. " + Logger.RESET + "No (default: 2) ");
+            int menuChoice = IOUtils.nextInt();
+            if (menuChoice == 2)
+                work = false;
         }
+    }
+
+    private void sellItems(IPlayer player) {
+        boolean work = true;
+        List<ICard> cards = new ArrayList<>(player.getCards());
+        cards.removeIf(card -> !(card instanceof CardItem));
+        if(cards.isEmpty()){
+            System.out.println("You don't have any items!");
+            return;
+        }
+        while(work){
+            System.out.println("Your items:");
+            int i = 1;
+            for(ICard card : cards){
+                System.out.println(Logger.YELLOW + (i++) + ". " + Logger.RESET);
+                ((CardItem)card).showItemInfo();
+            }
+            System.out.print("Choose item to sell: ");
+            int choice = IOUtils.nextInt() - 1;
+            if(choice < cards.size()){
+                ICard card = cards.get(choice);
+                int itemValue = ((CardItem)card).getItemValue();
+                if(player.removeCard(card.getName()) != null){
+                    player.addGold(itemValue);
+                    cards.remove(choice);
+                }
+            }
+            System.out.println("Do you want to sell more items?");
+            System.out.print(Logger.YELLOW + "1. " + Logger.RESET + "Yes/" + Logger.YELLOW + "2. " + Logger.RESET + "No (default: 2) ");
+            int menuChoice = IOUtils.nextInt();
+            if(menuChoice == 2)
+                work = false;
+        }
+    }
+
+    private void textMenu(IPlayer player) {
+        System.out.println("You meet " + Logger.CYAN + name + Logger.RESET + " on your way.");
+        System.out.println("Hello. Do you want to:");
+        System.out.println(Logger.YELLOW + "1. " + Logger.RESET + "Improve your attributes for a small fee?");
+        System.out.println(Logger.YELLOW + "2. " + Logger.RESET + "Sell your items?");
+        System.out.println(Logger.YELLOW + "3. " + Logger.RESET + "Abort dealing with me?");
+        System.out.print("Your choice: ");
+        int menuChoice = IOUtils.nextInt();
+        if (menuChoice == 1) attributesChoice(player);
+        else if (menuChoice == 2) sellItems(player);
         System.out.println("See you soon!");
     }
 

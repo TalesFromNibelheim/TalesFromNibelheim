@@ -173,7 +173,7 @@ public class Board implements IBoard {
         }
         System.out.print("Where you want to move?(default: 1) ");
         int choice = IOUtils.nextInt() - 1;
-        if (choice > availableFields.length || choice < 0) {
+        if (choice >= availableFields.length || choice < 0) {
             choice = 0;
         }
         IField nextField = availableFields[choice];

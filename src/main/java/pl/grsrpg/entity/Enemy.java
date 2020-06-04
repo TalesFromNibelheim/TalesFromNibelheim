@@ -7,9 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Enemy implements Entity {
+public class Enemy implements Entity, Cloneable {
     protected String name;
-    protected int health;
+    protected float health;
     protected int baseMaxHealth;
 
     protected int baseStrength;
@@ -26,9 +26,17 @@ public class Enemy implements Entity {
     }
 
     @Override
-    public boolean takeDamage(float damage) {
-        return false;
+    public void takeDamage(float damage) {
+        this.health -= (int) damage;
     }
 
-
+    @Override
+    public Enemy clone() {
+        try{
+            return (Enemy)super.clone();
+        } catch (CloneNotSupportedException exception) {
+            //ignore
+        }
+        return null;
+    }
 }

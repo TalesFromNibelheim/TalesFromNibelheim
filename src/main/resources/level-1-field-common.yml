@@ -6,6 +6,7 @@
     - type: "fight"
       entity:
         name: "Wolf"
+        health: 10
         baseMaxHealth: 10
         baseStrength: 5
         baseAgility: 2
@@ -22,6 +23,7 @@
     - type: "fight"
       entity:
         name: "Wolf"
+        health: 10
         baseMaxHealth: 10
         baseStrength: 5
         baseAgility: 2

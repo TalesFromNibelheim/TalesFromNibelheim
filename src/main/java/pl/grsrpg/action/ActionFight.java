@@ -2,6 +2,7 @@ package pl.grsrpg.action;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.ToString;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
@@ -14,7 +15,7 @@ public class ActionFight extends Action {
 
     @Override
     public boolean execute(IPlayer player) {
-        if (player.fight(entity)) {
+        if (player.fight(entity.clone())) {
             player.addGold(prize);
         }
         return true;

@@ -21,7 +21,7 @@ public class CardEnemy extends Card {
 
     @Override
     public boolean execute(IPlayer player) {
-        if (!player.fight(enemy)) {
+        if (!player.fight(enemy.clone())) {
             Game.getGame().getBoard().getField(player.getCurrentMapLevel(), player.getCurrentField()).setUndefeatedCard(this);
         } else {
             player.addGold(prize);

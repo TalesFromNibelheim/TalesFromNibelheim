@@ -39,7 +39,6 @@ public class WarriorFightManager implements FightManager {
 
     private float enemyAttack(Enemy enemy) {
         float dmg = (0.4F * enemy.getBaseStrength()) * DiceRoll.rollPrivate(1, 4);
-        printDmg(dmg);
         return dmg;
     }
 
