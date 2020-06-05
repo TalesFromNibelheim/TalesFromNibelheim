@@ -1,4 +1,5 @@
 - type: "normal"
+  mapLevel: 1
   name: "Nice field"
   description: "That's nice field!"
   actions:
@@ -7,15 +8,16 @@
       entity:
         name: "Wolf"
         health: 10
-        baseMaxHealth: 10
         baseStrength: 5
         baseAgility: 2
         baseMagicPoints: 0
+      reward: 10
     - type: "coach"
       name: "Pudzian"
       price: 10.0
       multiplier: 1.0
 - type: "normal"
+  mapLevel: 1
   name: "Nicer field"
   description: "That's very nice field!"
   actions:
@@ -24,10 +26,10 @@
       entity:
         name: "Wolf"
         health: 10
-        baseMaxHealth: 10
         baseStrength: 5
         baseAgility: 2
         baseMagicPoints: 0
+      reward: 10
     - type: "coach"
       name: "Pudzian"
       price: 10.0

@@ -21,4 +21,6 @@ public interface IField {
     void execute(IPlayer player);
 
     void setUndefeatedCard(ICard undefeatedCard);
+
+    int getMapLevel();
 }

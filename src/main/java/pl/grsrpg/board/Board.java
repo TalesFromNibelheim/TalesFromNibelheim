@@ -126,7 +126,7 @@ public class Board implements IBoard {
                     break;
                 case 2:
                     System.out.println(player.getCardsInfo());
-                    if(player.hasFriend()){
+                    if (player.hasFriend()) {
                         System.out.println(player.getCurrentFriendStats());
                     }
                     break;
@@ -143,6 +143,7 @@ public class Board implements IBoard {
 
     private int nextAction() {
         System.out.println();
+        System.out.println("Current map level: " + Logger.CYAN + player.getCurrentMapLevel() + Logger.RESET);
         System.out.println("Possible actions: ");
         System.out.println(Logger.YELLOW + "1. " + Logger.RESET + "Display statistics.");
         System.out.println(Logger.YELLOW + "2. " + Logger.RESET + "Show your items.");
@@ -170,9 +171,10 @@ public class Board implements IBoard {
         for (int i = 1; i <= availableFields.length; i++) {
             IField field = availableFields[i - 1];
             System.out.print(Logger.YELLOW + i + ". ");
-            if (field instanceof IBossField)
+            if (field instanceof IBossField && !((IBossField)field).isDefeated())
                 System.out.print(Logger.RED + "BOSS ");
-            System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription());
+            System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription()
+                    + "\n   Map Level: " + Logger.CYAN + field.getMapLevel() + Logger.RESET);
         }
         System.out.print("Where you want to move?(default: 1) ");
         int choice = IOUtils.nextInt() - 1;
@@ -180,16 +182,19 @@ public class Board implements IBoard {
             choice = 0;
         }
         IField nextField = availableFields[choice];
-        int mapLevel = 1;
-        int fieldNumber = level1GameFields.indexOf(nextField);
-        if (fieldNumber == -1 && level2GameFields.contains(nextField)) {
-            mapLevel = 2;
-            fieldNumber = level2GameFields.indexOf(nextField);
-        } else if (fieldNumber == -1) {
-            mapLevel = 3;
-            fieldNumber = level3GameFields.indexOf(nextField);
+        player.move(nextField.getMapLevel(), this.getFieldNumber(nextField), nextField);
+    }
+
+    private int getFieldNumber(IField field){
+        switch (field.getMapLevel()){
+            default:
+            case 1:
+                return level1GameFields.indexOf(field);
+            case 2:
+                return level2GameFields.indexOf(field);
+            case 3:
+                return level3GameFields.indexOf(field);
         }
-        player.move(mapLevel, fieldNumber, nextField);
     }
 
     private Set<IField> getNextFields() {

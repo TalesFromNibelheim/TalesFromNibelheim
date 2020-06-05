@@ -93,7 +93,6 @@ public abstract class Player extends Enemy implements IPlayer {
         this.currentMapLevel = mapLevel;
         System.out.println();
         System.out.println("You are now in " + Logger.CYAN + field.getName() + Logger.RESET);
-        System.out.println("From possible actions: ");
         field.execute(this);
     }
 
@@ -121,7 +120,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public boolean fight(Entity entity) {
-        System.out.println(entity.getHealth() + " " + this.getHealth());
+        System.out.println("You will fight with " + Logger.CYAN + entity.getName() + Logger.RESET+"!");
         return fightManager.fight(entity);
     }
 
@@ -219,10 +218,10 @@ public abstract class Player extends Enemy implements IPlayer {
     @JsonIgnore
     @Override
     public String getCurrentFriendStats() {
-        return "You have friend with benefits: " + "\n" +
-                (this.getAdditionalEqCapacity() != 0 ? " Additional capacity: " + Logger.YELLOW + this.getAdditionalEqCapacity() + Logger.RESET : "") + "\n" +
-                (this.hasAdditionalPoint() ? Logger.YELLOW + " +1 " + Logger.RESET + "to dice roll!" : "") + "\n" +
-                (this.getGoldMultiplier() != 0F ? " Gold multiplier: " + Logger.YELLOW + this.getGoldMultiplier() + Logger.RESET : "");
+        return "You have friend with benefits: \n" +
+                (this.getAdditionalEqCapacity() != 0 ? " Additional capacity: " + Logger.YELLOW + this.getAdditionalEqCapacity() + Logger.RESET + "\n" : "") +
+                (this.hasAdditionalPoint() ? Logger.YELLOW + " +1 " + Logger.RESET + "to dice roll!\n" : "") +
+                (this.getGoldMultiplier() != 1F ? " Gold multiplier: " + Logger.YELLOW + this.getGoldMultiplier() + Logger.RESET : "");
     }
 
     public boolean hasAdditionalPoint() {

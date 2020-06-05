@@ -26,7 +26,7 @@ public class CardFriend extends Card {
 
     @Override
     public boolean execute(IPlayer player) {
-        System.out.println("You met: ");
+        System.out.println("You met friendly: ");
         this.getCardInfo();
         if(player.hasFriend()){
             System.out.println(player.getCurrentFriendStats());

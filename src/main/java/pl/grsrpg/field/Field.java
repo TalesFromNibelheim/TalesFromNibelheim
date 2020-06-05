@@ -1,5 +1,6 @@
 package pl.grsrpg.field;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.ToString;
 import pl.grsrpg.action.IAction;
@@ -12,10 +13,16 @@ import java.util.List;
 @Getter
 @ToString
 public class Field implements IField {
-    private String name;
-    private String description;
-    private List<IAction> actions;
+    @JsonProperty
+    protected String name;
+    @JsonProperty
+    protected String description;
+    @JsonProperty
+    protected List<IAction> actions;
+    @JsonProperty
     private ICard undefeatedCard;
+    @JsonProperty
+    protected int mapLevel;
 
     @Override
     public void execute(IPlayer player) {

@@ -1,16 +1,17 @@
 package pl.grsrpg.field;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.ToString;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 import pl.grsrpg.utils.IOUtils;
 
 @Getter
-@ToString
 public class BossField extends Field implements IBossField {
+    @JsonProperty
     private boolean defeated = false;
+    @JsonProperty
     private Boss boss;
 
     @Override
