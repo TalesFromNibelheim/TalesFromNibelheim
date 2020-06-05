@@ -78,22 +78,22 @@ public class ScoutFightManager implements FightManager {
     public void bossAttack(int roll, float dmg, Boss enemy) {
         if (roll == 1){
             this.player.takeDamage(dmg);
-            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
         }
         else if (roll == 2) {
             dmg = enemy.headHunter(enemy.rage(dmg));
             this.player.takeDamage(dmg);
-            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
         } else if (roll == 3) {
             dmg = enemy.finalShot(enemy.rage(dmg));
             this.player.takeDamage(dmg);
-            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
         }
     }
 
     private void bossTour(Boss enemy) {
             System.out.println(Logger.BLUE + "Opponent's turn." + Logger.RESET);
-            System.out.println("Enemy current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
+            System.out.println(enemy.getName() + " current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
             float enemyDamage = enemyAttack(enemy);
             float absorb = damageReduce();
             if (enemyDamage - absorb <= 0) enemyDamage = 0;
@@ -106,20 +106,19 @@ public class ScoutFightManager implements FightManager {
         if (0.5F * (check + player.getAgility()) > 50) dodge = true;
         if (!dodge) {
             System.out.println(Logger.BLUE + "Opponent's turn." + Logger.RESET);
-            System.out.println("Enemy current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
+            System.out.println(enemy.getName() + " current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
             float enemyDamage = enemyAttack(enemy);
             float absorb = damageReduce();
             if (enemyDamage - absorb <= 0) enemyDamage = 0;
             else enemyDamage -= absorb;
             this.player.takeDamage(enemyDamage);
-            System.out.println("Enemy dealt you: " + Logger.RED + enemyDamage + " damage." + Logger.RESET);
-        } else System.out.println(Logger.YELLOW + "Enemy missed! You dodged his attack!" + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + enemyDamage + " damage." + Logger.RESET);
+        } else System.out.println(Logger.YELLOW + enemy.getName() + " missed! You dodged his attack!" + Logger.RESET);
     }
 
 
     @Override
     public boolean fight(Entity enemy) {
-        System.out.println(enemy.getHealth() + " " + this.player.getHealth());
         while (enemy.getHealth() > 0 && this.player.getHealth() > 0) {
             switch (tour) {
                 case 1: // tura zwiadowcy

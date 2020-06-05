@@ -62,6 +62,7 @@ public class CardItem extends Card {
             System.out.println(" Additional armor: " + Logger.YELLOW + armor + Logger.RESET);
         if(profession != null)
              System.out.println(" For class: " + Logger.YELLOW + profession.getSimpleName() + Logger.RESET);
-        System.out.println(" Item value: " + Logger.YELLOW + itemValue + Logger.RESET);
+        if(itemValue != 0)
+            System.out.println(" Item value: " + Logger.YELLOW + itemValue + Logger.RESET);
     }
 }

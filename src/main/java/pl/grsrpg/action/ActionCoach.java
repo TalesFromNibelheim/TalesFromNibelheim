@@ -106,7 +106,7 @@ public class ActionCoach extends Action {
                 }
                 System.out.print(Logger.YELLOW + "1. " + Logger.RESET + "Yes/" + Logger.YELLOW + "2. " + Logger.RESET + "No (default: 2) ");
                 int menuChoice = IOUtils.nextInt();
-                if (menuChoice == 1) player.getInfo();
+                if (menuChoice == 1) System.out.println(player.getInfo());
             } else System.out.println("Sorry you don't have gold enough.");
             System.out.println("Do you want to continue training?");
             System.out.print(Logger.YELLOW + "1. " + Logger.RESET + "Yes/" + Logger.YELLOW + "2. " + Logger.RESET + "No (default: 2) ");

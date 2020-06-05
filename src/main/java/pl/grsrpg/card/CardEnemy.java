@@ -3,20 +3,22 @@ package pl.grsrpg.card;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.grsrpg.Game;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.player.IPlayer;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@Setter
 public class CardEnemy extends Card {
     private Enemy enemy;
-    private int prize;
+    private int reward;
 
-    public CardEnemy(String name, String description, Enemy enemy, int prize) {
+    public CardEnemy(String name, String description, Enemy enemy, int reward) {
         super(name, description, false);
         this.enemy = enemy;
-        this.prize = prize;
+        this.reward = reward;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class CardEnemy extends Card {
         if (!player.fight(enemy.clone())) {
             Game.getGame().getBoard().getField(player.getCurrentMapLevel(), player.getCurrentField()).setUndefeatedCard(this);
         } else {
-            player.addGold(prize);
+            player.addGold(reward);
         }
         return true;
     }

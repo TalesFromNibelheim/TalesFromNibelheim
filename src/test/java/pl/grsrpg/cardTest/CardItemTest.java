@@ -16,7 +16,7 @@ public class CardItemTest {
     public void increaseAttributesWarriorTest(){
         Card card = new CardItem("1", "", true, 1,2,3,4,0,2,3, PlayerWarrior.class);
         Player player = new PlayerWarrior();
-        player.setEquipmentCapacity(2);
+        player.setEqCapacity(2);
         card.execute(player);
         assertEquals( 3, player.getAdditionalAgility(),0.01);
         assertEquals(1, player.getAdditionalMaxHealth(),0.01);
@@ -29,7 +29,7 @@ public class CardItemTest {
     {
         Card card = new CardItem("1", "", true, 7,4,1,2,0,10,3, PlayerScout.class);
         Player player = new PlayerScout();
-        player.setEquipmentCapacity(2);
+        player.setEqCapacity(2);
         card.execute(player);
         assertEquals( 1, player.getAdditionalAgility(),0.01);
         assertEquals(7, player.getAdditionalMaxHealth(),0.01);
@@ -42,7 +42,7 @@ public class CardItemTest {
     {
         Card card = new CardItem("1", "", true, 8,7,6,5,0,11,4, PlayerScout.class);
         Player player = new PlayerScout();
-        player.setEquipmentCapacity(2);
+        player.setEqCapacity(2);
         card.execute(player);
         assertEquals( 6, player.getAdditionalAgility(),0.01);
         assertEquals(8, player.getAdditionalMaxHealth(),0.01);

@@ -1,12 +1,13 @@
 package pl.grsrpg.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.NoArgsConstructor;
 import pl.grsrpg.utils.DiceRoll;
 
 @NoArgsConstructor
 public class Boss extends Enemy {
-
-    int multiplier;
+    @JsonProperty
+    private int multiplier;
 
     public Boss(String name, int baseMaxHealth, int baseStrength, int baseAgility, int baseMagicPoints) {
         super(name, baseMaxHealth, baseStrength, baseAgility, baseMagicPoints);

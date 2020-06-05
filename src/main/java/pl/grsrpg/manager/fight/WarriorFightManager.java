@@ -28,7 +28,7 @@ public class WarriorFightManager implements FightManager {
         System.out.println(Logger.CYAN + "1." + Logger.RESET + " Basic Attack.");
         System.out.println(Logger.CYAN + "2." + Logger.RESET + " Knockdown.");
         System.out.println(Logger.CYAN + "3." + Logger.RESET + " Cleave.");
-        System.out.println(Logger.CYAN + "4." + Logger.RESET + "Blessing of the shield.");
+        System.out.println(Logger.CYAN + "4." + Logger.RESET + " Blessing of the shield.");
     }
 
     private float basicAttack() {
@@ -92,13 +92,13 @@ public class WarriorFightManager implements FightManager {
     private void enemyTour(Enemy enemy) {
         if (!stun) {
             System.out.println(Logger.BLUE + "Opponent's turn." + Logger.RESET);
-            System.out.println("Enemy current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
+            System.out.println(enemy.getName() + " current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
             float enemyDamage = enemyAttack(enemy);
             float absorb = damageReduce();
             if (enemyDamage - absorb <= 0) enemyDamage = 0;
             else enemyDamage -= absorb;
             this.player.takeDamage(enemyDamage);
-            System.out.println("Enemy dealt you: " + Logger.RED + enemyDamage + " damage." + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + enemyDamage + " damage." + Logger.RESET);
         } else
             stun = false;
     }
@@ -106,30 +106,30 @@ public class WarriorFightManager implements FightManager {
     public void bossAttack(int roll, float dmg, Boss enemy) {
         if (roll == 1){
             this.player.takeDamage(dmg);
-            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
         }
         else if (roll == 2) {
             dmg = enemy.headHunter(enemy.rage(dmg));
             this.player.takeDamage(dmg);
-            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
         } else if (roll == 3) {
             dmg = enemy.finalShot(enemy.rage(dmg));
             this.player.takeDamage(dmg);
-            System.out.println("Boss dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
         }
     }
 
     private void bossTour(Boss enemy) {
         if (!stun) {
             System.out.println(Logger.BLUE + "Opponent's turn." + Logger.RESET);
-            System.out.println("Enemy current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
+            System.out.println(enemy.getName() + " current health: " + Logger.RED + enemy.getHealth() + "." + Logger.RESET);
             float enemyDamage = enemyAttack(enemy);
             float absorb = damageReduce();
             if (enemyDamage - absorb <= 0) enemyDamage = 0;
             else enemyDamage -= absorb;
             bossAttack(DiceRoll.rollPrivate(1,4), enemyDamage , enemy);
         } else
-            System.out.println("Boss can't move!!! Now is your chance.");
+            System.out.println(enemy.getName() + " can't move!!! Now is your chance.");
         stun = false;
     }
 

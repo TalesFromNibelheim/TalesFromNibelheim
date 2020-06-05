@@ -6,8 +6,6 @@ import pl.grsrpg.card.CardItem;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.player.Player;
 import pl.grsrpg.player.PlayerMage;
-import junit.framework.TestSuite;
-import org.junit.Test;
 
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class PlayerMageTest {
     @Test
     public void addCardTest() {
         Player player = new PlayerMage();
-        player.setEquipmentCapacity(1);
+        player.setEqCapacity(1);
         Card card = new CardItem("1", "", true,  1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         assertTrue(player.addCard(card));
         Card card1 = new CardItem("2", "", true, 3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
@@ -28,7 +26,7 @@ public class PlayerMageTest {
     @Test
     public void failAddCardTest() {
         Player player = new PlayerMage();
-        player.setEquipmentCapacity(0);
+        player.setEqCapacity(0);
         Card card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         assertFalse(player.addCard(card));
     }
@@ -36,7 +34,7 @@ public class PlayerMageTest {
     @Test
     public void removeCardTest() {
         Player player = new PlayerMage();
-        player.setEquipmentCapacity(10);
+        player.setEqCapacity(10);
         Card card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         Card card1 = new CardItem("2", "", true, 3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
         Card card2 = new CardItem("3", "", true, 4, 5, 6, 4, 0, 1, 4, PlayerMage.class);
@@ -59,7 +57,7 @@ public class PlayerMageTest {
     @Test
     public void recalculateAttributesTest() {
         Player player = new PlayerMage();
-        player.setEquipmentCapacity(3);
+        player.setEqCapacity(3);
         Card card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         Card card1 = new CardItem("2", "", true, 3, 4, 5, 7, 0, 4, 3, PlayerMage.class);
         Card card2 = new CardItem("3", "", true, 4, 5, 6, 4, 0, 1, 4, PlayerMage.class);
@@ -77,7 +75,7 @@ public class PlayerMageTest {
     @Test
     public void AdditionalTest() {
         Player player = new PlayerMage();
-        player.setEquipmentCapacity(2);
+        player.setEqCapacity(2);
         ICard card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
         player.addCard(card);
         player.recalculateAttributes();
