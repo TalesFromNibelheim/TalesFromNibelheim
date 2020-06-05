@@ -33,7 +33,7 @@ public interface IPlayer extends Entity {
 
     List<ICard> getCards();
 
-    int getEquipmentCapacity();
+    int getEqCapacity();
 
     int getGold();
 
@@ -53,7 +53,7 @@ public interface IPlayer extends Entity {
 
     int getAdditionalMagicPoints();
 
-    boolean getAddPoint();
+    boolean hasAdditionalPoint();
 
     void setAdditionalMaxHealth(int maxHealth);
 
@@ -63,15 +63,15 @@ public interface IPlayer extends Entity {
 
     void setAdditionalMagicPoints(int magicPoints);
 
-    void setEquipmentCapacity(int capacity);
+    void setAdditionalEqCapacity(int capacity);
 
-    void setAddPoint(boolean addPoint);
+    void setAdditionalPoint(boolean additionalPoint);
 
-    void setMultiplierGold(float multiplierGold);
+    void setGoldMultiplier(float goldMultiplier);
 
     void setFriend(boolean friend);
 
-    boolean getFriend();
+    boolean hasFriend();
 
     int getCurrentMapLevel();
 
@@ -100,4 +100,10 @@ public interface IPlayer extends Entity {
     int getAgility();
 
     int getMagicPoints();
+
+    float getGoldMultiplier();
+
+    int getAdditionalEqCapacity();
+
+    String getCurrentFriendStats();
 }

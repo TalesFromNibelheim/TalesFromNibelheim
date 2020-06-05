@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 public abstract class Player extends Enemy implements IPlayer {
-    protected int equipmentCapacity;
+    protected int eqCapacity;
     protected List<ICard> cards = new LinkedList<>();
     protected int currentMapLevel = 1;
     protected int currentField = 0;
@@ -34,22 +34,22 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int additionalAgility;
     protected int additionalMagicPoints;
 
-    protected int additionalCapacity = 0;
-    protected boolean addPoint = false;
-    protected float multiplierGold = 1;
+    protected int additionalEqCapacity = 0;
+    protected boolean additionalPoint = false;
+    protected float goldMultiplier = 1;
     protected boolean friend = false;
     @JsonIgnore
     protected FightManager fightManager;
 
-    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int equipmentCapacity) {
+    public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int eqCapacity) {
         super(name, maxHealth, strength, agility, magicPoints);
-        this.equipmentCapacity = equipmentCapacity;
+        this.eqCapacity = eqCapacity;
         this.magicPoints = magicPoints;
     }
 
     @Override
     public boolean addCard(ICard card) {
-        if (cards.size() < equipmentCapacity) {
+        if (cards.size() < eqCapacity) {
             card.execute(this);
             if (!card.isCarriable())
                 return true;
@@ -101,11 +101,13 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public String getInfo() {
         return "Statistics: \n" +
-                " Health: " + Logger.CYAN + this.health + Logger.RESET + "/" + Logger.YELLOW + (this.baseMaxHealth + this.additionalMaxHealth) + "\n" + Logger.RESET +
-                " Strength: " + Logger.YELLOW + (this.baseStrength + this.additionalStrength) + "\n" + Logger.RESET +
-                " Agility: " + Logger.YELLOW + +(this.baseAgility + this.additionalAgility) + "\n" + Logger.RESET +
-                " Magic Points: " + Logger.YELLOW + (this.baseMagicPoints + this.additionalMagicPoints) + "\n" + Logger.RESET +
-                " Equipment: " + Logger.CYAN + this.cards.size() + Logger.RESET + "/" + Logger.YELLOW + equipmentCapacity + Logger.RESET;
+                " Health: " + Logger.CYAN + this.health + Logger.RESET + "/" + Logger.YELLOW + this.getMaxHealth() + "\n" + Logger.RESET +
+                " Strength: " + Logger.YELLOW + this.getStrength() + "\n" + Logger.RESET +
+                " Agility: " + Logger.YELLOW + this.getAgility() + "\n" + Logger.RESET +
+                " Magic Points: " + Logger.YELLOW + this.getMagicPoints() + "\n" + Logger.RESET +
+                " Equipment: " + Logger.CYAN + this.cards.size() + Logger.RESET + "/" + Logger.YELLOW + this.getEqCapacity() + "\n" + Logger.RESET +
+                " Gold: " + Logger.YELLOW + this.getGold() + Logger.RESET + "\n" + Logger.RESET +
+                " Armor: " + Logger.YELLOW + this.getArmor() + Logger.RESET + Logger.RESET;
     }
 
     @Override
@@ -119,6 +121,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public boolean fight(Entity entity) {
+        System.out.println(entity.getHealth() + " " + this.getHealth());
         return fightManager.fight(entity);
     }
 
@@ -133,7 +136,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public void addGold(int value) {
-        this.gold += (multiplierGold * value);
+        this.gold += (goldMultiplier * value);
     }
 
     @Override
@@ -167,12 +170,7 @@ public abstract class Player extends Enemy implements IPlayer {
     }
 
     @Override
-    public boolean getAddPoint() {
-        return this.addPoint;
-    }
-
-    @Override
-    public boolean getFriend() {
+    public boolean hasFriend() {
         return this.friend;
     }
 
@@ -180,31 +178,54 @@ public abstract class Player extends Enemy implements IPlayer {
     public void setFriend(boolean friend) {
         if (!friend) {
             this.friend = false;
-            this.additionalCapacity = 0;
-            this.addPoint = false;
-            this.multiplierGold = 1;
+            this.additionalEqCapacity = 0;
+            this.additionalPoint = false;
+            this.goldMultiplier = 1;
         } else {
             this.friend = true;
         }
     }
 
+    @JsonIgnore
     @Override
     public int getMaxHealth() {
         return this.getAdditionalMaxHealth() + this.getBaseMaxHealth();
     }
 
+    @JsonIgnore
     @Override
     public int getStrength() {
         return this.getAdditionalStrength() + this.getBaseStrength();
     }
 
+    @JsonIgnore
     @Override
     public int getAgility() {
         return this.getAdditionalAgility() + this.getBaseAgility();
     }
 
+    @JsonIgnore
     @Override
     public int getMagicPoints() {
         return this.getAdditionalMagicPoints() + this.getBaseMagicPoints();
+    }
+
+    @JsonIgnore
+    @Override
+    public int getEqCapacity() {
+        return this.eqCapacity + this.additionalEqCapacity;
+    }
+
+    @JsonIgnore
+    @Override
+    public String getCurrentFriendStats() {
+        return "You have friend with benefits: " + "\n" +
+                (this.getAdditionalEqCapacity() != 0 ? " Additional capacity: " + Logger.YELLOW + this.getAdditionalEqCapacity() + Logger.RESET : "") + "\n" +
+                (this.hasAdditionalPoint() ? Logger.YELLOW + " +1 " + Logger.RESET + "to dice roll!" : "") + "\n" +
+                (this.getGoldMultiplier() != 0F ? " Gold multiplier: " + Logger.YELLOW + this.getGoldMultiplier() + Logger.RESET : "");
+    }
+
+    public boolean hasAdditionalPoint() {
+        return additionalPoint;
     }
 }

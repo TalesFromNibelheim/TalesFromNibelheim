@@ -126,6 +126,9 @@ public class Board implements IBoard {
                     break;
                 case 2:
                     System.out.println(player.getCardsInfo());
+                    if(player.hasFriend()){
+                        System.out.println(player.getCurrentFriendStats());
+                    }
                     break;
                 default:
                 case 3:
@@ -190,7 +193,7 @@ public class Board implements IBoard {
     }
 
     private Set<IField> getNextFields() {
-        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(), player.getAddPoint());
+        int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(), player.hasAdditionalPoint());
         Set<IField> ret = new HashSet<>();
         switch (player.getCurrentMapLevel()) {
             case 1:

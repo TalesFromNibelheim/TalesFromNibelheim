@@ -28,7 +28,7 @@ public class WarriorFightManager implements FightManager {
         System.out.println(Logger.CYAN + "1." + Logger.RESET + " Basic Attack.");
         System.out.println(Logger.CYAN + "2." + Logger.RESET + " Knockdown.");
         System.out.println(Logger.CYAN + "3." + Logger.RESET + " Cleave.");
-        System.out.println(Logger.CYAN + "4." + Logger.RESET + "Blessing of the shield.");
+        System.out.println(Logger.CYAN + "4." + Logger.RESET + " Blessing of the shield.");
     }
 
     private float basicAttack() {

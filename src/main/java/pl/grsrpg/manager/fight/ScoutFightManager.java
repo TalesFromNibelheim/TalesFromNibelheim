@@ -119,7 +119,6 @@ public class ScoutFightManager implements FightManager {
 
     @Override
     public boolean fight(Entity enemy) {
-        System.out.println(enemy.getHealth() + " " + this.player.getHealth());
         while (enemy.getHealth() > 0 && this.player.getHealth() > 0) {
             switch (tour) {
                 case 1: // tura zwiadowcy
