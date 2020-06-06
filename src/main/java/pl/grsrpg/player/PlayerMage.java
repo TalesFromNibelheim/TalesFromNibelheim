@@ -54,10 +54,17 @@ public class PlayerMage extends Player {
     }
 
     public float iceChain() {
-        this.magicPoints -= 5;
-        float dmg = (this.getMagicPoints()) * (DiceRoll.rollPrivate(1, 6));
-        System.out.println("You deal " + (dmg) + " damage.");
-        return dmg;
+        if(this.magicPoints >=5 ){
+            this.magicPoints -= 5;
+            float dmg = (this.getMagicPoints()) * (DiceRoll.rollPrivate(1, 6));
+            System.out.println("You deal " + (dmg) + " damage.");
+            return dmg;
+        }else{
+
+
+            return - 1;
+        }
+
     }
 
     public static String getStartDescription() {
