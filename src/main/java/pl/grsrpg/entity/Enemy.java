@@ -1,19 +1,28 @@
 package pl.grsrpg.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Enemy implements Entity, Cloneable {
+    @JsonProperty
     protected String name;
+    @JsonProperty
     protected float health;
+    @JsonProperty
     protected int baseMaxHealth;
 
+    @JsonProperty
     protected int baseStrength;
+    @JsonProperty
     protected int baseAgility;
+    @JsonProperty
     protected int baseMagicPoints;
 
     public Enemy(String name, int baseMaxHealth, int baseStrength, int baseAgility, int baseMagicPoints) {

@@ -1,44 +1,23 @@
 - type: "boss"
-  name: "Nice boss field"
-  description: "That's nice boss!"
+  name: "Gates of Hell"
+  description: "Run fools!"
   actions:
     - type: "card"
     - type: "fight"
       entity:
-        name: "Wolf"
-        baseMaxHealth: 10
-        baseStrength: 5
-        baseAgility: 2
+        name: "Werewolf"
+        health: 90
+        baseStrength: 25
+        baseAgility: 20
         baseMagicPoints: 0
+      reward: 100
     - type: "coach"
-      name: "Pudzian"
+      name: "Bard"
       price: 10.0
-      multiplier: 1.0
+      multiplier: 1.5
   boss:
-    name: "Dragon Lord"
-    baseMaxHealth: 10000
-    baseStrength: 10000
-    baseAgility: 10000
-    baseMagicPoints: 10000
-- type: "boss"
-  name: "Nicer boss field"
-  description: "That's very nice boss!"
-  actions:
-    - type: "card"
-    - type: "fight"
-      entity:
-        name: "Wolf"
-        baseMaxHealth: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
-    - type: "coach"
-      name: "Pudzian"
-      price: 10.0
-      multiplier: 1.0
-  boss:
-    name: "Dragon Lord"
-    baseMaxHealth: 10000
-    baseStrength: 10000
-    baseAgility: 10000
+    name: "Lord of the Abyss"
+    baseMaxHealth: 1500
+    baseStrength: 120
+    baseAgility: 1000
     baseMagicPoints: 10000
