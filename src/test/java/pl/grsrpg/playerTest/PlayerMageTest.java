@@ -142,7 +142,7 @@ public class PlayerMageTest {
         PlayerMage player = new PlayerMage();
         player.setAdditionalMagicPoints(50);
         assertEquals(50, player.getMagicPoints());
-        assertEquals(87.5,player.thunder(), 0.01);
+        assertEquals(62.5,player.thunder(), 0.01);
     }
     @Test
     public void fireBallTest()

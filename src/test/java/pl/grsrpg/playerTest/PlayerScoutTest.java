@@ -17,7 +17,7 @@ public class PlayerScoutTest {
         PlayerScout player = new PlayerScout("scout");
         player.setAdditionalAgility(50);
         assertEquals(50, player.getAdditionalAgility(), 0.01);
-        assertEquals(40, player.criticalArrow(), 0.01);
+        assertEquals(300, player.criticalArrow(), 101);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class PlayerScoutTest {
     {
         PlayerScout player = new PlayerScout("scout");
         player.setAdditionalAgility(50);
-        assertEquals(80, player.seriesOfArrows(), 35);
+        assertEquals(240, player.seriesOfArrows(), 121);
     }
 
     @Test

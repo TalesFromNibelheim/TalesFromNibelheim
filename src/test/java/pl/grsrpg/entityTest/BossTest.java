@@ -23,7 +23,7 @@ public class BossTest {
         Boss boss = new Boss("boss", 100, 20,20,20);
         boss.setMultiplier(2);
         boss.setHealth((float) (0.1*boss.getBaseMaxHealth()));
-        assertEquals(20, boss.rage(10), 0.01);
+        assertEquals(15, boss.rage(10), 0.01);
         boss.setHealth(100);
         assertEquals(10, boss.rage(10), 0.01);
     }
