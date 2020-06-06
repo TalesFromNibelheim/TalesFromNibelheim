@@ -7,7 +7,7 @@ import pl.grsrpg.utils.DiceRoll;
 @NoArgsConstructor
 public class Boss extends Enemy {
     @JsonProperty
-    private int multiplier;
+    private float multiplier = 1F;
 
     public Boss(String name, int baseMaxHealth, int baseStrength, int baseAgility, int baseMagicPoints) {
         super(name, baseMaxHealth, baseStrength, baseAgility, baseMagicPoints);
@@ -31,7 +31,7 @@ public class Boss extends Enemy {
         return damage * multiplier * multiplier;
     }
 
-    public void setMultiplier(int multiplier){
+    public void setMultiplier(float multiplier){
         this.multiplier = multiplier;
     }
 }

@@ -8,11 +8,11 @@ import pl.grsrpg.utils.Attribute;
 
 @NoArgsConstructor
 public class PlayerScout extends Player {
-    private static final int startMaxHealth = 20;
-    private static final int startStrength = 5;
-    private static final int startAgility = 2;
-    private static final int startMagicPoints = 2;
-    private static final int startEquipmentCapacity = 10;
+    private static final int startMaxHealth = 100;
+    private static final int startStrength = 20;
+    private static final int startAgility = 30;
+    private static final int startMagicPoints = 20;
+    private static final int startEquipmentCapacity = 5;
 
     public PlayerScout(String name) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);

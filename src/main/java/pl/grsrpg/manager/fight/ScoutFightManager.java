@@ -13,8 +13,7 @@ import pl.grsrpg.utils.DiceRoll;
 @NoArgsConstructor
 public class ScoutFightManager implements FightManager {
     private PlayerScout player;
-    int tour = DiceRoll.rollPrivate(1, 2);
-    boolean dodge = false;
+    private boolean dodge = false;
 
     public ScoutFightManager(PlayerScout player) {
         this.player = player;
@@ -80,7 +79,6 @@ public class ScoutFightManager implements FightManager {
                 enemy.takeDamage(dmg);
                 printDmg(dmg);
         }
-        tour = 2;
     }
 
     public void bossAttack(int roll, float dmg, Boss enemy) {
@@ -127,6 +125,8 @@ public class ScoutFightManager implements FightManager {
 
     @Override
     public boolean fight(Entity enemy) {
+        dodge = false;
+        int tour = DiceRoll.rollPrivate(1, 2);
         while (enemy.getHealth() > 0 && this.player.getHealth() > 0) {
             switch (tour) {
                 case 1: // tura zwiadowcy

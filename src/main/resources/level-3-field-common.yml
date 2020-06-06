@@ -1,32 +1,84 @@
 - type: "normal"
-  name: "Nice field"
-  description: "That's nice field!"
+  mapLevel: 3
+  name: "Crypt"
+  description: "Burial crypt of ancient warriors."
   actions:
     - type: "card"
     - type: "fight"
       entity:
-        name: "Wolf"
-        baseMaxHealth: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
+        name: "Wraith"
+        health: 150
+        baseStrength: 40
+      reward: 250
     - type: "coach"
-      name: "Pudzian"
-      price: 10.0
-      multiplier: 1.0
+      name: "Wraith of Defeated Warrior"
+      price: 40.0
+      multiplier: 1.5
+
 - type: "normal"
-  name: "Nicer field"
-  description: "That's very nice field!"
+  mapLevel: 3
+  name: "Mines"
+  description: "Full of terrifying noises."
   actions:
     - type: "card"
     - type: "fight"
       entity:
-        name: "Wolf"
-        baseMaxHealth: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
+        name: "Dread Knight"
+        health: 200
+        baseStrength: 45
+      reward: 300
     - type: "coach"
-      name: "Pudzian"
-      price: 10.0
-      multiplier: 1.0
+      name: "Wraith of Defeated Warrior"
+      price: 40.0
+      multiplier: 1.5
+
+- type: "normal"
+  mapLevel: 3
+  name: "Valley of Fire"
+  description: "That's hot."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Efreet"
+        health: 220
+        baseStrength: 40
+      reward: 310
+    - type: "coach"
+      name: "Wraith of Defeated Warrior"
+      price: 40.0
+      multiplier: 1.5
+
+- type: "normal"
+  mapLevel: 3
+  name: "Pits"
+  description: "Pit with souls of defeated champions."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Pit Lord"
+        health: 230
+        baseStrength: 50
+      reward: 450
+    - type: "coach"
+      name: "Wraith of Defeated Warrior"
+      price: 40.0
+      multiplier: 1.5
+
+- type: "normal"
+  mapLevel: 3
+  name: "Plain of Peril"
+  description: "Stop here."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Lich"
+        health: 240
+        baseStrength: 40
+      reward: 210
+    - type: "coach"
+      name: "Wraith of Defeated Warrior"
+      price: 40.0
+      multiplier: 1.5

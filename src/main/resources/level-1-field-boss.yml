@@ -1,24 +1,41 @@
 - type: "boss"
   mapLevel: 1
-  name: "Dragon's cave"
+  name: "Dragons cave"
   description: "It's pretty warm here."
   actions:
     - type: "card"
     - type: "fight"
       entity:
-          name: "Red Brambleback"
-          health: 30
-          baseStrength: 10
-          baseAgility: 10
-          baseMagicPoints: 20
-        reward: 20
+        name: "Red Brambleback"
+        health: 30
+        baseStrength: 10
+      reward: 20
     - type: "coach"
       name: "Bard"
       price: 10.0
       multiplier: 1.0
   boss:
-    name: "Dragon Lord"
+    name: "Dragon"
     health: 700
     baseStrength: 80
-    baseAgility: 1000
-    baseMagicPoints: 1000
+
+- type: "boss"
+  mapLevel: 1
+  name: "Cyclops cave"
+  description: "Attack them when they blink."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Red Brambleback"
+        health: 30
+        baseStrength: 10
+      reward: 20
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+  boss:
+    name: "Cyclope"
+    health: 650
+    baseStrength: 90

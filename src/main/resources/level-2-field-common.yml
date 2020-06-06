@@ -1,32 +1,135 @@
 - type: "normal"
-  name: "Nice field"
-  description: "That's nice field!"
+  mapLevel: 2
+  name: "Hidden Valley"
+  description: "Only chosen ones can enter it."
   actions:
     - type: "card"
     - type: "fight"
       entity:
-        name: "Wolf"
-        baseMaxHealth: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
+        name: "Pegasus"
+        health: 110
+        baseStrength: 40
+      reward: 100
     - type: "coach"
-      name: "Pudzian"
-      price: 10.0
-      multiplier: 1.0
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2
+
 - type: "normal"
-  name: "Nicer field"
-  description: "That's very nice field!"
+  mapLevel: 2
+  name: "Warlock's Cave"
+  description: "Fear the witchcraft."
   actions:
     - type: "card"
     - type: "fight"
       entity:
-        name: "Wolf"
-        baseMaxHealth: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
+        name: "Warlock"
+        health: 150
+        baseStrength: 60
+      reward: 120
     - type: "coach"
-      name: "Pudzian"
-      price: 10.0
-      multiplier: 1.0
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2
+
+- type: "normal"
+  mapLevel: 2
+  name: "Portal of Power"
+  description: "That power will sew you through."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Energy Elemental"
+        health: 160
+        baseStrength: 75
+      reward: 150
+    - type: "coach"
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2
+
+- type: "normal"
+  mapLevel: 2
+  name: "Valley of Fate"
+  description: "Are you enough brave to face your fate?"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Evil Eye"
+        health: 120
+        baseStrength: 40
+      reward: 90
+    - type: "coach"
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2
+
+- type: "normal"
+  mapLevel: 2
+  name: "Labyrinth"
+  description: "Take something to mark your way back!"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Minotaur"
+        health: 170
+        baseStrength: 90
+      reward: 180
+    - type: "coach"
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2
+
+- type: "normal"
+  mapLevel: 2
+  name: "Cursed Glade"
+  description: "Pretty normal glade but cursed."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Manticore"
+        health: 160
+        baseStrength: 90
+      reward: 180
+    - type: "coach"
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2
+
+- type: "normal"
+  mapLevel: 2
+  name: "Oasis"
+  description: "It can't be bad here, right???"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Pixie"
+        health: 90
+        baseStrength: 30
+      reward: 150
+    - type: "coach"
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2
+
+- type: "normal"
+  mapLevel: 2
+  name: "Woods"
+  description: "Looks like normal woods, but..."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Dendroid"
+        health: 200
+        baseStrength: 30
+      reward: 150
+    - type: "coach"
+      name: "Scholar"
+      price: 20.0
+      multiplier: 1.2

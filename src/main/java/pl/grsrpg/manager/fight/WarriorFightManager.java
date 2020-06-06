@@ -19,10 +19,9 @@ public class WarriorFightManager implements FightManager {
         this.player = player;
     }
 
-    int tour = DiceRoll.rollPrivate(1, 2);
-    int numberOfTour = 0;
-    int numberOfAdditionalArmor = 0;
-    int time = 0;
+    private int tour = DiceRoll.rollPrivate(1, 2);
+    private int numberOfTour = 0;
+    private int numberOfAdditionalArmor = 0;
 
     private void chooseAttack() {
         System.out.println(Logger.CYAN + "1." + Logger.RESET + " Basic Attack.");

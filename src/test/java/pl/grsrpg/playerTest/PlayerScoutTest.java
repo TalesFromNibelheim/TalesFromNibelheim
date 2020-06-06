@@ -17,7 +17,7 @@ public class PlayerScoutTest {
         PlayerScout player = new PlayerScout("scout");
         player.setAdditionalAgility(50);
         assertEquals(50, player.getAdditionalAgility(), 0.01);
-        assertEquals(26, player.criticalArrow(), 0.01);
+        assertEquals(40, player.criticalArrow(), 0.01);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class PlayerScoutTest {
     {
         PlayerScout player = new PlayerScout("scout");
         player.setAdditionalAgility(50);
-        assertEquals(40, player.seriesOfArrows(), 35);
+        assertEquals(80, player.seriesOfArrows(), 35);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class PlayerScoutTest {
     {
         PlayerScout player = new PlayerScout("scout");
         player.setAdditionalAgility(50);
-        assertEquals(104, player.repeatableArrow(), 0.01);
+        assertEquals(160, player.repeatableArrow(), 0.01);
     }
 
     @Test
@@ -41,16 +41,16 @@ public class PlayerScoutTest {
     {
         PlayerScout player = new PlayerScout("scout");
         player.setAdditionalAgility(50);
-        assertEquals(10, player.basicAttack(), 1);
+        assertEquals(16, player.basicAttack(), 1);
     }
 
     @Test
     public void getStartAttributeTest()
     {
         Player player = new PlayerScout();
-        assertEquals(2, player.getStartAttribute(Attribute.AGILITY), 0.01);
-        assertEquals(5, player.getStartAttribute(Attribute.STRENGTH), 0.01);
-        assertEquals(2, player.getStartAttribute(Attribute.MAGICPOINTS), 0.01 );
-        assertEquals(20, player.getStartAttribute(Attribute.MAXHEALTH), 0.01 );
+        assertEquals(30, player.getStartAttribute(Attribute.AGILITY), 0.01);
+        assertEquals(20, player.getStartAttribute(Attribute.STRENGTH), 0.01);
+        assertEquals(20, player.getStartAttribute(Attribute.MAGICPOINTS), 0.01 );
+        assertEquals(100, player.getStartAttribute(Attribute.MAXHEALTH), 0.01 );
     }
 }

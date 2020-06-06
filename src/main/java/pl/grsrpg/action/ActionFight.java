@@ -3,6 +3,7 @@ package pl.grsrpg.action;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.logger.Logger;

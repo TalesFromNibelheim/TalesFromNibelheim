@@ -4,7 +4,6 @@ import lombok.NoArgsConstructor;
 import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.logger.Logger;
-import pl.grsrpg.player.IPlayer;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.player.PlayerMage;
 import pl.grsrpg.utils.DiceRoll;
@@ -14,7 +13,6 @@ import pl.grsrpg.utils.IOUtils;
 public class MageFightManager implements FightManager {
     private PlayerMage player;
     private boolean stun = false;
-    int tour = DiceRoll.rollPrivate(1, 2);
 
     public MageFightManager(PlayerMage player) {
         this.player = player;
@@ -127,6 +125,7 @@ public class MageFightManager implements FightManager {
     @Override
     public boolean fight(Entity enemy) {
         stun = false;
+        int tour = DiceRoll.rollPrivate(1, 2);
         while (enemy.getHealth() > 0 && this.player.getHealth() > 0) {
             switch (tour) {
                 case 1: // tura wojownika

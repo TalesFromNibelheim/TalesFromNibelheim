@@ -9,8 +9,6 @@
         name: "Wolf"
         health: 10
         baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
       reward: 10
     - type: "coach"
       name: "Bard"
@@ -28,8 +26,6 @@
         name: "Gromp"
         health: 50
         baseStrength: 20
-        baseAgility: 20
-        baseMagicPoints: 10
       reward: 10
     - type: "coach"
       name: "Bard"
@@ -47,8 +43,6 @@
         name: "Giant Raptor"
         health: 90
         baseStrength: 40
-        baseAgility: 0
-        baseMagicPoints: 0
       reward: 150
     - type: "coach"
       name: "Bard"
@@ -66,8 +60,6 @@
         name: "Raptor"
         health: 60
         baseStrength: 40
-        baseAgility: 1
-        baseMagicPoints: 0
       reward: 60
     - type: "coach"
       name: "Bard"
@@ -85,8 +77,6 @@
         name: "Raptor"
         health: 60
         baseStrength: 40
-        baseAgility: 1
-        baseMagicPoints: 0
       reward: 60
     - type: "coach"
       name: "Bard"
@@ -104,8 +94,6 @@
         name: "Blue Sentinel"
         health: 30
         baseStrength: 20
-        baseAgility: 5
-        baseMagicPoints: 0
       reward: 15
     - type: "coach"
       name: "Bard"
@@ -120,12 +108,10 @@
     - type: "card"
     - type: "fight"
       entity:
-          name: "Red Brambleback"
-          health: 30
-          baseStrength: 10
-          baseAgility: 10
-          baseMagicPoints: 20
-       reward: 20
+        name: "Red Brambleback"
+        health: 30
+        baseStrength: 10
+      reward: 20
     - type: "coach"
       name: "Bard"
       price: 10.0
@@ -139,11 +125,9 @@
     - type: "card"
     - type: "fight"
       entity:
-          name: "Lesser Rift Scuttler"
-          health: 45
-          baseStrength: 25
-          baseAgility: 5
-          baseMagicPoints: 5
+        name: "Lesser Rift Scuttler"
+        health: 45
+        baseStrength: 25
       reward: 25
     - type: "coach"
       name: "Bard"
@@ -159,11 +143,9 @@
     - type: "fight"
       entity:
         name: "Dragon"
-          health: 100
-          baseStrength: 60
-          baseAgility: 5
-          baseMagicPoints: 00
-        reward: 250
+        health: 100
+        baseStrength: 60
+      reward: 250
     - type: "coach"
       name: "Bard"
       price: 10.0
@@ -177,13 +159,10 @@
     - type: "card"
     - type: "fight"
       entity:
-        enemy:
-          name: "Werewolf"
-          health: 50
-          baseStrength: 25
-          baseAgility: 20
-          baseMagicPoints: 0
-        reward: 25
+        name: "Werewolf"
+        health: 50
+        baseStrength: 25
+      reward: 25
     - type: "coach"
       name: "Bard"
       price: 10.0

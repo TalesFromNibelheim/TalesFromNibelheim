@@ -119,8 +119,8 @@ public class PlayerMageTest {
     public void addPointEmptyFriend()
     {
         Player player = new PlayerMage();
-        assertFalse(player.getAddPoint());
-        assertFalse(player.getFriend());
+        assertFalse(player.hasAdditionalPoint());
+        assertFalse(player.hasFriend());
     }
 
     @Test
@@ -129,11 +129,11 @@ public class PlayerMageTest {
         Player player = new PlayerMage();
         Card card = new CardFriend("friend", "des", 0,true,0);
         card.execute(player);
-        assertTrue(player.getFriend());
-        assertTrue(player.getAddPoint());
+        assertTrue(player.hasFriend());
+        assertTrue(player.hasAdditionalPoint());
         player.setFriend(false);
-        assertFalse(player.getFriend());
-        assertFalse(player.getAddPoint());
+        assertFalse(player.hasFriend());
+        assertFalse(player.hasAdditionalPoint());
     }
 
     @Test
