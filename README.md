@@ -10,3 +10,7 @@ level2Size: 7 #Number of fields at 2 level
 level3Size: 5 #Number of fields at 3 level
 maxMove: 3 #Max number of fields to move in one tour.
 ```
+
+Wiki
+-------------
+##Documentation WIP!
