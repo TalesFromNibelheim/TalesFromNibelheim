@@ -1,4 +1,4 @@
-# GRSRPG
+# Tales from Nibelheim
 
 Board game inspired, console RPG game with ability to customize gameplay via .yaml files.<br><br>
 
