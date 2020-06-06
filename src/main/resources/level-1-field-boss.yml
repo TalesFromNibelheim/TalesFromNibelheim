@@ -1,46 +1,24 @@
 - type: "boss"
   mapLevel: 1
-  name: "Nice boss field"
-  description: "That's nice boss!"
+  name: "Dragon's cave"
+  description: "It's pretty warm here."
   actions:
     - type: "card"
     - type: "fight"
       entity:
-        name: "Wolf"
-        health: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
+          name: "Red Brambleback"
+          health: 30
+          baseStrength: 10
+          baseAgility: 10
+          baseMagicPoints: 20
+        reward: 20
     - type: "coach"
-      name: "Pudzian"
+      name: "Bard"
       price: 10.0
       multiplier: 1.0
   boss:
     name: "Dragon Lord"
-    health: 10000
-    baseStrength: 10000
-    baseAgility: 10000
-    baseMagicPoints: 10000
-- type: "boss"
-  mapLevel: 1
-  name: "Nicer boss field"
-  description: "That's very nice boss!"
-  actions:
-    - type: "card"
-    - type: "fight"
-      entity:
-        name: "Wolf"
-        health: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
-    - type: "coach"
-      name: "Pudzian"
-      price: 10.0
-      multiplier: 1.0
-  boss:
-    name: "Dragon Lord"
-    health: 10000
-    baseStrength: 10000
-    baseAgility: 10000
-    baseMagicPoints: 10000
+    health: 700
+    baseStrength: 80
+    baseAgility: 1000
+    baseMagicPoints: 1000

@@ -1,7 +1,7 @@
 - type: "normal"
   mapLevel: 1
-  name: "Nice field"
-  description: "That's nice field!"
+  name: "Flowery clearing"
+  description: "You fell like in fairy land."
   actions:
     - type: "card"
     - type: "fight"
@@ -13,24 +13,179 @@
         baseMagicPoints: 0
       reward: 10
     - type: "coach"
-      name: "Pudzian"
+      name: "Bard"
       price: 10.0
       multiplier: 1.0
+
 - type: "normal"
   mapLevel: 1
-  name: "Nicer field"
-  description: "That's very nice field!"
+  name: "Jungle"
+  description: "What??? Jungle in the middle of desert??"
   actions:
     - type: "card"
     - type: "fight"
       entity:
-        name: "Wolf"
-        health: 10
-        baseStrength: 5
-        baseAgility: 2
-        baseMagicPoints: 0
+        name: "Gromp"
+        health: 50
+        baseStrength: 20
+        baseAgility: 20
+        baseMagicPoints: 10
       reward: 10
     - type: "coach"
-      name: "Pudzian"
+      name: "Bard"
       price: 10.0
       multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Desert heaths"
+  description: "Ancient heats. You fell like you are going back in time."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Giant Raptor"
+        health: 90
+        baseStrength: 40
+        baseAgility: 0
+        baseMagicPoints: 0
+      reward: 150
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Desert"
+  description: "Does it have end????"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Raptor"
+        health: 60
+        baseStrength: 40
+        baseAgility: 1
+        baseMagicPoints: 0
+      reward: 60
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Desert"
+  description: "Does it have end????"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Raptor"
+        health: 60
+        baseStrength: 40
+        baseAgility: 1
+        baseMagicPoints: 0
+      reward: 60
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Whirlwind"
+  description: "This place is definitely not for people."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Blue Sentinel"
+        health: 30
+        baseStrength: 20
+        baseAgility: 5
+        baseMagicPoints: 0
+      reward: 15
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Volcano"
+  description: "You see two hobbits."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+          name: "Red Brambleback"
+          health: 30
+          baseStrength: 10
+          baseAgility: 10
+          baseMagicPoints: 20
+       reward: 20
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Rysy"
+  description: "You meet weird people and they ask you to drink beer with them."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+          name: "Lesser Rift Scuttler"
+          health: 45
+          baseStrength: 25
+          baseAgility: 5
+          baseMagicPoints: 5
+      reward: 25
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Hill of thorns"
+  description: "You see an endless field of roses."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Dragon"
+          health: 100
+          baseStrength: 60
+          baseAgility: 5
+          baseMagicPoints: 00
+        reward: 250
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+
+- type: "normal"
+  mapLevel: 1
+  name: "Magic beach"
+  description: "You have never seen something like this before."
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        enemy:
+          name: "Werewolf"
+          health: 50
+          baseStrength: 25
+          baseAgility: 20
+          baseMagicPoints: 0
+        reward: 25
+    - type: "coach"
+      name: "Bard"
+      price: 10.0
+      multiplier: 1.0
+

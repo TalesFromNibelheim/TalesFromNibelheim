@@ -284,7 +284,7 @@
   enemy:
     name: "Dragon"
     health: 100
-    baseStrength: 70
+    baseStrength: 60
     baseAgility: 5
     baseMagicPoints: 00
   reward: 250

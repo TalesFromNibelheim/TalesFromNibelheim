@@ -32,9 +32,9 @@ public class PlayerWarrior extends Player {
 
     public float cleave(Entity entity) {
         this.fightMagicPoints -= 5;
-        if (this.health < this.health * 0.3) {
-            System.out.println("You deal amage " + 2.5F * (this.additionalStrength + startStrength * 0.4) + ".");
-            return 2.5F * (this.getStrength());
+        if (this.health < this.getMaxHealth() * 0.3) {
+            System.out.println("You deal amage " + 2.5F * (this.getStrength() * 0.4) + ".");
+            return 2.5F * (this.getStrength() * 0.4F);
         }
         if (entity.getHealth() < entity.getBaseMaxHealth() * 0.2) {
             System.out.println("AMAZING! You dealt " + (entity.getHealth()) + " damage.");
