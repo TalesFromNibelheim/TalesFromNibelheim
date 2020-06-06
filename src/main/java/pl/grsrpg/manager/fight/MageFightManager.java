@@ -137,11 +137,12 @@ public class MageFightManager implements FightManager {
         }
         if (this.player.getHealth() > 0) {
             System.out.println("You won!");
-        } else {
-            System.out.println("You lost.");
+            this.player.restore();
+            return true;
         }
+        System.out.println("You lost.");
         this.player.restore();
-        return true;
+        return false;
     }
 
 }

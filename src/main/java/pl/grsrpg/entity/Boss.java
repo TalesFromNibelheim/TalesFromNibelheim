@@ -30,4 +30,7 @@ public class Boss extends Enemy {
         return damage * multiplier * multiplier;
     }
 
+    public void setMultiplier(int multiplier){
+        this.multiplier = multiplier;
+    }
 }

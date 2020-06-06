@@ -2,11 +2,13 @@ package pl.grsrpg.action;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.ToString;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 
+@AllArgsConstructor
 public class ActionFight extends Action {
     @JsonProperty
     private Enemy entity;

@@ -2,6 +2,7 @@ package pl.grsrpg.playerTest;
 
 import org.junit.Test;
 import pl.grsrpg.card.Card;
+import pl.grsrpg.card.CardFriend;
 import pl.grsrpg.card.CardItem;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.player.Player;
@@ -55,7 +56,6 @@ public class PlayerMageTest {
         for (ICard iCard : tempCard) assertNotEquals(iCard.getName(), card2.getName());
     }
 
-    //TODO te testy sie cos psują a to git testy są
     @Test
     public void recalculateAttributesTest() {
         Player player = new PlayerMage();
@@ -98,5 +98,68 @@ public class PlayerMageTest {
         assertFalse(player.removeGold(70));
         assertTrue(player.removeGold(50));
         assertEquals(0, player.getGold(), 0.01);
+    }
+
+    @Test
+    public void addGoldTest()
+    {
+        Player player = new PlayerMage();
+        player.addGold(100);
+        assertEquals(100, player.getGold());
+    }
+
+
+    @Test
+    public void simplyAddArmorTest()
+    {
+        Player player = new PlayerMage();
+        player.addArmor(5);
+        assertEquals(5, player.getArmor(), 0.01);
+    }
+
+    @Test
+    public void addPointEmptyFriend()
+    {
+        Player player = new PlayerMage();
+        assertFalse(player.getAddPoint());
+        assertFalse(player.getFriend());
+    }
+
+    @Test
+    public void setFriendTest()
+    {
+        Player player = new PlayerMage();
+        Card card = new CardFriend("friend", "des", 0,true,0);
+        card.execute(player);
+        assertTrue(player.getFriend());
+        assertTrue(player.getAddPoint());
+        player.setFriend(false);
+        assertFalse(player.getFriend());
+        assertFalse(player.getAddPoint());
+    }
+
+    @Test
+    public void thunderTest()
+    {
+        PlayerMage player = new PlayerMage();
+        player.setAdditionalMagicPoints(50);
+        assertEquals(50, player.getMagicPoints());
+        assertEquals(87.5,player.thunder(), 0.01);
+    }
+    @Test
+    public void fireBallTest()
+    {
+        PlayerMage player = new PlayerMage();
+        player.setAdditionalMagicPoints(50);
+        assertEquals(50, player.getMagicPoints());
+        assertEquals(200,player.fireBall(), 0.01);
+    }
+    @Test
+    public void iceChainTest()
+    {
+        PlayerMage player = new PlayerMage();
+        player.setAdditionalMagicPoints(50);
+        assertEquals(50, player.getMagicPoints());
+        assertEquals(250,player.iceChain(), 300);
     }
 }
