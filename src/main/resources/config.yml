@@ -2,3 +2,4 @@ level1Size: 10 #Number of fields at 1 level
 level2Size: 7 #Number of fields at 2 level
 level3Size: 5 #Number of fields at 3 level
 maxMove: 3
+landName: Nibelheim

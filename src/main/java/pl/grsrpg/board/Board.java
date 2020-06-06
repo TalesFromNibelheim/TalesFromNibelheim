@@ -43,6 +43,8 @@ public class Board implements IBoard {
         addFieldFromFile(level3GameFields, "data/level-3-field-boss.yml", "level-3-field-boss.yml");
 
         loadCards();
+
+        name = Game.getConfig().getLandName();
     }
 
     private void loadLevel(List<IField> levelList, String levelFileName, String resource, int size) {

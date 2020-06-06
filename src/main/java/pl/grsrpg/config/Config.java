@@ -10,4 +10,5 @@ public class Config {
     private int level2Size;
     private int level3Size;
     private int maxMove;
+    private String landName;
 }

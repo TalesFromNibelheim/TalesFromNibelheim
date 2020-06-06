@@ -1,6 +1,7 @@
 package pl.grsrpg;
 
 import lombok.Getter;
+import org.fusesource.jansi.AnsiConsole;
 import pl.grsrpg.config.Config;
 import pl.grsrpg.board.IBoard;
 import pl.grsrpg.board.Board;
@@ -8,6 +9,8 @@ import pl.grsrpg.utils.IOUtils;
 
 import java.io.File;
 import java.io.IOException;
+
+import static org.fusesource.jansi.Ansi.ansi;
 
 @Getter
 public class Game {
@@ -37,9 +40,11 @@ public class Game {
     }
 
     public static void main(String[] args) {
+        AnsiConsole.systemInstall();
         loadConfig();
         game = new Game();
         game.startGameLoop();
+        AnsiConsole.systemUninstall();
     }
 
     private static void loadConfig() {
