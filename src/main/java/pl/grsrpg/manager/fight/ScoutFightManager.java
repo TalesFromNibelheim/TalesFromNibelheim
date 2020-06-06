@@ -26,9 +26,15 @@ public class ScoutFightManager implements FightManager {
 
     private void chooseAttack() {
         System.out.println(Logger.CYAN + "1." + Logger.RESET + " Basic Attack.");
-        System.out.println(Logger.CYAN + "2." + Logger.RESET + " Critical shoot.");
-        System.out.println(Logger.CYAN + "3." + Logger.RESET + " Series of arrows.");
-        System.out.println(Logger.CYAN + "4." + Logger.RESET + " Repetable arrow.");
+        System.out.println(" Need Magic Points: "+Logger.YELLOW + "0"+Logger.RESET);
+        if(player.getFightMagicPoints() >= 5){
+            System.out.println(Logger.CYAN + "2." + Logger.RESET + " Critical shoot.");
+            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+            System.out.println(Logger.CYAN + "3." + Logger.RESET + " Series of arrows.");
+            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+            System.out.println(Logger.CYAN + "4." + Logger.RESET + " Repeatable arrow.");
+            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+        }
     }
 
     private float enemyAttack(Enemy enemy) {
@@ -45,12 +51,14 @@ public class ScoutFightManager implements FightManager {
     private void playerTour(Entity enemy) {
         System.out.println("It's your turn " + Logger.BLUE + player.getName() + "." + Logger.RESET);
         System.out.println("Your current health: " + Logger.RED + this.player.getHealth() + "." + Logger.RESET);
+        System.out.println("Your current magic points: " + Logger.RED + this.player.getFightMagicPoints() + "." + Logger.RESET);
         System.out.println("Choose your attack: ");
         chooseAttack();
         int temp;
         float dmg;
+        int max = (player.getFightMagicPoints() >= 5 ? 4 : 1);
         do temp = IOUtils.getScanner().nextInt();
-        while (temp != 1 && temp != 2 && temp != 3 && temp != 4);
+        while (temp < 1 || temp > max);
         switch (temp) {
             case 1:
                 dmg = player.basicAttack();

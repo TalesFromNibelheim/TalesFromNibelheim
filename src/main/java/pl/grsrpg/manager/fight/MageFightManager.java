@@ -22,9 +22,15 @@ public class MageFightManager implements FightManager {
 
     private void chooseAttack() {
         System.out.println(Logger.CYAN + "1." + Logger.RESET + " Basic Attack.");
-        System.out.println(Logger.CYAN + "2." + Logger.RESET + " Thunder.");
-        System.out.println(Logger.CYAN + "3." + Logger.RESET + " Fire Ball.");
-        System.out.println(Logger.CYAN + "4." + Logger.RESET + " Ice Chain.");
+        System.out.println(" Need Magic Points: "+Logger.YELLOW + "0"+Logger.RESET);
+        if(player.getFightMagicPoints() >= 5){
+            System.out.println(Logger.CYAN + "2." + Logger.RESET + " Thunder.");
+            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+            System.out.println(Logger.CYAN + "3." + Logger.RESET + " Fire Ball.");
+            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+            System.out.println(Logger.CYAN + "4." + Logger.RESET + " Ice Chain.");
+            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+        }
     }
 
     private float damageReduce() {
@@ -51,11 +57,13 @@ public class MageFightManager implements FightManager {
     private void playerTour(Entity enemy) {
         System.out.println("It's your turn " + Logger.BLUE + player.getName() + "." + Logger.RESET);
         System.out.println("Your current health: " + Logger.RED + this.player.getHealth() + "." + Logger.RESET);
+        System.out.println("Your current magic points: " + Logger.RED + this.player.getFightMagicPoints() + "." + Logger.RESET);
         System.out.println("Choose your attack: ");
         chooseAttack();
         int temp;
+        int max = (player.getFightMagicPoints() >= 5 ? 4 : 1);
         do temp = IOUtils.getScanner().nextInt();
-        while (temp < 1 || temp > 4);
+        while (temp < 1 || temp > max);
         switch (temp) {
             case 1:
                 enemy.takeDamage(basicAttack());

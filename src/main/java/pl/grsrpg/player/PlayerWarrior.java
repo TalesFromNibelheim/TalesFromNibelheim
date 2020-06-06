@@ -21,7 +21,7 @@ public class PlayerWarrior extends Player {
     }
 
     public float knockdown() {
-        this.magicPoints -= 5;
+        this.fightMagicPoints -= 5;
         if (DiceRoll.rollPrivate(1, 6) >= 4) {
             System.out.println("You dealt additional damage " + (2.5F * this.getAdditionalStrength() + 0.4F * this.getBaseStrength()) + "and knockdown enemy.");
             return (2.5F * this.getAdditionalStrength() + 0.2F * this.getBaseStrength());
@@ -31,7 +31,7 @@ public class PlayerWarrior extends Player {
     }
 
     public float cleave(Entity entity) {
-        this.magicPoints -= 5;
+        this.fightMagicPoints -= 5;
         if (this.health < this.health * 0.3) {
             System.out.println("You deal amage " + 2.5F * (this.additionalStrength + startStrength * 0.4) + ".");
             return 2.5F * (this.getStrength());
@@ -45,7 +45,7 @@ public class PlayerWarrior extends Player {
     }
 
     public void blessingOfTheShield() {
-        this.magicPoints -= 5;
+        this.fightMagicPoints -= 5;
     }
 
     public static int getStartMaxHealth() {

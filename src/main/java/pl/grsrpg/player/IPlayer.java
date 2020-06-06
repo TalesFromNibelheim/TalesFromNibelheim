@@ -55,14 +55,6 @@ public interface IPlayer extends Entity {
 
     boolean hasAdditionalPoint();
 
-    void setAdditionalMaxHealth(int maxHealth);
-
-    void setAdditionalStrength(int strength);
-
-    void setAdditionalAgility(int agility);
-
-    void setAdditionalMagicPoints(int magicPoints);
-
     void setAdditionalEqCapacity(int capacity);
 
     void setAdditionalPoint(boolean additionalPoint);
@@ -106,4 +98,6 @@ public interface IPlayer extends Entity {
     int getAdditionalEqCapacity();
 
     String getCurrentFriendStats();
+
+    int getFightMagicPoints();
 }

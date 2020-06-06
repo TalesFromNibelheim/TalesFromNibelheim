@@ -25,7 +25,7 @@ public abstract class Player extends Enemy implements IPlayer {
     protected int currentField = 0;
     protected int gold = 0;
 
-    protected int magicPoints;
+    protected int fightMagicPoints;
 
     protected int additionalMaxHealth;
     protected float armor;
@@ -44,7 +44,7 @@ public abstract class Player extends Enemy implements IPlayer {
     public Player(String name, int maxHealth, int strength, int agility, int magicPoints, int eqCapacity) {
         super(name, maxHealth, strength, agility, magicPoints);
         this.eqCapacity = eqCapacity;
-        this.magicPoints = magicPoints;
+        this.fightMagicPoints = magicPoints;
     }
 
     @Override
@@ -160,7 +160,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public void restore() {
-        this.magicPoints = this.getMagicPoints();
+        this.fightMagicPoints = this.getMagicPoints();
         this.health = this.getMaxHealth();
     }
 
