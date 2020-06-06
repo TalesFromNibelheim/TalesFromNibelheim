@@ -13,4 +13,4 @@ maxMove: 3 #Max number of fields to move in one tour.
 
 Wiki
 -------------
-##Documentation WIP!
+### Documentation WIP!
