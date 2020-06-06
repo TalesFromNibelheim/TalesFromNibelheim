@@ -21,6 +21,7 @@ public class ActionFight extends Action {
     @Override
     public boolean execute(IPlayer player) {
         if (player.fight(entity.clone())) {
+            System.out.println("You received " + Logger.YELLOW + reward + Logger.RESET + " gold for winning this fight!");
             player.addGold(reward);
         }
         return true;

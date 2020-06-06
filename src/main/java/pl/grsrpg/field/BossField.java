@@ -26,6 +26,7 @@ public class BossField extends Field implements IBossField {
         if (choice == 1) {
             if (player.fight(boss.clone())) {
                 defeated = true;
+                System.out.println("You unlocked next level of the map!");
             }
         } else {
             super.execute(player);

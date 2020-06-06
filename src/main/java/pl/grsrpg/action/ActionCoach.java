@@ -157,7 +157,10 @@ public class ActionCoach extends Action {
         System.out.println(Logger.YELLOW + "3. " + Logger.RESET + "Abort dealing with me?");
         System.out.print("Your choice: ");
         int menuChoice = IOUtils.nextInt();
-        if (menuChoice == 1) attributesChoice(player);
+        if (menuChoice == 1){
+            attributesChoice(player);
+            player.restore();
+        }
         else if (menuChoice == 2) sellItems(player);
         System.out.println("See you soon!");
     }

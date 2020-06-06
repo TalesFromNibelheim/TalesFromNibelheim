@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.grsrpg.Game;
 import pl.grsrpg.entity.Enemy;
+import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 
 @NoArgsConstructor
@@ -26,6 +27,7 @@ public class CardEnemy extends Card {
         if (!player.fight(enemy.clone())) {
             Game.getGame().getBoard().getField(player.getCurrentMapLevel(), player.getCurrentField()).setUndefeatedCard(this);
         } else {
+            System.out.println("You received " + Logger.YELLOW + reward + Logger.RESET + " gold for winning this fight!");
             player.addGold(reward);
         }
         return true;
