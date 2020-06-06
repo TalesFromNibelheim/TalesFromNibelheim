@@ -14,7 +14,7 @@ public class Boss extends Enemy {
     }
 
     public float headHunter(float damage) {
-        if (DiceRoll.rollPrivate(1, 6) >= 4) {
+        if (DiceRoll.rollPrivate(1, 6) >= 5) {
             System.out.println("My body desire your soul!!!");
             return damage * 1.4F;
         } else return damage * 1.1F;
@@ -23,7 +23,7 @@ public class Boss extends Enemy {
     public float rage(float damage) {
         if (getHealth() < getBaseMaxHealth() * 0.25) {
             System.out.println("Try to stop me now!!!!!!");
-            return damage * multiplier;
+            return damage + 5;
         } else return damage;
     }
 

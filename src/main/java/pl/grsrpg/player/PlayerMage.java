@@ -41,8 +41,8 @@ public class PlayerMage extends Player {
 
     public float thunder() {
         this.fightMagicPoints -= 5;
-        float dmg = 0.7F * (2.5F * this.getMagicPoints());
-        System.out.println("You deal " + (dmg) + " damage and stun enemy.");
+        float dmg = 0.5F * (2.5F * this.getMagicPoints());
+        System.out.println("You deal " + (dmg) + " damage.");
         return dmg;
     }
 

@@ -42,12 +42,12 @@ public class PlayerScout extends Player {
 
     public float criticalArrow() {
         this.fightMagicPoints -= 5;
-        return 0.5F * (this.getAgility());
+        return 0.5F * (this.getAgility()) * DiceRoll.rollPrivate(5, 2);
     }
 
     public float seriesOfArrows() {
         this.fightMagicPoints -= 5;
-        return 0.2F * (this.getAgility()) * DiceRoll.rollPrivate(3, 2);
+        return 0.2F * (this.getAgility()) * DiceRoll.rollPrivate(10, 2);
     }
 
     public float repeatableArrow() {

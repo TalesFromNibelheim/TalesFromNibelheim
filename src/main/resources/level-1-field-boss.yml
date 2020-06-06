@@ -1,6 +1,6 @@
 - type: "boss"
   mapLevel: 1
-  name: "Dragons cave"
+  name: "Dragon's cave"
   description: "It's pretty warm here."
   actions:
     - type: "card"
@@ -15,9 +15,9 @@
       price: 10.0
       multiplier: 1.0
   boss:
-    name: "Dragon"
-    health: 700
-    baseStrength: 80
+    name: "Lord of Dragons"
+    health: 1000
+    baseStrength: 45
 
 - type: "boss"
   mapLevel: 1
@@ -37,5 +37,5 @@
       multiplier: 1.0
   boss:
     name: "Cyclope"
-    health: 650
-    baseStrength: 90
+    health: 950
+    baseStrength: 53

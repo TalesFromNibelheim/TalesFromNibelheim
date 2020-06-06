@@ -2,24 +2,24 @@
   name: "Ice Sword"
   carriable: true
   description: "Sword from the highest mountain. "
-  strength: 2
-  itemValue: 10
+  strength: 10
+  itemValue: 100
   profession: "pl.grsrpg.player.PlayerWarrior"
 
 - type: "item"
   name: "Black Cleaver"
   carriable: true
   description: "This axe can slash everything."
-  strength: 4
-  itemValue: 25
+  strength: 15
+  itemValue: 250
   profession: "pl.grsrpg.player.PlayerWarrior"
 
 - type: "item"
   name: "Mjølner"
   carriable: true
   description: "This hammer was worn by Thorn."
-  strength: 6
-  itemValue: 50
+  strength: 30
+  itemValue: 1000
   profession: "pl.grsrpg.player.PlayerWarrior"
 
 - type: "item"
@@ -36,33 +36,33 @@
   carriable: true
   description: "The living armor protected the greatest troll warrior."
   strength: 1
-  armor: 50
-  itemValue: 25
+  armor: 80
+  itemValue: 250
   profession: "pl.grsrpg.player.PlayerWarrior"
 
 - type: "item"
   name: "Spirit Visage"
   carriable: true
   description: "A gift from kind specters."
-  strength: 1
-  armor: 10
-  itemValue: 10
+  magicPoints: 10
+  armor: 50
+  itemValue: 250
   profession: "pl.grsrpg.player.PlayerMage"
 
 - type: "item"
   name: "Undying armor"
   carriable: true
   description: "Sometimes the dead can give life."
-  strength: 1
-  armor: 12
-  itemValue: 30
+  magicPoints: 2
+  armor: 40
+  itemValue: 500
   profession: "pl.grsrpg.player.PlayerMage"
 
 - type: "item"
   name: "Archangel's Staff"
   carriable: true
   description: "This item comes from sky."
-  strength: 3
+  magicPoints: 3
   armor: 20
   itemValue: 45
   profession: "pl.grsrpg.player.PlayerMage"
@@ -71,8 +71,8 @@
   name: "Guardian Angel"
   carriable: true
   description: "That is your personal guard."
-  strength: 2
-  armor: 17
+  magicPoints: 5
+  armor: 20
   itemValue: 40
   profession: "pl.grsrpg.player.PlayerMage"
 
@@ -91,15 +91,120 @@
   carriable: true
   description: "."
   strength: 1
-  armor: 2
+  armor: 10
   agility: 25
   itemValue: 55
   profession: "pl.grsrpg.player.PlayerScout"
 
 - type: "item"
+  name: "Elegant shoes"
+  carriable: true
+  description: "You will make any girl in these shoes."
+  strength: 2
+  armor: 5
+  agility: 2
+  magicPoints: 2
+  itemValue: 30
+
+- type: "item"
+  name: "Hera's ring"
+  carriable: true
+  description: "This was Hera's favourite ring."
+  magicPoints: 3
+  itemValue: 300
+
+- type: "item"
+  name: "Beautiful necklace"
+  carriable: true
+  description: "It is beautiful but also useless."
+  itemValue: 500
+
+- type: "item"
+  name: "Thieves guild sign"
+  carriable: true
+  description: "Mark of belonging to the thieves guild."
+  agility: 5
+  itemValue: 50
+
+- type: "item"
+  name: "Thor guild sign"
+  carriable: true
+  description: "Mark of belonging to the Thor's army."
+  strength: 5
+  itemValue: 50
+
+- type: "item"
+  name: "Mage guild sign"
+  carriable: true
+  description: "Mark of belonging to the mage tower."
+  magicPoint: 3
+  armor: 5
+  itemValue: 50
+
+- type: "item"
+  name: "Camouflage cape"
+  carriable: true
+  description: "Wow. Were you still here?"
+  magicPoint: 1
+  agility: 1
+  strength: 1
+  armor: 15
+  itemValue: 50
+
+- type: "item"
+  name: "Konrad's ring"
+  carriable: true
+  description: "You are very lucky."
+  magicPoint: 5
+  agility: 5
+  strength: 5
+  armor: 10
+  itemValue: 50
+
+- type: "item"
+  name: "Jedrzej's backpack"
+  carriable: true
+  description: "Now you can win every debate."
+  magicPoint: 5
+  agility: 5
+  strength: 5
+  armor: 10
+  itemValue: 50
+
+- type: "item"
+  name: "Suhutki's boots"
+  carriable: true
+  description: "Beautiful nike shoes."
+  magicPoint: 5
+  agility: 5
+  strength: 5
+  armor: 10
+  itemValue: 50
+
+- type: "item"
+  name: "Fire arrows"
+  carriable: true
+  description: "Be careful, it's on fire."
+  agility: 15
+  strength: 1
+  armor: 3
+  itemValue: 50
+  profession: "pl.grsrpg.player.PlayerScout"
+
+- type: "item"
+  name: "Black edge"
+  carriable: true
+  description: "This edge is darker than black."
+  magicPoint: 5
+  agility: 5
+  strength: 10
+  itemValue: 505
+  profession: "pl.grsrpg.player.PlayerWarrior"
+
+- type: "item"
   name: "Boots of Mobility"
   carriable: true
-  description: "."
+  description: "Legends say that Hermes lost these boots."
   strength: 1
   armor: 1
   agility: 30

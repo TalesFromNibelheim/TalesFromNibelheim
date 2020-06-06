@@ -7,7 +7,7 @@
     - type: "fight"
       entity:
         name: "Wolf"
-        health: 10
+        health: 60
         baseStrength: 5
       reward: 10
     - type: "coach"
@@ -24,7 +24,7 @@
     - type: "fight"
       entity:
         name: "Gromp"
-        health: 50
+        health: 100
         baseStrength: 20
       reward: 10
     - type: "coach"
@@ -41,9 +41,9 @@
     - type: "fight"
       entity:
         name: "Giant Raptor"
-        health: 90
-        baseStrength: 40
-      reward: 150
+        health: 150
+        baseStrength: 50
+      reward: 175
     - type: "coach"
       name: "Bard"
       price: 10.0
@@ -58,7 +58,7 @@
     - type: "fight"
       entity:
         name: "Raptor"
-        health: 60
+        health: 80
         baseStrength: 40
       reward: 60
     - type: "coach"
@@ -75,9 +75,9 @@
     - type: "fight"
       entity:
         name: "Raptor"
-        health: 60
-        baseStrength: 40
-      reward: 60
+        health: 80
+        baseStrength: 45
+      reward: 100
     - type: "coach"
       name: "Bard"
       price: 10.0
@@ -92,9 +92,9 @@
     - type: "fight"
       entity:
         name: "Blue Sentinel"
-        health: 30
-        baseStrength: 20
-      reward: 15
+        health: 120
+        baseStrength: 30
+      reward: 25
     - type: "coach"
       name: "Bard"
       price: 10.0
@@ -109,8 +109,8 @@
     - type: "fight"
       entity:
         name: "Red Brambleback"
-        health: 30
-        baseStrength: 10
+        health: 90
+        baseStrength: 30
       reward: 20
     - type: "coach"
       name: "Bard"
@@ -126,9 +126,9 @@
     - type: "fight"
       entity:
         name: "Lesser Rift Scuttler"
-        health: 45
-        baseStrength: 25
-      reward: 25
+        health: 120
+        baseStrength: 45
+      reward: 60
     - type: "coach"
       name: "Bard"
       price: 10.0
@@ -143,7 +143,7 @@
     - type: "fight"
       entity:
         name: "Dragon"
-        health: 100
+        health: 400
         baseStrength: 60
       reward: 250
     - type: "coach"
@@ -160,9 +160,9 @@
     - type: "fight"
       entity:
         name: "Werewolf"
-        health: 50
+        health: 130
         baseStrength: 25
-      reward: 25
+      reward: 90
     - type: "coach"
       name: "Bard"
       price: 10.0
