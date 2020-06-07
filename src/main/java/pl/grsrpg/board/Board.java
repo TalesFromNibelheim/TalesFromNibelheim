@@ -267,7 +267,8 @@ public class Board implements IBoard {
         } else {
             ret.add(level3GameFields.get(currentField - 1));
         }
-        ret.add(level3GameFields.get(currentField + 1));
+        if(currentField + 1 < level3GameFields.size())
+            ret.add(level3GameFields.get(currentField + 1));
     }
 
 
