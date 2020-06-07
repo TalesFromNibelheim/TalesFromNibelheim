@@ -137,7 +137,7 @@
   name: "Mage guild sign"
   carriable: true
   description: "Mark of belonging to the mage tower."
-  magicPoint: 3
+  magicPoints: 3
   armor: 5
   itemValue: 50
 
@@ -145,7 +145,7 @@
   name: "Camouflage cape"
   carriable: true
   description: "Wow. Were you still here?"
-  magicPoint: 1
+  magicPoints: 1
   agility: 1
   strength: 1
   armor: 15
@@ -155,7 +155,7 @@
   name: "Konrad's ring"
   carriable: true
   description: "You are very lucky."
-  magicPoint: 5
+  magicPoints: 5
   agility: 5
   strength: 5
   armor: 10
@@ -165,7 +165,7 @@
   name: "Jedrzej's backpack"
   carriable: true
   description: "Now you can win every debate."
-  magicPoint: 5
+  magicPoints: 5
   agility: 5
   strength: 5
   armor: 10
@@ -175,7 +175,7 @@
   name: "Suhutki's boots"
   carriable: true
   description: "Beautiful nike shoes."
-  magicPoint: 5
+  magicPoints: 5
   agility: 5
   strength: 5
   armor: 10
@@ -195,7 +195,7 @@
   name: "Black edge"
   carriable: true
   description: "This edge is darker than black."
-  magicPoint: 5
+  magicPoints: 5
   agility: 5
   strength: 10
   itemValue: 505
