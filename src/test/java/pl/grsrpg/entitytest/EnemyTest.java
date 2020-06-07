@@ -3,7 +3,8 @@ package pl.grsrpg.entitytest;
 import org.junit.Test;
 import pl.grsrpg.entity.Enemy;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class EnemyTest {
 

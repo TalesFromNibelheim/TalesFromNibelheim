@@ -1,7 +1,10 @@
 package pl.grsrpg.card;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 

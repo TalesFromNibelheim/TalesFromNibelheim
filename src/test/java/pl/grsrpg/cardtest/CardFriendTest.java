@@ -6,7 +6,7 @@ import pl.grsrpg.card.CardFriend;
 import pl.grsrpg.player.Player;
 import pl.grsrpg.player.PlayerMage;
 
-import static junit.framework.TestCase.*;
+import static org.junit.Assert.*;
 
 public class CardFriendTest {
 

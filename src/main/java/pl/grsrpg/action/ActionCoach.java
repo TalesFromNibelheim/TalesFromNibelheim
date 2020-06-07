@@ -67,6 +67,7 @@ public class ActionCoach extends Action {
 
     private void improveAttributes(IPlayer player, Attribute choice, int number) {
         switch (choice) {
+            default:
             case AGILITY:
                 player.setBaseAgility(player.getBaseAgility() + number);
                 break;

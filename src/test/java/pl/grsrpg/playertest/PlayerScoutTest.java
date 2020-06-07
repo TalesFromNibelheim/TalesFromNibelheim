@@ -6,7 +6,7 @@ import pl.grsrpg.player.Player;
 import pl.grsrpg.player.PlayerScout;
 import pl.grsrpg.utils.Attribute;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PlayerScoutTest {
 

@@ -1,7 +1,8 @@
 package pl.grsrpg.utilstest;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 import static pl.grsrpg.utils.DiceRoll.rollPrivate;
 import static pl.grsrpg.utils.DiceRoll.rollPublic;
 

@@ -13,18 +13,16 @@ import java.io.IOException;
 @Getter
 public class Game {
     private static Config config;
+    private static Game game;
+    private IBoard board;
 
     public static Config getConfig() {
         return config;
     }
 
-    private static Game game;
-
     public static Game getGame() {
         return game;
     }
-
-    private IBoard board;
 
     public IBoard getBoard() {
         return board;
@@ -59,7 +57,7 @@ public class Game {
         if (save.exists()) {
             System.out.print("Found previous game save, load it?[Y/n] ");
             String choice = IOUtils.getScanner().next();
-            if (choice.equals("n"))
+            if ("n".equals(choice))
                 return false;
             try {
                 this.board = IOUtils.getMapper().readValue(save, Board.class);

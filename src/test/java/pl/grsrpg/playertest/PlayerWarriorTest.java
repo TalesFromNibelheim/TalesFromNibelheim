@@ -7,7 +7,8 @@ import pl.grsrpg.player.Player;
 import pl.grsrpg.player.PlayerWarrior;
 import pl.grsrpg.utils.Attribute;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 
 public class PlayerWarriorTest {
 

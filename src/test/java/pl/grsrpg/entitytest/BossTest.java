@@ -1,8 +1,9 @@
 package pl.grsrpg.entitytest;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 import pl.grsrpg.entity.Boss;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class BossTest {
