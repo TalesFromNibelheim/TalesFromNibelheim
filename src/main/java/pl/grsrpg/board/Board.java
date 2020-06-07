@@ -215,6 +215,7 @@ public class Board implements IBoard {
         int fieldsToMove = DiceRoll.rollPublic(1, Game.getConfig().getMaxMove(), player.hasAdditionalPoint());
         Set<IField> ret = new HashSet<>();
         switch (player.getCurrentMapLevel()) {
+            default:
             case 1:
                 getLevel1Fields(ret, fieldsToMove);
                 break;
@@ -290,8 +291,9 @@ public class Board implements IBoard {
                 return level2GameFields.get(filedNumber);
             case 3:
                 return level3GameFields.get(filedNumber);
+            default:
+                return null;
         }
-        return null;
     }
 
     @JsonIgnore

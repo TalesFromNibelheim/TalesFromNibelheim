@@ -73,20 +73,6 @@ public class PlayerMageTest {
     }
 
     @Test
-    public void AdditionalTest() {
-        Player player = new PlayerMage();
-        player.setEqCapacity(2);
-        ICard card = new CardItem("1", "", true, 1, 2, 3, 4, 0, 2, 3, PlayerMage.class);
-        player.addCard(card);
-        player.recalculateAttributes();
-        assertEquals(1, player.getAdditionalMaxHealth(), 0.01);
-        assertEquals(2, player.getAdditionalStrength(), 0.01);
-        assertEquals(3, player.getAdditionalAgility(), 0.01);
-        assertEquals(4, player.getAdditionalMagicPoints(), 0.01);
-        assertEquals(3, player.getArmor(), 0.01);
-    }
-
-    @Test
     public void removeGoldTest() {
         Player player = new PlayerMage();
         player.setGold(100);
