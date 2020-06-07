@@ -2,6 +2,18 @@
   mapLevel: 3
   name: "Fountain of Eternal Life!"
   description: "Whoever enters this fountain will never die! But beware of the guard!"
+  actions:
+    - type: "card"
+    - type: "fight"
+      entity:
+        name: "Lich"
+        health: 240
+        baseStrength: 40
+      reward: 210
+    - type: "coach"
+      name: "Wraith of Defeated Warrior"
+      price: 40.0
+      multiplier: 1.5
   boss:
     name: "Fallen Archangel"
     health: 2200

@@ -6,7 +6,6 @@ import pl.grsrpg.manager.fight.MageFightManager;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.utils.Attribute;
 
-@NoArgsConstructor
 public class PlayerMage extends Player {
     private static final int startMaxHealth = 100;
     private static final int startStrength = 20;
@@ -16,6 +15,10 @@ public class PlayerMage extends Player {
 
     public PlayerMage(String name) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
+        this.fightManager = new MageFightManager(this);
+    }
+
+    public PlayerMage(){
         this.fightManager = new MageFightManager(this);
     }
 

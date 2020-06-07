@@ -296,4 +296,21 @@ public class Board implements IBoard {
         }
         return cards.remove(0);
     }
+
+    @Override
+    public void gameFinish(){
+        System.out.println(Logger.RED + "Final boss is deafened!");
+        System.out.println(Logger.CYAN + "You are walking into fountain...");
+        System.out.println(Logger.CYAN + "Great power comes through your body. You take a knife and try to hurt yourself.");
+        System.out.println(Logger.CYAN + "It can't brake your skin. You are truly immortal.");
+        System.out.println(Logger.CYAN + "In the surface of the puddle you see that your face looks different. You come closer.");
+        System.out.println(Logger.CYAN + "Your ugliness knock you off your feet. You are now immortal but became ugly as hell.");
+        player.setImmortal(true);
+        System.out.println(Logger.YELLOW + "Do you want to: " + Logger.RESET);
+        System.out.print(Logger.CYAN + "1. " + Logger.RESET+"Continue"+Logger.YELLOW+"/"+Logger.CYAN+"2. "+Logger.RESET+"Save and quit");
+        int choice = IOUtils.nextInt();
+        if(choice == 2){
+            this.saveAndQuit();
+        }
+    }
 }

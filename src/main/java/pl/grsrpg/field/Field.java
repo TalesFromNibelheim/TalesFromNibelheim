@@ -3,6 +3,7 @@ package pl.grsrpg.field;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.ToString;
+import pl.grsrpg.action.ActionTakeCard;
 import pl.grsrpg.action.IAction;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.player.IPlayer;
@@ -28,7 +29,13 @@ public class Field implements IField {
     public void execute(IPlayer player) {
         int actionNumber = DiceRoll.rollPrivate(1, actions.size());
         System.out.println();
-        actions.get(actionNumber - 1).execute(player);
+        IAction action = actions.get(actionNumber - 1);
+        if (action instanceof ActionTakeCard && undefeatedCard != null) {
+            ICard oldCard = undefeatedCard;
+            undefeatedCard = null;
+            oldCard.execute(player);
+        } else
+            action.execute(player);
     }
 
     @Override

@@ -39,6 +39,8 @@ public abstract class Player extends Enemy implements IPlayer {
     protected boolean additionalPoint = false;
     protected float goldMultiplier = 1;
     protected boolean friend = false;
+
+    protected boolean immortal = false;
     @JsonIgnore
     protected FightManager fightManager;
 
@@ -50,10 +52,8 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public boolean addCard(ICard card) {
-        if (cards.size() < eqCapacity) {
+        if (cards.size() < this.getEqCapacity()) {
             card.execute(this);
-            if (!card.isCarriable())
-                return true;
             cards.add(card);
             return true;
         }
@@ -97,6 +97,14 @@ public abstract class Player extends Enemy implements IPlayer {
         field.execute(this);
     }
 
+    @Override
+    public void takeDamage(float damage) {
+        if (immortal) {
+            return;
+        }
+        super.takeDamage(damage);
+    }
+
     @JsonIgnore
     @Override
     public String getInfo() {
@@ -121,7 +129,7 @@ public abstract class Player extends Enemy implements IPlayer {
 
     @Override
     public boolean fight(Entity entity) {
-        System.out.println("You will fight with " + Logger.CYAN + entity.getName() + Logger.RESET+"!");
+        System.out.println("You will fight with " + Logger.CYAN + entity.getName() + Logger.RESET + "!");
         boolean result = fightManager.fight(entity);
         Game.getGame().getBoard().save();
         return result;
@@ -130,10 +138,17 @@ public abstract class Player extends Enemy implements IPlayer {
     @JsonIgnore
     @Override
     public String getCardsInfo() {
-        int i = 2;
-        return "Cards: \n " + Logger.YELLOW + (cards.size() > 0 ? "1. " + Logger.RESET + cards.stream()
-                .map(card -> "Name: " + Logger.CYAN + card.getName() + Logger.RESET + "\n    Description: " + card.getDescription())
-                .collect(Collectors.joining("\n " + Logger.YELLOW + (i++) + ". " + Logger.RESET, "", "")) : "None" + Logger.RESET);
+        int i = 1;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Cards: ");
+        if (cards.size() > 0) {
+            for (ICard card : cards) {
+                stringBuilder.append("\n " + Logger.YELLOW).append(i++).append(". ").append(Logger.RESET).append("Name: ").append(Logger.CYAN).append(card.getName()).append(Logger.RESET).append("\n    Description: ").append(card.getDescription());
+            }
+        } else {
+            stringBuilder.append(Logger.YELLOW + "\nNone");
+        }
+        return stringBuilder.toString();
     }
 
     @Override
@@ -229,5 +244,9 @@ public abstract class Player extends Enemy implements IPlayer {
 
     public boolean hasAdditionalPoint() {
         return additionalPoint;
+    }
+
+    public void setImmortal(boolean immortal) {
+        this.immortal = immortal;
     }
 }

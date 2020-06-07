@@ -100,4 +100,6 @@ public interface IPlayer extends Entity {
     String getCurrentFriendStats();
 
     int getFightMagicPoints();
+
+    void setImmortal(boolean immortal);
 }

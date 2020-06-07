@@ -265,7 +265,6 @@
   description: "Your friend is the best gold advisor"
   multiplierGold: 2.0
 
-
 - type: "enemy"
   enemy:
     name: "Wolf"

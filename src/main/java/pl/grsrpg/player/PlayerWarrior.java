@@ -7,7 +7,6 @@ import pl.grsrpg.utils.Attribute;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.entity.Entity;
 
-@NoArgsConstructor
 public class PlayerWarrior extends Player {
     private static final int startMaxHealth = 120;
     private static final int startStrength = 30;
@@ -17,6 +16,10 @@ public class PlayerWarrior extends Player {
 
     public PlayerWarrior(String name) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
+        this.fightManager = new WarriorFightManager(this);
+    }
+
+    public PlayerWarrior(){
         this.fightManager = new WarriorFightManager(this);
     }
 

@@ -6,7 +6,6 @@ import pl.grsrpg.manager.fight.ScoutFightManager;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.utils.Attribute;
 
-@NoArgsConstructor
 public class PlayerScout extends Player {
     private static final int startMaxHealth = 100;
     private static final int startStrength = 20;
@@ -16,6 +15,10 @@ public class PlayerScout extends Player {
 
     public PlayerScout(String name) {
         super(name, startMaxHealth, startStrength, startAgility, startMagicPoints, startEquipmentCapacity);
+        this.fightManager = new ScoutFightManager(this);
+    }
+
+    public PlayerScout(){
         this.fightManager = new ScoutFightManager(this);
     }
 

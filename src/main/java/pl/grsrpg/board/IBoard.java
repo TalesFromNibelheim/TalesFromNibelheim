@@ -13,4 +13,6 @@ public interface IBoard {
     ICard drawCard();
 
     void save();
+
+    void gameFinish();
 }
