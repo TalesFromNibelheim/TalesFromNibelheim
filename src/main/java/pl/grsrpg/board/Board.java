@@ -1,6 +1,7 @@
 package pl.grsrpg.board;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.Getter;
@@ -25,11 +26,17 @@ import java.util.*;
 
 @Getter
 public class Board implements IBoard {
+    @JsonProperty
     private String name;
+    @JsonProperty
     private final List<IField> level1GameFields = new ArrayList<>();
+    @JsonProperty
     private final List<IField> level2GameFields = new ArrayList<>();
+    @JsonProperty
     private final List<IField> level3GameFields = new ArrayList<>();
+    @JsonProperty
     private final List<ICard> cards = new ArrayList<>();
+    @JsonProperty
     private IPlayer player;
 
     public Board() {

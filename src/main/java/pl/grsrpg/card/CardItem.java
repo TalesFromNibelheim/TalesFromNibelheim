@@ -1,5 +1,6 @@
 package pl.grsrpg.card;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
@@ -9,13 +10,21 @@ import pl.grsrpg.player.IPlayer;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class CardItem extends Card {
+    @JsonProperty
     private int health;
+    @JsonProperty
     private int strength;
+    @JsonProperty
     private int agility;
+    @JsonProperty
     private int magicPoints;
+    @JsonProperty
     private int gold;
+    @JsonProperty
     private int itemValue;
+    @JsonProperty
     private float armor;
+    @JsonProperty
     private Class profession = null;
 
     public CardItem(String name, String description, boolean carriable, int health, int strength, int agility, int magicPoints, int gold, int itemValue, float armor, Class profession) {

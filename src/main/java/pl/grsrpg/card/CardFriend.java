@@ -1,5 +1,6 @@
 package pl.grsrpg.card;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
@@ -12,9 +13,11 @@ import pl.grsrpg.utils.IOUtils;
 @Getter
 @Setter
 public class CardFriend extends Card {
-
+    @JsonProperty
     private int capacity;
+    @JsonProperty
     private boolean addPoint;
+    @JsonProperty
     private float multiplierGold;
 
     public CardFriend(String name, String description, int capacity, boolean point, float multiplier) {

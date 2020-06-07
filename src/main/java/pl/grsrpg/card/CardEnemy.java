@@ -1,5 +1,6 @@
 package pl.grsrpg.card;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,9 @@ import pl.grsrpg.player.IPlayer;
 @EqualsAndHashCode(callSuper = true)
 @Setter
 public class CardEnemy extends Card {
+    @JsonProperty
     private Enemy enemy;
+    @JsonProperty
     private int reward;
 
     public CardEnemy(String name, String description, Enemy enemy, int reward) {
