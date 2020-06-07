@@ -1,11 +1,8 @@
 package pl.grsrpg.entityTest;
 
-
-import junit.framework.TestSuite;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import pl.grsrpg.entity.Boss;
-import pl.grsrpg.entity.Entity;
 
 
 public class BossTest {

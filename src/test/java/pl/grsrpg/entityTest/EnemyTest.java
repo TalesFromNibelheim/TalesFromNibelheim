@@ -1,6 +1,5 @@
 package pl.grsrpg.entityTest;
 
-import junit.framework.TestSuite;
 import org.junit.Test;
 import pl.grsrpg.entity.Enemy;
 

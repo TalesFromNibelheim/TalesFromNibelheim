@@ -1,16 +1,11 @@
 package pl.grsrpg.playerTest;
 
-
-import junit.framework.TestSuite;
 import org.junit.Test;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.player.Player;
-import pl.grsrpg.player.PlayerMage;
 import pl.grsrpg.player.PlayerWarrior;
 import pl.grsrpg.utils.Attribute;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 

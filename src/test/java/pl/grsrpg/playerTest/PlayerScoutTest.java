@@ -1,7 +1,6 @@
 package pl.grsrpg.playerTest;
 
 
-import junit.framework.TestSuite;
 import org.junit.Test;
 import pl.grsrpg.player.Player;
 import pl.grsrpg.player.PlayerScout;
