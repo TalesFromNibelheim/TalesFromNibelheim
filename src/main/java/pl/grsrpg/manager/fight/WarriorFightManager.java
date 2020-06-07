@@ -5,7 +5,6 @@ import pl.grsrpg.entity.Boss;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.logger.Logger;
-import pl.grsrpg.player.IPlayer;
 import pl.grsrpg.player.PlayerWarrior;
 import pl.grsrpg.utils.IOUtils;
 import pl.grsrpg.utils.DiceRoll;
@@ -76,6 +75,7 @@ public class WarriorFightManager implements FightManager {
         do temp = IOUtils.getScanner().nextInt();
         while (temp < 1 || temp > max);
         switch (temp) {
+            default:
             case 1:
                 enemy.takeDamage(basicAttack());
                 break;
@@ -89,6 +89,7 @@ public class WarriorFightManager implements FightManager {
             case 4:
                 player.blessingOfTheShield();
                 bless();
+                break;
         }
         if (numberOfTour < 0) {
             numberOfTour = 0;
@@ -146,6 +147,7 @@ public class WarriorFightManager implements FightManager {
         stun = false;
         while (enemy.getHealth() > 0 && this.player.getHealth() > 0) {
             switch (tour) {
+                default:
                 case 1: // tura wojownika
                     playerTour(enemy);
                     tour = 2;
@@ -157,6 +159,7 @@ public class WarriorFightManager implements FightManager {
                         enemyTour((Enemy) enemy);
                     }
                     tour = 1;
+                    break;
             }
         }
         if (this.player.getHealth() > 0) {

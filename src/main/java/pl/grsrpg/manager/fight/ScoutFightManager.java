@@ -59,6 +59,7 @@ public class ScoutFightManager implements FightManager {
         do temp = IOUtils.getScanner().nextInt();
         while (temp < 1 || temp > max);
         switch (temp) {
+            default:
             case 1:
                 dmg = player.basicAttack();
                 enemy.takeDamage(dmg);
@@ -78,6 +79,7 @@ public class ScoutFightManager implements FightManager {
                 dmg = player.repeatableArrow();
                 enemy.takeDamage(dmg);
                 printDmg(dmg);
+                break;
         }
     }
 
@@ -129,6 +131,7 @@ public class ScoutFightManager implements FightManager {
         int tour = DiceRoll.rollPrivate(1, 2);
         while (enemy.getHealth() > 0 && this.player.getHealth() > 0) {
             switch (tour) {
+                default:
                 case 1: // tura zwiadowcy
                     playerTour(enemy);
                     tour = 2;

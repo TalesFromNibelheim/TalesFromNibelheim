@@ -135,9 +135,8 @@ public class Board implements IBoard {
                     break;
                 case 2:
                     System.out.println(player.getCardsInfo());
-                    if (player.hasFriend()) {
+                    if (player.hasFriend())
                         System.out.println(player.getCurrentFriendStats());
-                    }
                     break;
                 default:
                 case 3:
@@ -145,6 +144,7 @@ public class Board implements IBoard {
                     break;
                 case 4:
                     saveAndQuit();
+                    break;
             }
         }
     }
@@ -170,7 +170,7 @@ public class Board implements IBoard {
     }
 
     @Override
-    public void save(){
+    public void save() {
         try {
             IOUtils.getMapper().enable(SerializationFeature.INDENT_OUTPUT);
             IOUtils.getMapper().writeValue(new File(IOUtils.getDataPath() + "/data/save.yml"), this);
@@ -185,7 +185,7 @@ public class Board implements IBoard {
         for (int i = 1; i <= availableFields.length; i++) {
             IField field = availableFields[i - 1];
             System.out.print(Logger.YELLOW + i + ". ");
-            if (field instanceof IBossField && !((IBossField)field).isDefeated())
+            if (field instanceof IBossField && !((IBossField) field).isDefeated())
                 System.out.print(Logger.RED + "BOSS ");
             System.out.println(Logger.RESET + "Name: " + Logger.CYAN + field.getName() + Logger.RESET + "\n   Description: " + field.getDescription()
                     + "\n   Map Level: " + Logger.CYAN + field.getMapLevel() + Logger.RESET);
@@ -199,8 +199,8 @@ public class Board implements IBoard {
         player.move(nextField.getMapLevel(), this.getFieldNumber(nextField), nextField);
     }
 
-    private int getFieldNumber(IField field){
-        switch (field.getMapLevel()){
+    private int getFieldNumber(IField field) {
+        switch (field.getMapLevel()) {
             default:
             case 1:
                 return level1GameFields.indexOf(field);
@@ -250,10 +250,8 @@ public class Board implements IBoard {
         int currentField = player.getCurrentField();
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, fieldsToMove)));
         ret.add(level2GameFields.get(wrap(level2GameFields.size(), currentField, -fieldsToMove)));
-        if (((IBossField) level2GameFields.get(level2GameFields.size() - 1)).isDefeated()) {
-            if (currentField + fieldsToMove % level2GameFields.size() == 0 || currentField - fieldsToMove % level2GameFields.size() == -2) {
-                ret.add(level3GameFields.get(0));
-            }
+        if (((IBossField) level2GameFields.get(level2GameFields.size() - 1)).isDefeated() && (currentField + fieldsToMove % level2GameFields.size() == 0 || currentField - fieldsToMove % level2GameFields.size() == -2)) {
+            ret.add(level3GameFields.get(0));
         }
         int nextLevelMove = 0;
         if (currentField <= level2GameFields.size() / 2 && currentField + fieldsToMove > level2GameFields.size() / 2) {
@@ -274,7 +272,7 @@ public class Board implements IBoard {
         } else {
             ret.add(level3GameFields.get(currentField - 1));
         }
-        if(currentField + 1 < level3GameFields.size())
+        if (currentField + 1 < level3GameFields.size())
             ret.add(level3GameFields.get(currentField + 1));
     }
 
@@ -305,7 +303,7 @@ public class Board implements IBoard {
     }
 
     @Override
-    public void gameFinish(){
+    public void gameFinish() {
         System.out.println(Logger.RED + "Final boss is deafened!");
         System.out.println(Logger.CYAN + "You are walking into fountain...");
         System.out.println(Logger.CYAN + "Great power comes through your body. You take a knife and try to hurt yourself.");
@@ -314,9 +312,9 @@ public class Board implements IBoard {
         System.out.println(Logger.CYAN + "Your ugliness knock you off your feet. You are now immortal but became ugly as hell.");
         player.setImmortal(true);
         System.out.println(Logger.YELLOW + "Do you want to: " + Logger.RESET);
-        System.out.print(Logger.CYAN + "1. " + Logger.RESET+"Continue"+Logger.YELLOW+"/"+Logger.CYAN+"2. "+Logger.RESET+"Save and quit");
+        System.out.print(Logger.CYAN + "1. " + Logger.RESET + "Continue" + Logger.YELLOW + "/" + Logger.CYAN + "2. " + Logger.RESET + "Save and quit");
         int choice = IOUtils.nextInt();
-        if(choice == 2){
+        if (choice == 2) {
             this.saveAndQuit();
         }
     }

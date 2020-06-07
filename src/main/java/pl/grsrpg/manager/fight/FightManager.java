@@ -2,8 +2,6 @@ package pl.grsrpg.manager.fight;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import pl.grsrpg.entity.Boss;
-import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 
 @JsonTypeInfo(

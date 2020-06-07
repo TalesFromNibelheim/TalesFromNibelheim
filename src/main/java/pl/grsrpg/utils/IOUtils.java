@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class IOUtils {
@@ -82,11 +81,9 @@ public class IOUtils {
 
     public static File openFile(String path, String resource) {
         File file = new File(getDataPath() + path);
-        if (!file.exists()) {
-            if (!IOUtils.saveResource(resource, file)) {
-                Logger.printError("There was a problem with opening" + resource + "file! Exiting...");
-                System.exit(1);
-            }
+        if (!file.exists() && !IOUtils.saveResource(resource, file)) {
+            Logger.printError("There was a problem with opening" + resource + "file! Exiting...");
+            System.exit(1);
         }
         return file;
     }

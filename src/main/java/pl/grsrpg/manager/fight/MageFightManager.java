@@ -63,6 +63,7 @@ public class MageFightManager implements FightManager {
         do temp = IOUtils.getScanner().nextInt();
         while (temp < 1 || temp > max);
         switch (temp) {
+            default:
             case 1:
                 enemy.takeDamage(basicAttack());
                 break;
@@ -128,6 +129,7 @@ public class MageFightManager implements FightManager {
         int tour = DiceRoll.rollPrivate(1, 2);
         while (enemy.getHealth() > 0 && this.player.getHealth() > 0) {
             switch (tour) {
+                default:
                 case 1: // tura wojownika
                     playerTour(enemy);
                     tour = 2;
@@ -139,6 +141,7 @@ public class MageFightManager implements FightManager {
                         enemyTour((Enemy) enemy);
                     }
                     tour = 1;
+                    break;
             }
         }
         if (this.player.getHealth() > 0) {

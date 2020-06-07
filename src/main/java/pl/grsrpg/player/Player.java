@@ -14,7 +14,6 @@ import pl.grsrpg.manager.fight.FightManager;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter

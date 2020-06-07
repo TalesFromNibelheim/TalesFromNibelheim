@@ -10,8 +10,6 @@ import pl.grsrpg.utils.IOUtils;
 import java.io.File;
 import java.io.IOException;
 
-import static org.fusesource.jansi.Ansi.ansi;
-
 @Getter
 public class Game {
     private static Config config;
@@ -40,7 +38,7 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        AnsiConsole.systemInstall();
+        AnsiConsole.systemInstall(); //Windows ANSI ESC Codes Support
         loadConfig();
         game = new Game();
         game.startGameLoop();

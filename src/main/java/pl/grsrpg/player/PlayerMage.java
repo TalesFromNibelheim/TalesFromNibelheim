@@ -1,6 +1,5 @@
 package pl.grsrpg.player;
 
-import lombok.NoArgsConstructor;
 import pl.grsrpg.logger.Logger;
 import pl.grsrpg.manager.fight.MageFightManager;
 import pl.grsrpg.utils.DiceRoll;
