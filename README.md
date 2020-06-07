@@ -1,4 +1,4 @@
-# Tales from Nibelheim|
+# Tales from Nibelheim
 ![Java CI with Gradle](https://github.com/TalesFromNibelheim/TalesFromNibelheim/workflows/Java%20CI%20with%20Gradle/badge.svg)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/17566446c81146c8941fd8a136cd49d7)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TalesFromNibelheim/TalesFromNibelheim&amp;utm_campaign=Badge_Grade)
 
