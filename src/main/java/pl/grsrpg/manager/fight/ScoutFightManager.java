@@ -83,19 +83,20 @@ public class ScoutFightManager implements FightManager {
         }
     }
 
-    public void bossAttack(int roll, float dmg, Boss enemy) {
+    public void bossAttack(float dmg, Boss enemy) {
+        int roll = DiceRoll.rollPrivate(1,4);
         if (roll == 1){
             this.player.takeDamage(dmg);
             System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
         }
         else if (roll == 2) {
-            dmg = enemy.headHunter(enemy.rage(dmg));
-            this.player.takeDamage(dmg);
-            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            float bossDmg = enemy.headHunter(enemy.rage(dmg));
+            this.player.takeDamage(bossDmg);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + bossDmg + " damage." + Logger.RESET);
         } else if (roll == 3) {
-            dmg = enemy.finalShot(enemy.rage(dmg));
-            this.player.takeDamage(dmg);
-            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            float bossDamage = enemy.finalShot(enemy.rage(dmg));
+            this.player.takeDamage(bossDamage);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + bossDamage + " damage." + Logger.RESET);
         }
     }
 
@@ -106,7 +107,7 @@ public class ScoutFightManager implements FightManager {
             float absorb = damageReduce();
             if (enemyDamage - absorb <= 0) enemyDamage = 0;
             else enemyDamage -= absorb;
-            bossAttack(DiceRoll.rollPrivate(1,4), enemyDamage , enemy);
+            bossAttack(enemyDamage , enemy);
     }
 
     private void enemyTour(Enemy enemy) {

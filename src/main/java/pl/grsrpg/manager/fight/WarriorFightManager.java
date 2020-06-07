@@ -13,25 +13,24 @@ import pl.grsrpg.utils.DiceRoll;
 public class WarriorFightManager implements FightManager {
     private PlayerWarrior player;
     private boolean stun;
+    private int tour = DiceRoll.rollPrivate(1, 2);
+    private int numberOfTour = 0;
+    private int numberOfAdditionalArmor = 0;
 
     public WarriorFightManager(PlayerWarrior player) {
         this.player = player;
     }
 
-    private int tour = DiceRoll.rollPrivate(1, 2);
-    private int numberOfTour = 0;
-    private int numberOfAdditionalArmor = 0;
-
     private void chooseAttack() {
         System.out.println(Logger.CYAN + "1." + Logger.RESET + " Basic Attack.");
-        System.out.println(" Need Magic Points: "+Logger.YELLOW + "0"+Logger.RESET);
-        if(player.getFightMagicPoints() >= 5){
+        System.out.println(" Need Magic Points: " + Logger.YELLOW + "0" + Logger.RESET);
+        if (player.getFightMagicPoints() >= 5) {
             System.out.println(Logger.CYAN + "2." + Logger.RESET + " Knockdown.");
-            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+            System.out.println(" Need Magic Points: " + Logger.YELLOW + "5" + Logger.RESET);
             System.out.println(Logger.CYAN + "3." + Logger.RESET + " Cleave.");
-            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+            System.out.println(" Need Magic Points: " + Logger.YELLOW + "5" + Logger.RESET);
             System.out.println(Logger.CYAN + "4." + Logger.RESET + " Blessing of the shield.");
-            System.out.println(" Need Magic Points: "+Logger.YELLOW + "5"+Logger.RESET);
+            System.out.println(" Need Magic Points: " + Logger.YELLOW + "5" + Logger.RESET);
         }
     }
 
@@ -111,19 +110,19 @@ public class WarriorFightManager implements FightManager {
             stun = false;
     }
 
-    public void bossAttack(int roll, float dmg, Boss enemy) {
-        if (roll == 1){
+    public void bossAttack(float dmg, Boss enemy) {
+        int roll = DiceRoll.rollPrivate(1, 4);
+        if (roll == 1) {
             this.player.takeDamage(dmg);
             System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
-        }
-        else if (roll == 2) {
-            dmg = enemy.headHunter(enemy.rage(dmg));
-            this.player.takeDamage(dmg);
-            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+        } else if (roll == 2) {
+            float bossDmg = enemy.headHunter(enemy.rage(dmg));
+            this.player.takeDamage(bossDmg);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + bossDmg + " damage." + Logger.RESET);
         } else if (roll == 3) {
-            dmg = enemy.finalShot(enemy.rage(dmg));
-            this.player.takeDamage(dmg);
-            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + dmg + " damage." + Logger.RESET);
+            float bossDmg = enemy.finalShot(enemy.rage(dmg));
+            this.player.takeDamage(bossDmg);
+            System.out.println(enemy.getName() + " dealt you: " + Logger.RED + bossDmg + " damage." + Logger.RESET);
         }
     }
 
@@ -135,7 +134,7 @@ public class WarriorFightManager implements FightManager {
             float absorb = damageReduce();
             if (enemyDamage - absorb <= 0) enemyDamage = 0;
             else enemyDamage -= absorb;
-            bossAttack(DiceRoll.rollPrivate(1,4), enemyDamage , enemy);
+            bossAttack(enemyDamage, enemy);
         } else
             System.out.println(enemy.getName() + " can't move!!! Now is your chance.");
         stun = false;

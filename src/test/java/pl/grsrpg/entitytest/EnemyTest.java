@@ -1,4 +1,4 @@
-package pl.grsrpg.entityTest;
+package pl.grsrpg.entitytest;
 
 import org.junit.Test;
 import pl.grsrpg.entity.Enemy;

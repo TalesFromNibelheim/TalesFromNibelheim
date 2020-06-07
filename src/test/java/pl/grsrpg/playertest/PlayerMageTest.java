@@ -1,4 +1,4 @@
-package pl.grsrpg.playerTest;
+package pl.grsrpg.playertest;
 
 import org.junit.Test;
 import pl.grsrpg.card.Card;

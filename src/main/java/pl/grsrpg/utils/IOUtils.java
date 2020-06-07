@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 public class IOUtils {
     private static final Scanner scanner = new Scanner(System.in);
+    private static ObjectMapper mapper = null;
+    private static final String DATA_PATH = System.getProperty("user.dir") + "/";
 
     public static Scanner getScanner() {
         return scanner;
@@ -29,8 +31,6 @@ public class IOUtils {
         }
     }
 
-    private static ObjectMapper mapper = null;
-
     public static ObjectMapper getMapper() {
         if (mapper == null) {
             YAMLFactory f = new YAMLFactory();
@@ -39,8 +39,6 @@ public class IOUtils {
         }
         return mapper;
     }
-
-    private static final String DATA_PATH = System.getProperty("user.dir") + "/";
 
     public static String getDataPath() {
         return DATA_PATH;

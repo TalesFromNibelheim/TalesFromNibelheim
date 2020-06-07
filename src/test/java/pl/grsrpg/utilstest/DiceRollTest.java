@@ -1,4 +1,4 @@
-package pl.grsrpg.utilsTest;
+package pl.grsrpg.utilstest;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
