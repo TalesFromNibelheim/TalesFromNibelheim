@@ -32,7 +32,7 @@ public class Game {
         return board;
     }
 
-    public Game() {
+    private Game() {
         if (!loadGame()) {
             this.board = new Board();
             this.board.startGame();
