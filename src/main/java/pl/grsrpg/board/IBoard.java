@@ -11,4 +11,6 @@ public interface IBoard {
     IField getField(int level, int filedNumber);
 
     ICard drawCard();
+
+    void save();
 }

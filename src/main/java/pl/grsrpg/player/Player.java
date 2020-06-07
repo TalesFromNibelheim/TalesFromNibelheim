@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.grsrpg.Game;
 import pl.grsrpg.card.ICard;
 import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
@@ -121,7 +122,9 @@ public abstract class Player extends Enemy implements IPlayer {
     @Override
     public boolean fight(Entity entity) {
         System.out.println("You will fight with " + Logger.CYAN + entity.getName() + Logger.RESET+"!");
-        return fightManager.fight(entity);
+        boolean result = fightManager.fight(entity);
+        Game.getGame().getBoard().save();
+        return result;
     }
 
     @JsonIgnore

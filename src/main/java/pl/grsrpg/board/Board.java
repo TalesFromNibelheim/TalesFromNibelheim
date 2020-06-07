@@ -138,7 +138,6 @@ public class Board implements IBoard {
                     break;
                 case 4:
                     saveAndQuit();
-                    System.exit(0);
             }
         }
     }
@@ -159,6 +158,12 @@ public class Board implements IBoard {
 
     private void saveAndQuit() {
         System.out.println(Logger.CYAN + "See you later!" + Logger.RESET);
+        save();
+        System.exit(0);
+    }
+
+    @Override
+    public void save(){
         try {
             IOUtils.getMapper().enable(SerializationFeature.INDENT_OUTPUT);
             IOUtils.getMapper().writeValue(new File(IOUtils.getDataPath() + "/data/save.yml"), this);

@@ -131,8 +131,10 @@ public class ActionCoach extends Action {
                 System.out.println(Logger.YELLOW + (i++) + ". " + Logger.RESET);
                 ((CardItem)card).showItemInfo();
             }
+            System.out.println(Logger.YELLOW + i + ". " + Logger.RESET + "Don't sell anything.");
             System.out.print("Choose item to sell: ");
             int choice = IOUtils.nextInt() - 1;
+            choice = (choice < 0 ? cards.size() : choice);
             if(choice < cards.size()){
                 ICard card = cards.get(choice);
                 int itemValue = ((CardItem)card).getItemValue();
