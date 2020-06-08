@@ -26,6 +26,7 @@ Player choose his next move by typing number assigned to each avalible action. T
 One of the main assumptions of the project were its ability to be customized. That is why cards and fields are read from yaml file. Game comes with few predefined but feel free to make your own.
 
 ### Config
+---
 ```
 level1Size: 10 #Number of fields at 1 level  
 level2Size: 7 #Number of fields at 2 level  
@@ -35,6 +36,7 @@ landName: Nibelheim #Name of game world
 ```
 
 ### Field
+---
 **Normal field:**
 ```
 - type: "normal" #field type  
@@ -80,6 +82,7 @@ landName: Nibelheim #Name of game world
 ```
 
 ### Card
+---
 **Item:**
 ```
 - type: "item" #card type 
@@ -126,7 +129,6 @@ landName: Nibelheim #Name of game world
 ```
 
 ## Game aspects
-
  1. Ability to modify cards and fields via text files.
  2. Ability to save game and auto save after fight with enemy.
  3. Player can have only one friend.
