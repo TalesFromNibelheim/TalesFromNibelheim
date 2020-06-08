@@ -1,7 +1,7 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.logger.Logger;
-import pl.grsrpg.manager.fight.WarriorFightManager;
+import pl.grsrpg.fightmanager.WarriorFightManager;
 import pl.grsrpg.utils.Attribute;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.entity.Entity;

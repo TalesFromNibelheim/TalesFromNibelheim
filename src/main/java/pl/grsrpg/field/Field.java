@@ -2,7 +2,6 @@ package pl.grsrpg.field;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.ToString;
 import pl.grsrpg.action.ActionTakeCard;
 import pl.grsrpg.action.IAction;
 import pl.grsrpg.card.ICard;
@@ -12,7 +11,6 @@ import pl.grsrpg.utils.DiceRoll;
 import java.util.List;
 
 @Getter
-@ToString
 public class Field implements IField {
     @JsonProperty
     protected String name;

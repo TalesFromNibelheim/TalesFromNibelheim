@@ -1,7 +1,7 @@
 package pl.grsrpg.player;
 
 import pl.grsrpg.logger.Logger;
-import pl.grsrpg.manager.fight.MageFightManager;
+import pl.grsrpg.fightmanager.MageFightManager;
 import pl.grsrpg.utils.DiceRoll;
 import pl.grsrpg.utils.Attribute;
 

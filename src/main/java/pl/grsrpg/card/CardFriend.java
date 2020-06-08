@@ -6,7 +6,6 @@ import pl.grsrpg.logger.Logger;
 import pl.grsrpg.player.IPlayer;
 import pl.grsrpg.utils.IOUtils;
 
-@ToString
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor

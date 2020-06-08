@@ -1,4 +1,4 @@
-package pl.grsrpg.manager.fight;
+package pl.grsrpg.fightmanager;
 
 import lombok.NoArgsConstructor;
 import pl.grsrpg.entity.Boss;

@@ -10,7 +10,7 @@ import pl.grsrpg.entity.Enemy;
 import pl.grsrpg.entity.Entity;
 import pl.grsrpg.field.IField;
 import pl.grsrpg.logger.Logger;
-import pl.grsrpg.manager.fight.FightManager;
+import pl.grsrpg.fightmanager.FightManager;
 
 import java.util.LinkedList;
 import java.util.List;

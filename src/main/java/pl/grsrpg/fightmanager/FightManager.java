@@ -1,4 +1,4 @@
-package pl.grsrpg.manager.fight;
+package pl.grsrpg.fightmanager;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
