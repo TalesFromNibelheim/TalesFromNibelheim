@@ -31,6 +31,8 @@ public interface IPlayer extends Entity {
 
     ICard removeCard(String name);
 
+    boolean hasCard(ICard card);
+
     List<ICard> getCards();
 
     int getEqCapacity();

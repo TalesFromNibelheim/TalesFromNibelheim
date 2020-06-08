@@ -42,8 +42,10 @@ public class CardItem extends Card {
 
     @Override
     public boolean execute(IPlayer player) {
-        System.out.println("You found item: ");
-        this.showItemInfo();
+        if(!player.hasCard(this)){
+            System.out.println("You found item: ");
+            this.showItemInfo();
+        }
         if (carriable && (this.profession == null || this.profession == player.getClass())) {
             player.addAdditionalMaxHealth(this.getHealth());
             player.addAdditionalAgility(this.getAgility());

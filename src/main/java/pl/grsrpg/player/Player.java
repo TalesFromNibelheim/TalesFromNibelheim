@@ -79,6 +79,11 @@ public abstract class Player extends Enemy implements IPlayer {
         }
     }
 
+    @Override
+    public boolean hasCard(ICard card){
+        return cards.contains(card);
+    }
+
     private void resetAdditionalAttributes() {
         this.additionalMagicPoints = 0;
         this.additionalAgility = 0;
