@@ -42,16 +42,16 @@ landName: Nibelheim #Name of game world
   name: "Flowery clearing" 
   description: "You fell like in fairy land." 
   actions: #actions possible to draw on field  
-	- type: "card" #take card  
-	- type: "fight" #fight with enemy
-	  entity:  
-		  name: "Wolf"  
-		  health: 60  
-	      baseStrength: 5  
+    - type: "card" #take card  
+    - type: "fight" #fight with enemy
+      entity:  
+        name: "Wolf"  
+        health: 60  
+        baseStrength: 5  
       reward: 10 #gold for defeating enemy
-	- type: "coach"
-	  name: "Bard"  
-	  price: 10.0 #base price of atribute
+    - type: "coach"
+      name: "Bard"  
+      price: 10.0 #base price of atribute
       multiplier: 1.0 #how fast price rise
 ```
 **Boss field:**
@@ -61,20 +61,20 @@ landName: Nibelheim #Name of game world
   name: "Dragon's cave"  
   description: "It's pretty warm here."  
   actions:  
-	- type: "card"  
-	- type: "fight"  
-	  entity:  
-		name: "Red Brambleback"  
-		health: 30  
+    - type: "card"  
+    - type: "fight"  
+      entity:  
+        name: "Red Brambleback"  
+        health: 30  
         baseStrength: 10  
       reward: 20  
-	- type: "coach"  
-	  name: "Bard"  
-	  price: 10.0  
+    - type: "coach"  
+      name: "Bard"  
+      price: 10.0  
       multiplier: 1.0  
   boss:  
-	name: "Lord of Dragons"  
-	health: 1000  
+    name: "Lord of Dragons"  
+    health: 1000  
     baseStrength: 45
     multiplier: 1.2 #skills multiplier
 ```
@@ -110,9 +110,9 @@ landName: Nibelheim #Name of game world
 ```
 - type: "enemy"  
   enemy:  
-	name: "Wolf"  
-	health: 40  
-	baseStrength: 20  
+    name: "Wolf"  
+    health: 40  
+    baseStrength: 20  
   reward: 10 #gold for defeating enemy
 ```
 **Friend:**
