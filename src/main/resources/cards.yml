@@ -270,8 +270,6 @@
     name: "Wolf"
     health: 40
     baseStrength: 20
-    baseAgility: 30
-    baseMagicPoints: 0
   reward: 10
 
 - type: "enemy"
@@ -279,8 +277,6 @@
     name: "Werewolf"
     health: 50
     baseStrength: 25
-    baseAgility: 20
-    baseMagicPoints: 0
   reward: 25
 
 - type: "enemy"
@@ -288,8 +284,6 @@
     name: "Lesser Wolf"
     health: 30
     baseStrength: 15
-    baseAgility: 15
-    baseMagicPoints: 0
   reward: 5
 
 - type: "enemy"
@@ -297,8 +291,6 @@
     name: "Lesser Wraith"
     health: 40
     baseStrength: 30
-    baseAgility: 15
-    baseMagicPoints: 10
   reward: 15
 
 - type: "enemy"
@@ -306,8 +298,6 @@
     name: "Wraith"
     health: 60
     baseStrength: 30
-    baseAgility: 15
-    baseMagicPoints: 20
   reward: 50
 
 - type: "enemy"
@@ -315,8 +305,6 @@
     name: "Strong Wraith"
     health: 80
     baseStrength: 40
-    baseAgility: 20
-    baseMagicPoints: 25
   reward: 100
 
 - type: "enemy"
@@ -324,8 +312,6 @@
     name: "Raptor"
     health: 60
     baseStrength: 40
-    baseAgility: 1
-    baseMagicPoints: 0
   reward: 60
 
 - type: "enemy"
@@ -333,8 +319,6 @@
     name: "Giant Raptor"
     health: 90
     baseStrength: 40
-    baseAgility: 0
-    baseMagicPoints: 0
   reward: 150
 
 - type: "enemy"
@@ -342,8 +326,6 @@
     name: "Blue Sentinel"
     health: 30
     baseStrength: 20
-    baseAgility: 5
-    baseMagicPoints: 0
   reward: 15
 
 
@@ -352,8 +334,6 @@
     name: "Red Brambleback"
     health: 30
     baseStrength: 10
-    baseAgility: 10
-    baseMagicPoints: 20
   reward: 20
 
 
@@ -362,8 +342,6 @@
     name: "Gromp"
     health: 50
     baseStrength: 20
-    baseAgility: 20
-    baseMagicPoints: 10
   reward: 35
 
 - type: "enemy"
@@ -371,8 +349,6 @@
     name: "Rift Scuttler"
     health: 65
     baseStrength: 30
-    baseAgility: 5
-    baseMagicPoints: 10
   reward: 40
 
 - type: "enemy"
@@ -380,8 +356,6 @@
     name: "Lesser Rift Scuttler"
     health: 45
     baseStrength: 25
-    baseAgility: 5
-    baseMagicPoints: 5
   reward: 25
 
 - type: "enemy"
@@ -389,6 +363,4 @@
     name: "Dragon"
     health: 100
     baseStrength: 60
-    baseAgility: 5
-    baseMagicPoints: 00
   reward: 250

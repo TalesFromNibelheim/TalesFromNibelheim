@@ -59,6 +59,10 @@ public class Board implements IBoard {
         try {
             List<Field> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {
             });
+            if(gameFields.size() < size - 1){
+                Logger.printError("Expected "+(size-1)+" fields but defined in "+levelFileName+" only "+gameFields.size()+".");
+                System.exit(1);
+            }
             Collections.shuffle(gameFields);
             levelList.addAll(gameFields.subList(0, size - 1));
         } catch (IOException e) {
@@ -72,6 +76,10 @@ public class Board implements IBoard {
         try {
             List<BossField> gameFields = IOUtils.getMapper().readValue(levelFile, new TypeReference<>() {
             });
+            if(gameFields.isEmpty()){
+                Logger.printError("Missing field in "+levelFileName+".");
+                System.exit(1);
+            }
             Collections.shuffle(gameFields);
             levelList.add(gameFields.get(0));
         } catch (IOException e) {
