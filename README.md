@@ -139,6 +139,6 @@ landName: Nibelheim #Name of game world
 ![game-start](screenshots/game-start.png)<br>
 **Fight:**<br>
 ![fight](screenshots/fight.png)<br>
-**Coach:**
+**Coach:**<br>
 ![coach](screenshots/coach.png)<br>
 
