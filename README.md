@@ -15,6 +15,7 @@ Player choose his next move by typing number assigned to each avalible action. T
  4. Meeting coach is only way to improve attributes and price of it increase with each additional point.
  5. When player moves to next field there is a random chance of getting item or friend.
  6. Player has limited backpack capacity and he needs to sell for coach items that are not for his character or to make space for new one.
+ 7. Exciting rolling system - everytime when you stand on field a draw takes place. If you roll 6 something unexpected will hapen!
 
  ### Libraries used in project
  - Java 11
